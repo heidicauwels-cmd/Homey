@@ -3,65 +3,40 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#fbf2e5">
 <link rel="manifest" href="manifest.json">
 <link rel="stylesheet" href="style.css">
 <title>Homey</title>
 </head>
 <body>
-<div class="phone">
-  <main id="homeScreen" class="screen active">
-    <img class="home-img" src="homey-house.png" alt="Mijn huis">
-    <button class="hit room bedroom" data-room="Slaapkamer"></button>
-    <button class="hit room bathroom" data-room="Badkamer"></button>
-    <button class="hit room living" data-room="Woonkamer"></button>
-    <button class="hit room kitchen" data-room="Keuken"></button>
-    <button class="hit room hall" data-room="Hal"></button>
-    <button class="hit room laundry" data-room="Wasruimte"></button>
-    <button class="hit room terrace" data-room="Terras"></button>
-    <button class="hit nav n-home" data-nav="home"></button>
-    <button class="hit nav n-shop" data-nav="shop"></button>
-    <button class="hit nav n-inventory" data-nav="inventory"></button>
-    <button class="hit nav n-levels" data-nav="levels"></button>
-    <button class="hit nav n-more" data-nav="more"></button>
-  </main>
+<div class="homey-app">
+  <header class="fixed-top">
+    <img src="homey-fixed-top.jpg" alt="Homey">
+  </header>
 
-  <main id="shopScreen" class="screen shop-screen">
-    <div class="fixed-top"><img src="fixed-top.jpg" alt="Homey"></div>
-
-    <div class="shop-scroll">
-      <img src="shop-middle.jpg" alt="Winkeltje">
-    </div>
-
-    <div class="fixed-bottom">
-      <img src="fixed-shop-nav.jpg" alt="Navigatie">
-      <button class="hit bnav bh" data-nav="home"></button>
-      <button class="hit bnav bs" data-nav="shop"></button>
-      <button class="hit bnav bi" data-nav="inventory"></button>
-      <button class="hit bnav bl" data-nav="levels"></button>
-      <button class="hit bnav bm" data-nav="more"></button>
+  <main id="contentViewport" class="content-viewport">
+    <div id="screenContent" class="screen-content">
+      <!-- Alle scherminhoud komt voortaan alleen hier. -->
     </div>
   </main>
 
-  <section id="simpleScreen" class="simple-screen" hidden>
-    <div class="simple-card">
-      <div id="simpleIcon">🎒</div>
-      <h2 id="simpleTitle">Inventaris</h2>
-      <p id="simpleText"></p>
-    </div>
-  </section>
-
-  <section class="panel" id="panel" hidden>
-    <div class="panel-card">
-      <button id="closePanel" class="close">×</button>
-      <div id="panelIcon" class="panel-icon">🏡</div>
-      <h2 id="panelTitle">Homey</h2>
-      <p id="panelText"></p>
-      <div id="taskList"></div>
-    </div>
-  </section>
-  <div id="toast" class="toast"></div>
+  <nav class="fixed-bottom">
+    <img src="homey-fixed-bottom.jpg" alt="Homey navigatie">
+    <button class="nav-hit home" data-nav="home" aria-label="Mijn huis"></button>
+    <button class="nav-hit shop" data-nav="shop" aria-label="Winkeltje"></button>
+    <button class="nav-hit inventory" data-nav="inventory" aria-label="Inventaris"></button>
+    <button class="nav-hit levels" data-nav="levels" aria-label="Levels"></button>
+    <button class="nav-hit more" data-nav="more" aria-label="Meer"></button>
+  </nav>
 </div>
-<script src="app.js"></script>
+<script>
+const viewport = document.getElementById('screenContent');
+document.querySelectorAll('[data-nav]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const names = {home:'Mijn huis',shop:'Winkeltje',inventory:'Inventaris',levels:'Levels',more:'Meer'};
+    viewport.innerHTML = `<div class="placeholder"><h2>${names[btn.dataset.nav]}</h2><p>Dit scherm bouwen we in dit vaste Homey-frame.</p></div>`;
+  });
+});
+</script>
 </body>
 </html>
