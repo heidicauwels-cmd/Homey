@@ -1,38 +1,43 @@
 *{box-sizing:border-box}
-html,body{margin:0;background:#ede8de;font-family:Arial,sans-serif;color:#38291f}
+html,body{margin:0;background:#eee8de;font-family:Arial,sans-serif;color:#38291f}
 body{display:flex;justify-content:center}
-.app-shell{width:min(100vw,590px);height:100svh;position:relative;background:#f8f0e5;overflow:hidden}
-.screen{display:none;position:relative;width:100%;height:100%}
+.phone{position:relative;width:min(100vw,590px);height:100svh;background:#f7efe4;overflow:hidden}
+.screen{display:none;position:absolute;inset:0}
 .screen.active{display:block}
-.home-img{display:block;width:100%;height:100%;object-fit:contain;object-position:top center}
-.hotspot{position:absolute;border:0;background:transparent;cursor:pointer;padding:0}
+.full-home{display:block;width:100%;height:100%;object-fit:contain;object-position:top center}
+.hit{position:absolute;border:0;background:transparent;padding:0;cursor:pointer;z-index:8}
 
-/* Existing home hit zones */
-.bedroom{left:28%;top:25%;width:29%;height:15%}.bathroom{left:57%;top:25%;width:29%;height:15%}
-.living{left:25%;top:40%;width:31%;height:15%}.kitchen{left:57%;top:40%;width:30%;height:15%}
-.hall{left:25%;top:55%;width:31%;height:14%}.laundry{left:57%;top:55%;width:30%;height:14%}
+/* Existing house hit areas */
+.bedroom{left:28%;top:25%;width:29%;height:15%} .bathroom{left:57%;top:25%;width:29%;height:15%}
+.living{left:25%;top:40%;width:31%;height:15%} .kitchen{left:57%;top:40%;width:30%;height:15%}
+.hall{left:25%;top:55%;width:31%;height:14%} .laundry{left:57%;top:55%;width:30%;height:14%}
 .terrace{left:29%;top:69%;width:58%;height:15%}
-.nav{top:89.2%;height:8.7%;width:18%}.nav-home{left:4%}.nav-shop{left:22%}.nav-inventory{left:41%}.nav-levels{left:60%}.nav-more{left:79%}
+.nav{top:89.2%;height:8.7%;width:18%} .n-home{left:4%} .n-shop{left:22%} .n-inventory{left:41%} .n-levels{left:60%} .n-more{left:79%}
 
-/* SHOP: header and navigation are fixed-size; ONLY middle scrolls */
-.shop-screen.active{display:flex;flex-direction:column;height:100svh}
-.shop-header{flex:0 0 20.5%;overflow:hidden;background:#fffaf3}
-.shop-header img{width:100%;height:100%;object-fit:fill;display:block}
-.shop-scroll{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;background:#fffaf3;scrollbar-width:none}
-.shop-scroll::-webkit-scrollbar{display:none}
-.shop-middle{display:block;width:100%;height:auto}
-.shop-nav{flex:0 0 12.5%;position:relative;background:#fffaf3;z-index:10}
-.shop-nav img{display:block;width:100%;height:100%;object-fit:fill}
-.sn{top:0;height:100%;width:20%}.sn-home{left:0}.sn-shop{left:20%}.sn-inventory{left:40%}.sn-levels{left:60%}.sn-more{left:80%}
+/* V9: header and nav are literal crops from Mijn huis, at the SAME scale. */
+.shop.active{display:flex;flex-direction:column}
+.fixed-header{height:20.4427%;flex:0 0 20.4427%;overflow:hidden;background:#f7efe4}
+.fixed-header img{display:block;width:100%;height:100%;object-fit:fill}
 
-/* Panels/placeholders retained */
-.panel{position:fixed;inset:0;background:#0005;display:flex;align-items:flex-end;justify-content:center;z-index:20}.panel[hidden]{display:none}
+.shop-viewport{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none;background:#fffaf3}
+.shop-viewport::-webkit-scrollbar{display:none}
+.shop-content{display:block;width:100%;height:auto}
+
+.fixed-nav{height:13.5417%;flex:0 0 13.5417%;position:relative;overflow:hidden;background:#fffaf3;z-index:10}
+.fixed-nav>img{display:block;width:100%;height:100%;object-fit:fill}
+/* subtle selection only; button dimensions themselves never change */
+.active-shop-marker{position:absolute;left:20%;top:7%;width:20%;height:86%;border-radius:18px;background:rgba(184,210,160,.28);pointer-events:none}
+.sn{top:0;height:100%;width:20%} .sn-home{left:0} .sn-shop{left:20%} .sn-inventory{left:40%} .sn-levels{left:60%} .sn-more{left:80%}
+
+/* Existing task panel */
+.panel{position:fixed;inset:0;background:#0005;display:flex;align-items:flex-end;justify-content:center;z-index:20}
+.panel[hidden]{display:none}
 .panel-card{width:min(590px,100%);background:#fff9f1;border-radius:28px 28px 0 0;padding:24px 20px 30px;max-height:75vh;overflow:auto;position:relative}
 .close{position:absolute;right:18px;top:13px;border:0;background:#f1dfd2;border-radius:50%;width:38px;height:38px;font-size:28px}
-.panel-icon{font-size:38px}.panel-card h2{margin:4px 0 3px}.panel-card p{margin-top:0;color:#74665b}
+.panel-icon{font-size:38px} .panel-card h2{margin:4px 0 3px} .panel-card p{margin-top:0;color:#74665b}
 .task-row{display:flex;width:100%;gap:12px;align-items:center;border:1px solid #ead8c8;background:#fffdf9;border-radius:16px;margin:10px 0;padding:13px;text-align:left;font-size:16px}
-.task-row.done{background:#dceacf;border-color:#aac88d}.task-check{font-size:24px}.task-sub{display:block;font-size:12px;color:#89796e;margin-top:4px}
-.simple-screen{min-height:100svh;padding:30px 20px;background:#f8f0e5}.simple-back{border:0;border-radius:50%;width:44px;height:44px;background:#efc1b4;font-size:30px}
-.simple-card{margin-top:60px;background:#fffaf3;border:1px solid #ead8c8;border-radius:24px;padding:35px 24px;text-align:center}.simple-card>div{font-size:48px}
+.task-row.done{background:#dceacf;border-color:#aac88d} .task-check{font-size:24px} .task-sub{display:block;font-size:12px;color:#89796e;margin-top:4px}
+.simple-screen{min-height:100svh;padding:30px 20px;background:#f8f0e5} .simple-back{border:0;border-radius:50%;width:44px;height:44px;background:#efc1b4;font-size:30px}
+.simple-card{margin-top:60px;background:#fffaf3;border:1px solid #ead8c8;border-radius:24px;padding:35px 24px;text-align:center} .simple-card>div{font-size:48px}
 .toast{position:fixed;left:50%;bottom:110px;transform:translateX(-50%) translateY(20px);background:#3f4932;color:white;padding:12px 18px;border-radius:999px;z-index:30;opacity:0;transition:.2s}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
