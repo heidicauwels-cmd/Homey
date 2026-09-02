@@ -11,11 +11,13 @@
 </head>
 <body>
 <div class="app-shell">
+
   <main id="homeScreen" class="screen active">
     <img class="reference" src="homey-house.png" alt="Homey huis">
     <div class="live-stats home-live">
       <b id="livePoints">0</b><b id="liveCoins">0</b><b><span id="liveBalls">0</span>/15</b>
     </div>
+
     <button class="hotspot room bedroom" data-room="Slaapkamer"></button>
     <button class="hotspot room bathroom" data-room="Badkamer"></button>
     <button class="hotspot room living" data-room="Woonkamer"></button>
@@ -23,6 +25,7 @@
     <button class="hotspot room hall" data-room="Hal"></button>
     <button class="hotspot room laundry" data-room="Wasruimte"></button>
     <button class="hotspot room terrace" data-room="Terras"></button>
+
     <button class="hotspot nav nav-home" data-nav="home"></button>
     <button class="hotspot nav nav-shop" data-nav="shop"></button>
     <button class="hotspot nav nav-inventory" data-nav="inventory"></button>
@@ -31,30 +34,50 @@
   </main>
 
   <main id="shopScreen" class="screen shop-screen">
-    <img class="reference" src="homey-shop.png" alt="Homey winkeltje">
-    <button class="hotspot shop-nav shop-home" data-nav="home"></button>
-    <button class="hotspot shop-nav shop-shop" data-nav="shop"></button>
-    <button class="hotspot shop-nav shop-inventory" data-nav="inventory"></button>
-    <button class="hotspot shop-nav shop-levels" data-nav="levels"></button>
-    <button class="hotspot shop-nav shop-more" data-nav="more"></button>
-    <button class="hotspot buy buy-green" data-buy="green-sofa" aria-label="Groene bank kopen"></button>
-    <button class="hotspot buy buy-chair" data-buy="boho-chair" aria-label="Boho fauteuil kopen"></button>
-    <button class="hotspot buy buy-love" data-buy="rattan-love" aria-label="Rotan loveseat kopen"></button>
-    <button class="hotspot buy buy-round" data-buy="round-table" aria-label="Ronde salontafel kopen"></button>
-    <button class="hotspot buy buy-light" data-buy="light-table" aria-label="Lichte salontafel kopen"></button>
-    <button class="hotspot buy buy-side" data-buy="rattan-side" aria-label="Rotan bijzettafel kopen"></button>
-    <button class="hotspot buy buy-dresser" data-buy="dresser" aria-label="Houten dressoir kopen"></button>
-    <button class="hotspot buy buy-vintage" data-buy="vintage-cab" aria-label="Vintage kastje kopen"></button>
+    <div class="shop-scroll">
+      <div class="shop-content">
+        <img class="shop-reference" src="homey-shop-content.png" alt="Homey winkeltje">
+
+        <button class="hotspot buy buy-green" data-buy="green-sofa" aria-label="Groene bank kopen"></button>
+        <button class="hotspot buy buy-chair" data-buy="boho-chair" aria-label="Boho fauteuil kopen"></button>
+        <button class="hotspot buy buy-love" data-buy="rattan-love" aria-label="Rotan loveseat kopen"></button>
+        <button class="hotspot buy buy-round" data-buy="round-table" aria-label="Ronde salontafel kopen"></button>
+        <button class="hotspot buy buy-light" data-buy="light-table" aria-label="Lichte salontafel kopen"></button>
+        <button class="hotspot buy buy-side" data-buy="rattan-side" aria-label="Rotan bijzettafel kopen"></button>
+        <button class="hotspot buy buy-dresser" data-buy="dresser" aria-label="Houten dressoir kopen"></button>
+        <button class="hotspot buy buy-vintage" data-buy="vintage-cab" aria-label="Vintage kastje kopen"></button>
+      </div>
+    </div>
+
+    <div class="shop-fixed-nav">
+      <img src="homey-shop-nav.png" alt="">
+      <button class="hotspot fixed-nav-btn fnav-home" data-nav="home"></button>
+      <button class="hotspot fixed-nav-btn fnav-shop" data-nav="shop"></button>
+      <button class="hotspot fixed-nav-btn fnav-inventory" data-nav="inventory"></button>
+      <button class="hotspot fixed-nav-btn fnav-levels" data-nav="levels"></button>
+      <button class="hotspot fixed-nav-btn fnav-more" data-nav="more"></button>
+    </div>
   </main>
 
   <section id="simpleScreen" class="simple-screen" hidden>
     <button class="simple-back" data-nav="home">‹</button>
-    <div class="simple-card"><div id="simpleIcon">🎒</div><h2 id="simpleTitle">Inventaris</h2><p id="simpleText"></p></div>
+    <div class="simple-card">
+      <div id="simpleIcon">🎒</div>
+      <h2 id="simpleTitle">Inventaris</h2>
+      <p id="simpleText"></p>
+    </div>
   </section>
 
   <section class="panel" id="panel" hidden>
-    <div class="panel-card"><button id="closePanel" class="close">×</button><div id="panelIcon" class="panel-icon">🏡</div><h2 id="panelTitle">Homey</h2><p id="panelText"></p><div id="taskList"></div></div>
+    <div class="panel-card">
+      <button id="closePanel" class="close">×</button>
+      <div id="panelIcon" class="panel-icon">🏡</div>
+      <h2 id="panelTitle">Homey</h2>
+      <p id="panelText"></p>
+      <div id="taskList"></div>
+    </div>
   </section>
+
   <div id="toast" class="toast"></div>
 </div>
 <script src="app.js"></script>

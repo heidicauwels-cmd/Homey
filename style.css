@@ -1,8 +1,94 @@
-*{box-sizing:border-box}html,body{margin:0;background:#ede8de;font-family:Arial,sans-serif;color:#38291f}body{display:flex;justify-content:center}.app-shell{width:min(100vw,590px);min-height:100vh;position:relative;background:#f8f0e5;overflow:hidden}.screen{display:none;position:relative;width:100%}.screen.active{display:block}.reference{display:block;width:100%;height:auto}.hotspot{position:absolute;border:0;background:transparent;cursor:pointer;padding:0}
-/* home room hotspots */
-.bedroom{left:28%;top:25%;width:29%;height:15%}.bathroom{left:57%;top:25%;width:29%;height:15%}.living{left:25%;top:40%;width:31%;height:15%}.kitchen{left:57%;top:40%;width:30%;height:15%}.hall{left:25%;top:55%;width:31%;height:14%}.laundry{left:57%;top:55%;width:30%;height:14%}.terrace{left:29%;top:69%;width:58%;height:15%}
-.nav{top:89.2%;height:8.7%;width:18%}.nav-home{left:4%}.nav-shop{left:22%}.nav-inventory{left:41%}.nav-levels{left:60%}.nav-more{left:79%}
-/* shop image is 1024x1536 */
-.shop-nav{top:88.15%;height:11.85%;width:20%}.shop-home{left:0}.shop-shop{left:20%}.shop-inventory{left:40%}.shop-levels{left:60%}.shop-more{left:80%}
-.buy{height:15.8%;width:22.8%}.buy-green{left:4.5%;top:31.8%}.buy-chair{left:28.8%;top:31.8%}.buy-love{left:52.2%;top:31.8%}.buy-round{left:4.5%;top:49.1%}.buy-light{left:28.8%;top:49.1%}.buy-side{left:52.2%;top:49.1%}.buy-dresser{left:4.5%;top:66.3%}.buy-vintage{left:28.8%;top:66.3%}
-.home-live{position:absolute;top:8.3%;left:28%;right:16%;display:grid;grid-template-columns:1fr 1fr 1fr;text-align:center;pointer-events:none;opacity:0}.panel{position:fixed;inset:0;background:#0005;display:flex;align-items:flex-end;justify-content:center;z-index:20}.panel[hidden]{display:none}.panel-card{width:min(590px,100%);background:#fff9f1;border-radius:28px 28px 0 0;padding:24px 20px 30px;max-height:75vh;overflow:auto;position:relative}.close{position:absolute;right:18px;top:13px;border:0;background:#f1dfd2;border-radius:50%;width:38px;height:38px;font-size:28px}.panel-icon{font-size:38px}.panel-card h2{margin:4px 0 3px}.panel-card p{margin-top:0;color:#74665b}.task-row{display:flex;width:100%;gap:12px;align-items:center;border:1px solid #ead8c8;background:#fffdf9;border-radius:16px;margin:10px 0;padding:13px;text-align:left;font-size:16px}.task-row.done{background:#dceacf;border-color:#aac88d}.task-check{font-size:24px}.task-sub{display:block;font-size:12px;color:#89796e;margin-top:4px}.simple-screen{min-height:100vh;padding:30px 20px;background:#f8f0e5}.simple-back{border:0;border-radius:50%;width:44px;height:44px;background:#efc1b4;font-size:30px}.simple-card{margin-top:60px;background:#fffaf3;border:1px solid #ead8c8;border-radius:24px;padding:35px 24px;text-align:center}.simple-card>div{font-size:48px}.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);background:#3f4932;color:white;padding:12px 18px;border-radius:999px;z-index:30;opacity:0;transition:.2s;white-space:nowrap;max-width:90%;overflow:hidden;text-overflow:ellipsis}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+*{box-sizing:border-box}
+html,body{margin:0;background:#ede8de;font-family:Arial,sans-serif;color:#38291f}
+body{display:flex;justify-content:center}
+.app-shell{width:min(100vw,590px);min-height:100svh;position:relative;background:#f8f0e5;overflow:hidden}
+.screen{display:none;position:relative;width:100%}
+.screen.active{display:block}
+.reference{display:block;width:100%;height:auto}
+.hotspot{position:absolute;border:0;background:transparent;cursor:pointer;padding:0}
+
+/* HOME */
+.bedroom{left:28%;top:25%;width:29%;height:15%}
+.bathroom{left:57%;top:25%;width:29%;height:15%}
+.living{left:25%;top:40%;width:31%;height:15%}
+.kitchen{left:57%;top:40%;width:30%;height:15%}
+.hall{left:25%;top:55%;width:31%;height:14%}
+.laundry{left:57%;top:55%;width:30%;height:14%}
+.terrace{left:29%;top:69%;width:58%;height:15%}
+
+.nav{top:89.2%;height:8.7%;width:18%}
+.nav-home{left:4%}
+.nav-shop{left:22%}
+.nav-inventory{left:41%}
+.nav-levels{left:60%}
+.nav-more{left:79%}
+
+/* SHOP: scrollable page + fixed bottom bar */
+.shop-screen.active{
+  display:flex;
+  flex-direction:column;
+  height:100svh;
+  min-height:100svh;
+  background:#f8f0e5;
+}
+.shop-scroll{
+  flex:1 1 auto;
+  overflow-y:auto;
+  overflow-x:hidden;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+.shop-scroll::-webkit-scrollbar{display:none}
+.shop-content{position:relative;width:100%;min-height:100%}
+.shop-reference{display:block;width:100%;height:auto}
+
+.shop-fixed-nav{
+  position:relative;
+  z-index:12;
+  flex:0 0 auto;
+  width:100%;
+  background:#fffaf2;
+  box-shadow:0 -1px 0 rgba(120,90,55,.08);
+}
+.shop-fixed-nav img{display:block;width:100%;height:auto}
+.fixed-nav-btn{top:0;height:100%;width:20%}
+.fnav-home{left:0}
+.fnav-shop{left:20%}
+.fnav-inventory{left:40%}
+.fnav-levels{left:60%}
+.fnav-more{left:80%}
+
+/* Buy hotspots, corrected for the cropped shop content */
+.buy{height:17.64%;width:22.8%}
+.buy-green{left:4.5%;top:35.50%}
+.buy-chair{left:28.8%;top:35.50%}
+.buy-love{left:52.2%;top:35.50%}
+.buy-round{left:4.5%;top:54.81%}
+.buy-light{left:28.8%;top:54.81%}
+.buy-side{left:52.2%;top:54.81%}
+.buy-dresser{left:4.5%;top:74.01%}
+.buy-vintage{left:28.8%;top:74.01%}
+
+.home-live{position:absolute;top:8.3%;left:28%;right:16%;display:grid;grid-template-columns:1fr 1fr 1fr;text-align:center;pointer-events:none;opacity:0}
+
+/* Task panel */
+.panel{position:fixed;inset:0;background:#0005;display:flex;align-items:flex-end;justify-content:center;z-index:20}
+.panel[hidden]{display:none}
+.panel-card{width:min(590px,100%);background:#fff9f1;border-radius:28px 28px 0 0;padding:24px 20px 30px;max-height:75vh;overflow:auto;position:relative}
+.close{position:absolute;right:18px;top:13px;border:0;background:#f1dfd2;border-radius:50%;width:38px;height:38px;font-size:28px}
+.panel-icon{font-size:38px}
+.panel-card h2{margin:4px 0 3px}
+.panel-card p{margin-top:0;color:#74665b}
+.task-row{display:flex;width:100%;gap:12px;align-items:center;border:1px solid #ead8c8;background:#fffdf9;border-radius:16px;margin:10px 0;padding:13px;text-align:left;font-size:16px}
+.task-row.done{background:#dceacf;border-color:#aac88d}
+.task-check{font-size:24px}
+.task-sub{display:block;font-size:12px;color:#89796e;margin-top:4px}
+
+/* Placeholder pages */
+.simple-screen{min-height:100svh;padding:30px 20px;background:#f8f0e5}
+.simple-back{border:0;border-radius:50%;width:44px;height:44px;background:#efc1b4;font-size:30px}
+.simple-card{margin-top:60px;background:#fffaf3;border:1px solid #ead8c8;border-radius:24px;padding:35px 24px;text-align:center}
+.simple-card>div{font-size:48px}
+
+.toast{position:fixed;left:50%;bottom:110px;transform:translateX(-50%) translateY(20px);background:#3f4932;color:white;padding:12px 18px;border-radius:999px;z-index:30;opacity:0;transition:.2s;white-space:nowrap;max-width:90%;overflow:hidden;text-overflow:ellipsis}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
