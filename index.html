@@ -10,7 +10,6 @@
 </head>
 <body>
 <div class="phone">
-
   <main id="homeScreen" class="screen active">
     <img class="home-img" src="homey-house.png" alt="Mijn huis">
     <button class="hit room bedroom" data-room="Slaapkamer"></button>
@@ -27,40 +26,24 @@
     <button class="hit nav n-more" data-nav="more"></button>
   </main>
 
-  <main id="shopScreen" class="screen framed-screen">
-    <div class="fixed-top"><img src="fixed-top-row.jpg" alt="Homey"></div>
-
-    <div class="middle-scroll">
-      <img src="shop-middle-scroll.jpg" alt="Winkeltje">
-    </div>
-
-    <div class="fixed-bottom">
-      <img src="fixed-bottom-row.jpg" alt="Navigatie">
-      <div class="shop-selected"></div>
-      <button class="hit bnav bnav-home" data-nav="home"></button>
-      <button class="hit bnav bnav-shop" data-nav="shop"></button>
-      <button class="hit bnav bnav-inventory" data-nav="inventory"></button>
-      <button class="hit bnav bnav-levels" data-nav="levels"></button>
-      <button class="hit bnav bnav-more" data-nav="more"></button>
+  <main id="shopScreen" class="screen shop-screen">
+    <div class="shop-top"><img src="shop-top.jpg" alt="Homey"></div>
+    <div class="shop-scroll"><img src="shop-middle.jpg" alt="Winkeltje"></div>
+    <div class="shop-bottom">
+      <img src="shop-bottom.jpg" alt="Navigatie">
+      <button class="hit bnav bh" data-nav="home"></button>
+      <button class="hit bnav bs" data-nav="shop"></button>
+      <button class="hit bnav bi" data-nav="inventory"></button>
+      <button class="hit bnav bl" data-nav="levels"></button>
+      <button class="hit bnav bm" data-nav="more"></button>
     </div>
   </main>
 
   <section id="simpleScreen" class="simple-screen" hidden>
-    <div class="fixed-top simple-fixed-top"><img src="fixed-top-row.jpg" alt="Homey"></div>
-    <div class="simple-middle">
-      <div class="simple-card">
-        <div id="simpleIcon">🎒</div>
-        <h2 id="simpleTitle">Inventaris</h2>
-        <p id="simpleText"></p>
-      </div>
-    </div>
-    <div class="fixed-bottom simple-fixed-bottom">
-      <img src="fixed-bottom-row.jpg" alt="Navigatie">
-      <button class="hit bnav bnav-home" data-nav="home"></button>
-      <button class="hit bnav bnav-shop" data-nav="shop"></button>
-      <button class="hit bnav bnav-inventory" data-nav="inventory"></button>
-      <button class="hit bnav bnav-levels" data-nav="levels"></button>
-      <button class="hit bnav bnav-more" data-nav="more"></button>
+    <div class="simple-card">
+      <div id="simpleIcon">🎒</div>
+      <h2 id="simpleTitle">Inventaris</h2>
+      <p id="simpleText"></p>
     </div>
   </section>
 
@@ -73,7 +56,6 @@
       <div id="taskList"></div>
     </div>
   </section>
-
   <div id="toast" class="toast"></div>
 </div>
 <script src="app.js"></script>
