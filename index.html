@@ -11,7 +11,7 @@
 <body>
 <div class="phone">
   <main id="homeScreen" class="screen active">
-    <img class="full-home" src="homey-house.png" alt="Mijn huis">
+    <img class="home-img" src="homey-house.png" alt="Mijn huis">
     <button class="hit room bedroom" data-room="Slaapkamer"></button>
     <button class="hit room bathroom" data-room="Badkamer"></button>
     <button class="hit room living" data-room="Woonkamer"></button>
@@ -27,15 +27,12 @@
   </main>
 
   <main id="shopScreen" class="screen shop">
-    <div class="fixed-header"><img src="fixed-homey-header.jpg" alt="Homey"></div>
-
-    <div class="shop-viewport">
-      <img src="shop-scroll-content.jpg" class="shop-content" alt="Winkeltje">
+    <div class="shop-top"><img src="shop-fixed-top.jpg" alt="Homey"></div>
+    <div class="shop-scroll">
+      <img src="shop-scroll-middle.jpg" alt="Winkeltje collecties">
     </div>
-
-    <div class="fixed-nav">
-      <img src="fixed-homey-nav.jpg" alt="">
-      <div class="active-shop-marker"></div>
+    <div class="shop-bottom">
+      <img src="shop-fixed-nav.jpg" alt="Homey navigatie">
       <button class="hit sn sn-home" data-nav="home"></button>
       <button class="hit sn sn-shop" data-nav="shop"></button>
       <button class="hit sn sn-inventory" data-nav="inventory"></button>
@@ -59,5 +56,4 @@
   <div id="toast" class="toast"></div>
 </div>
 <script src="app.js"></script>
-</body>
-</html>
+</body></html>
