@@ -3,13 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#f7efe4">
+<meta name="theme-color" content="#ffffff">
 <link rel="manifest" href="manifest.json">
 <link rel="stylesheet" href="style.css">
 <title>Homey</title>
 </head>
 <body>
 <div class="phone">
+
   <main id="homeScreen" class="screen active">
     <img class="home-img" src="homey-house.png" alt="Mijn huis">
     <button class="hit room bedroom" data-room="Slaapkamer"></button>
@@ -26,34 +27,55 @@
     <button class="hit nav n-more" data-nav="more"></button>
   </main>
 
-  <main id="shopScreen" class="screen shop">
-    <div class="shop-top"><img src="shop-fixed-top.jpg" alt="Homey"></div>
-    <div class="shop-scroll">
-      <img src="shop-scroll-middle.jpg" alt="Winkeltje collecties">
+  <main id="shopScreen" class="screen framed-screen">
+    <div class="fixed-top"><img src="fixed-top-row.jpg" alt="Homey"></div>
+
+    <div class="middle-scroll">
+      <img src="shop-middle-scroll.jpg" alt="Winkeltje">
     </div>
-    <div class="shop-bottom">
-      <img src="shop-fixed-nav.jpg" alt="Homey navigatie">
-      <button class="hit sn sn-home" data-nav="home"></button>
-      <button class="hit sn sn-shop" data-nav="shop"></button>
-      <button class="hit sn sn-inventory" data-nav="inventory"></button>
-      <button class="hit sn sn-levels" data-nav="levels"></button>
-      <button class="hit sn sn-more" data-nav="more"></button>
+
+    <div class="fixed-bottom">
+      <img src="fixed-bottom-row.jpg" alt="Navigatie">
+      <div class="shop-selected"></div>
+      <button class="hit bnav bnav-home" data-nav="home"></button>
+      <button class="hit bnav bnav-shop" data-nav="shop"></button>
+      <button class="hit bnav bnav-inventory" data-nav="inventory"></button>
+      <button class="hit bnav bnav-levels" data-nav="levels"></button>
+      <button class="hit bnav bnav-more" data-nav="more"></button>
     </div>
   </main>
 
   <section id="simpleScreen" class="simple-screen" hidden>
-    <button class="simple-back" data-nav="home">‹</button>
-    <div class="simple-card"><div id="simpleIcon">🎒</div><h2 id="simpleTitle">Inventaris</h2><p id="simpleText"></p></div>
+    <div class="fixed-top simple-fixed-top"><img src="fixed-top-row.jpg" alt="Homey"></div>
+    <div class="simple-middle">
+      <div class="simple-card">
+        <div id="simpleIcon">🎒</div>
+        <h2 id="simpleTitle">Inventaris</h2>
+        <p id="simpleText"></p>
+      </div>
+    </div>
+    <div class="fixed-bottom simple-fixed-bottom">
+      <img src="fixed-bottom-row.jpg" alt="Navigatie">
+      <button class="hit bnav bnav-home" data-nav="home"></button>
+      <button class="hit bnav bnav-shop" data-nav="shop"></button>
+      <button class="hit bnav bnav-inventory" data-nav="inventory"></button>
+      <button class="hit bnav bnav-levels" data-nav="levels"></button>
+      <button class="hit bnav bnav-more" data-nav="more"></button>
+    </div>
   </section>
 
   <section class="panel" id="panel" hidden>
     <div class="panel-card">
       <button id="closePanel" class="close">×</button>
       <div id="panelIcon" class="panel-icon">🏡</div>
-      <h2 id="panelTitle">Homey</h2><p id="panelText"></p><div id="taskList"></div>
+      <h2 id="panelTitle">Homey</h2>
+      <p id="panelText"></p>
+      <div id="taskList"></div>
     </div>
   </section>
+
   <div id="toast" class="toast"></div>
 </div>
 <script src="app.js"></script>
-</body></html>
+</body>
+</html>
