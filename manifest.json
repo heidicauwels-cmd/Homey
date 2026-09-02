@@ -1,1 +1,10 @@
-{"name":"Homey","short_name":"Homey","start_url":".","display":"standalone","background_color":"#fffaf5","theme_color":"#c8a98e"}
+{
+  "name":"Homey",
+  "short_name":"Homey",
+  "start_url":"./",
+  "display":"standalone",
+  "background_color":"#fbf5ec",
+  "theme_color":"#f7efe5",
+  "lang":"nl",
+  "icons":[]
+}

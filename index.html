@@ -1,1 +1,93 @@
-<!doctype html><html lang="nl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#c8a98e"><link rel="manifest" href="manifest.json"><link rel="stylesheet" href="style.css"><title>Homey</title></head><body><div class="app"><header><div><div class="eyebrow">MIJN THUIS</div><h1>Homey 🏡</h1></div><div class="coins">🪙 <b id="coins">0</b></div></header><nav><button class="active" onclick="show('home',this)">🏠<small>Thuis</small></button><button onclick="show('shop',this)">🛍️<small>Winkeltje</small></button><button onclick="show('levels',this)">⭐<small>Levels</small></button></nav><main id="home"><section class="hero"><div><span>VANDAAG</span><h2>Maak je huis gezellig ✨</h2><p>Elk bolletje brengt je dichter bij je volgende beloning.</p></div>☀️</section><div class="stats"><div><b id="done">0</b><small>bolletjes</small></div><div><b id="level">1</b><small>level</small></div><div><b id="today">0</b><small>vandaag</small></div></div><h3>Mijn woningen</h3><div class="homes"><div class="home selected"><div>🏡</div><b>Mijn huis</b><small>Thuis</small></div><div class="home"><div>🚐</div><b>Caravan</b><small>Ons tweede plekje</small></div></div><h3>Vandaag</h3><div id="tasks"></div></main><main id="shop" class="hidden"><section class="hero"><div><span>WINKELTJE</span><h2>Maak je huis van jou 🪴</h2><p>Spaar munten voor gezellige spullen.</p></div>🛍️</section><div id="shopitems" class="grid"></div></main><main id="levels" class="hidden"><section class="hero"><div><span>VOORTGANG</span><h2>Level <b id="levelBig">1</b> 🌟</h2><p>Elke 5 bolletjes brengt een nieuwe vrijspeling.</p></div>⭐</section><div class="progress"><div id="bar"></div></div><p id="progressText" class="center"></p><div class="unlock">🎁 Volgende vrijspeling <b id="nextUnlock">Level 5</b></div></main></div><script src="app.js"></script></body></html>
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f7efe5">
+<link rel="manifest" href="manifest.json">
+<title>Homey ♡</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="phone">
+  <header class="top">
+    <button class="icon-btn" aria-label="Menu" onclick="toast('Menu komt hier')">☰</button>
+    <div class="brand">
+      <div class="brand-script">Mijn huis ♡</div>
+      <div id="dayLabel">Vandaag</div>
+    </div>
+    <button class="icon-btn" aria-label="Profiel" onclick="showScreen('levels')">♡</button>
+  </header>
+
+  <main id="home" class="screen active-screen">
+    <section class="stats">
+      <div><span class="stat-icon star">★</span><b id="points">0</b><small>punten</small></div>
+      <div><span class="stat-icon coin">●</span><b id="coins">0</b><small>munten</small></div>
+      <div><span class="stat-icon ball">●</span><b><span id="balls">0</span> / 15</b><small>bollen vandaag</small></div>
+    </section>
+    <section class="daily">
+      <div class="balls-row" id="ballRow"></div>
+      <div id="bonusText">15 bollen voor je bonus! +15 punten 🎁</div>
+    </section>
+
+    <h2 class="section-title">Mijn huis</h2>
+    <div id="rooms"></div>
+  </main>
+
+  <main id="shop" class="screen">
+    <header class="page-title">
+      <button class="back" onclick="showScreen('home')">‹</button>
+      <div>
+        <div class="page-script">Winkeltje ♡</div>
+        <div class="sub">Maak je huis helemaal van jou</div>
+      </div>
+      <button class="filter" onclick="toast('Filter komt hier')">☷</button>
+    </header>
+    <section class="stats compact">
+      <div><span class="stat-icon star">★</span><b id="shopPoints">0</b><small>punten</small></div>
+      <div><span class="stat-icon coin">●</span><b id="shopCoins">0</b><small>munten</small></div>
+      <div><span class="stat-icon ball">●</span><b><span id="shopBalls">0</span> / 15</b><small>bollen vandaag</small></div>
+    </section>
+    <div class="categories" id="categories"></div>
+    <div id="shopSections"></div>
+  </main>
+
+  <main id="inventory" class="screen">
+    <header class="page-title">
+      <button class="back" onclick="showScreen('home')">‹</button>
+      <div><div class="page-script">Inventaris</div><div class="sub">Jouw verzamelde spullen</div></div>
+    </header>
+    <div class="inventory-head">
+      <div class="bag">🎒</div>
+      <div><b>Inventarislimiet</b><p>Je kunt steeds meer items bewaren.</p></div>
+      <strong id="inventoryCount">0 / 10</strong>
+    </div>
+    <div class="categories" id="invCategories"></div>
+    <div class="inventory-grid" id="inventoryGrid"></div>
+  </main>
+
+  <main id="levels" class="screen">
+    <header class="page-title">
+      <button class="back" onclick="showScreen('home')">‹</button>
+      <div><div class="page-script">Levels ♡</div><div class="sub">Bouw verder aan jouw Homey</div></div>
+    </header>
+    <section class="level-card">
+      <div class="level-number" id="levelNumber">1</div>
+      <div><b>Level</b><h2 id="levelTitle">1</h2><p id="levelMessage">Nog even en je ontgrendelt iets nieuws.</p></div>
+    </section>
+    <div class="progress-wrap"><div class="progress"><div id="levelBar"></div></div><div id="levelProgress"></div></div>
+    <h2 class="section-title">Vrijspelingen</h2>
+    <div id="unlockList"></div>
+  </main>
+
+  <nav class="bottom">
+    <button onclick="showScreen('home')" data-screen="home" class="selected"><span>⌂</span><small>Huis</small></button>
+    <button onclick="showScreen('shop')" data-screen="shop"><span>🧺</span><small>Winkel</small></button>
+    <button onclick="showScreen('inventory')" data-screen="inventory"><span>🎒</span><small>Inventaris</small></button>
+    <button onclick="showScreen('levels')" data-screen="levels"><span>★</span><small>Levels</small></button>
+  </nav>
+</div>
+<div id="toast" class="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>
