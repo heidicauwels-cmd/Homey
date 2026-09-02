@@ -15,7 +15,13 @@
     <main class="screen">
       <img class="homey-reference" src="homey-house.png" alt="Homey huis">
 
-      <!-- Klikbare lagen bovenop de visuele referentie -->
+      <div class="live-stats" aria-label="Homey voortgang">
+        <div class="live-stat"><span class="star">★</span><b id="livePoints">0</b></div>
+        <div class="live-stat"><span class="coin">●</span><b id="liveCoins">0</b></div>
+        <div class="live-stat"><span class="ball">●</span><b><span id="liveBalls">0</span>/15</b></div>
+      </div>
+      <div class="live-balls" id="liveBallRow"></div>
+
       <button class="hotspot room bedroom" data-room="Slaapkamer" aria-label="Slaapkamer"></button>
       <button class="hotspot room bathroom" data-room="Badkamer" aria-label="Badkamer"></button>
       <button class="hotspot room living" data-room="Woonkamer" aria-label="Woonkamer"></button>
@@ -34,7 +40,7 @@
       <button class="hotspot side photos" data-action="photos" aria-label="Foto's"></button>
       <button class="hotspot side daily" data-action="daily" aria-label="Dagelijkse taken"></button>
       <button class="hotspot side bonus" data-action="bonus" aria-label="Bonus"></button>
-      <button class="hotspot side coins" data-action="coins" aria-label="Munten verdienen"></button>
+      <button class="hotspot side coins" data-action="coins" aria-label="Munten"></button>
 
       <section class="panel" id="panel" hidden>
         <div class="panel-card">
