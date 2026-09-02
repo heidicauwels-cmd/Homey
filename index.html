@@ -1,26 +1,21 @@
 <!doctype html>
 <html lang="nl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#f7efe5">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="style.css">
-  <title>Homey</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f8f0e5">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css">
+<title>Homey</title>
 </head>
 <body>
 <div class="app-shell">
-  <main id="homeScreen" class="screen home-screen active">
-    <img class="homey-reference" src="homey-house.png" alt="Homey huis">
-
-    <div class="live-stats">
-      <div class="live-stat"><span class="star">★</span><b id="livePoints">0</b></div>
-      <div class="live-stat"><span class="coin">●</span><b id="liveCoins">0</b></div>
-      <div class="live-stat"><span class="ball">●</span><b><span id="liveBalls">0</span>/15</b></div>
+  <main id="homeScreen" class="screen active">
+    <img class="reference" src="homey-house.png" alt="Homey huis">
+    <div class="live-stats home-live">
+      <b id="livePoints">0</b><b id="liveCoins">0</b><b><span id="liveBalls">0</span>/15</b>
     </div>
-    <div class="live-balls" id="liveBallRow"></div>
-
     <button class="hotspot room bedroom" data-room="Slaapkamer"></button>
     <button class="hotspot room bathroom" data-room="Badkamer"></button>
     <button class="hotspot room living" data-room="Woonkamer"></button>
@@ -28,68 +23,39 @@
     <button class="hotspot room hall" data-room="Hal"></button>
     <button class="hotspot room laundry" data-room="Wasruimte"></button>
     <button class="hotspot room terrace" data-room="Terras"></button>
-
     <button class="hotspot nav nav-home" data-nav="home"></button>
     <button class="hotspot nav nav-shop" data-nav="shop"></button>
     <button class="hotspot nav nav-inventory" data-nav="inventory"></button>
     <button class="hotspot nav nav-levels" data-nav="levels"></button>
     <button class="hotspot nav nav-more" data-nav="more"></button>
-
-    <section class="panel" id="panel" hidden>
-      <div class="panel-card">
-        <button id="closePanel" class="close">×</button>
-        <div id="panelIcon" class="panel-icon">🏡</div>
-        <h2 id="panelTitle">Homey</h2>
-        <p id="panelText"></p>
-        <div id="taskList"></div>
-      </div>
-    </section>
   </main>
 
-  <main id="shopScreen" class="shop-screen">
-    <header class="shop-header">
-      <button class="round-back" data-nav="home">‹</button>
-      <div class="shop-title-wrap">
-        <div class="leaf">🌿</div>
-        <h1>Winkeltje ♡</h1>
-        <div class="leaf">🌿</div>
-      </div>
-      <button class="filter-btn" id="filterBtn">☷ Filter</button>
-    </header>
-
-    <section class="shop-stats">
-      <div><span class="s-star">★</span><b id="shopPoints">0</b><small>punten</small></div>
-      <div><span class="s-coin">●</span><b id="shopCoins">0</b><small>munten</small></div>
-      <div><span class="s-ball">●</span><b><span id="shopBalls">0</span>/15</b><small>bollen vandaag</small></div>
-    </section>
-
-    <nav class="category-strip" id="categoryStrip"></nav>
-    <section id="shopSections" class="shop-content"></section>
-
-    <div class="shop-footer-note">
-      <span>🔒</span>
-      <div><b>Meer collecties vrijspelen!</b><small>Elke 5 levels komt er iets nieuws bij.</small></div>
-      <button data-nav="levels">Bekijk levels ★</button>
-    </div>
-
-    <nav class="shop-bottom">
-      <button data-nav="home"><span>⌂</span><small>Huis</small></button>
-      <button data-nav="shop" class="selected"><span>🧺</span><small>Winkel</small></button>
-      <button data-nav="inventory"><span>🎒</span><small>Inventaris</small></button>
-      <button data-nav="levels"><span>★</span><small>Levels</small></button>
-    </nav>
+  <main id="shopScreen" class="screen shop-screen">
+    <img class="reference" src="homey-shop.png" alt="Homey winkeltje">
+    <button class="hotspot shop-nav shop-home" data-nav="home"></button>
+    <button class="hotspot shop-nav shop-shop" data-nav="shop"></button>
+    <button class="hotspot shop-nav shop-inventory" data-nav="inventory"></button>
+    <button class="hotspot shop-nav shop-levels" data-nav="levels"></button>
+    <button class="hotspot shop-nav shop-more" data-nav="more"></button>
+    <button class="hotspot buy buy-green" data-buy="green-sofa" aria-label="Groene bank kopen"></button>
+    <button class="hotspot buy buy-chair" data-buy="boho-chair" aria-label="Boho fauteuil kopen"></button>
+    <button class="hotspot buy buy-love" data-buy="rattan-love" aria-label="Rotan loveseat kopen"></button>
+    <button class="hotspot buy buy-round" data-buy="round-table" aria-label="Ronde salontafel kopen"></button>
+    <button class="hotspot buy buy-light" data-buy="light-table" aria-label="Lichte salontafel kopen"></button>
+    <button class="hotspot buy buy-side" data-buy="rattan-side" aria-label="Rotan bijzettafel kopen"></button>
+    <button class="hotspot buy buy-dresser" data-buy="dresser" aria-label="Houten dressoir kopen"></button>
+    <button class="hotspot buy buy-vintage" data-buy="vintage-cab" aria-label="Vintage kastje kopen"></button>
   </main>
 
   <section id="simpleScreen" class="simple-screen" hidden>
-    <button class="round-back" data-nav="home">‹</button>
-    <div class="simple-card">
-      <div id="simpleIcon" class="simple-icon">🎒</div>
-      <h2 id="simpleTitle">Binnenkort</h2>
-      <p id="simpleText"></p>
-    </div>
+    <button class="simple-back" data-nav="home">‹</button>
+    <div class="simple-card"><div id="simpleIcon">🎒</div><h2 id="simpleTitle">Inventaris</h2><p id="simpleText"></p></div>
   </section>
 
-  <div id="toast" class="toast" role="status"></div>
+  <section class="panel" id="panel" hidden>
+    <div class="panel-card"><button id="closePanel" class="close">×</button><div id="panelIcon" class="panel-icon">🏡</div><h2 id="panelTitle">Homey</h2><p id="panelText"></p><div id="taskList"></div></div>
+  </section>
+  <div id="toast" class="toast"></div>
 </div>
 <script src="app.js"></script>
 </body>
