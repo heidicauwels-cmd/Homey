@@ -1,1 +1,12 @@
-Upload index.html, style.css, app.js, manifest.json, homey-house.png en homey-frame.png naar de lege map Homey op GitHub. De twee PNG-bestanden zijn exact de twee goedgekeurde beelden die je zojuist doorgaf. Het Winkeltje heeft dus het juiste marktkraampje.
+HOMEY — UPDATE KAMEROVERZICHT
+
+Upload de bestanden uit deze map naar GitHub en vervang de bestaande bestanden.
+
+Wat deze update doet:
+- de goedgekeurde huispagina blijft exact dezelfde afbeelding;
+- tik op een kamer in het huis -> kameroverzicht;
+- kameroverzicht staat binnen het vaste Homey-kader;
+- terugknop gaat terug naar het huis;
+- de rechterkant van elke kamerkaart is voorbereid voor de takenlijst.
+
+De taaklijsten en dynamische tellers zijn bewust nog niet gewijzigd.

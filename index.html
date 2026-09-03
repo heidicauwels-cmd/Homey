@@ -1,1 +1,39 @@
-<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Homey</title><link rel="manifest" href="manifest.json"><link rel="stylesheet" href="style.css"></head><body><main id="app"><section id="house"><img src="homey-house.png" class="base" alt="Homey"><button class="hot bedroom" data-room="Slaapkamer"></button><button class="hot bathroom" data-room="Badkamer"></button><button class="hot living" data-room="Woonkamer"></button><button class="hot kitchen" data-room="Keuken"></button><button class="hot hall" data-room="Hal"></button><button class="hot laundry" data-room="Wasruimte"></button><button class="hot terrace" data-room="Terras"></button></section><section id="room" hidden><img src="homey-frame.png" class="base" alt=""><div class="content"><button id="back">‹</button><h1 id="title"></h1><p>Kameroverzicht komt hier.</p></div></section></main><script src="app.js"></script></body></html>
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Homey</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main id="app">
+  <section id="house" class="screen">
+    <img src="homey-house.png" class="base" alt="Homey huis">
+    <button class="hot bedroom" data-room="Slaapkamer" aria-label="Slaapkamer"></button>
+    <button class="hot bathroom" data-room="Badkamer" aria-label="Badkamer"></button>
+    <button class="hot living" data-room="Woonkamer" aria-label="Woonkamer"></button>
+    <button class="hot kitchen" data-room="Keuken" aria-label="Keuken"></button>
+    <button class="hot hall" data-room="Hal" aria-label="Hal"></button>
+    <button class="hot laundry" data-room="Wasruimte" aria-label="Wasruimte"></button>
+    <button class="hot terrace" data-room="Terras" aria-label="Terras"></button>
+  </section>
+
+  <section id="overview" class="screen" hidden>
+    <img src="homey-frame.png" class="base" alt="">
+    <div class="overview-content">
+      <div class="overview-head">
+        <button id="back" class="back" aria-label="Terug">‹</button>
+        <div>
+          <h1>Mijn huis</h1>
+          <p>Kies een kamer</p>
+        </div>
+      </div>
+      <div id="roomCards" class="room-cards"></div>
+    </div>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
