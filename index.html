@@ -19,6 +19,15 @@
   </div>
 </main>
 <section id="placeholder" class="placeholder" hidden><button class="back" data-go="home">←</button><h2 id="placeholderTitle"></h2><p>Dit scherm bouwen we hierna in dezelfde Homey-stijl.</p></section>
-<section id="panel" class="panel" hidden><div class="card"><button id="close">×</button><h2 id="roomTitle"></h2><p>Tik een taak aan wanneer je ze hebt voltooid.</p><div id="tasks"></div></div></section>
+<main id="roomScreen" class="room-screen" hidden>
+  <header class="room-head">
+    <button id="roomBack" class="round-back" aria-label="Terug">←</button>
+    <div class="room-title-wrap"><span class="leaf">🌿</span><h1 id="roomTitle"></h1><span class="leaf">🌿</span><p>Vandaag</p></div>
+  </header>
+  <div class="room-stats"><div><span>⭐</span><b id="roomPoints">0</b><small>punten</small></div><div><span>🪙</span><b id="roomCoins">0</b><small>munten</small></div><div><span>🔵</span><b><i id="roomBalls">0</i>/15</b><small>bollen vandaag</small></div></div>
+  <div class="bonusline"><div id="ballTrack"></div><p><span id="ballsToBonus">15</span> bollen tot bonus! &nbsp; <strong>+15 punten 🎁</strong></p></div>
+  <section class="task-list"><div class="task-list-head"><h2>Taken</h2><span id="taskCount"></span></div><div id="tasks"></div></section>
+  <p class="task-hint">Tik een taak aan wanneer je ze hebt voltooid.</p>
+</main>
 <div id="toast" class="toast"></div>
 </div><script src="app.js"></script></body></html>
