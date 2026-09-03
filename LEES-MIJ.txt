@@ -1,0 +1,1 @@
+Upload index.html, style.css, app.js, manifest.json, homey-house.png en homey-frame.png naar de lege map Homey op GitHub. De twee PNG-bestanden zijn exact de twee goedgekeurde beelden die je zojuist doorgaf. Het Winkeltje heeft dus het juiste marktkraampje.

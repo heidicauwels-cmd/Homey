@@ -1,0 +1,1 @@
+const house=document.getElementById('house'),room=document.getElementById('room'),title=document.getElementById('title');document.querySelectorAll('[data-room]').forEach(b=>b.onclick=()=>{title.textContent=b.dataset.room;house.hidden=true;room.hidden=false});document.getElementById('back').onclick=()=>{room.hidden=true;house.hidden=false};
