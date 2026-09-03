@@ -12,7 +12,7 @@
 .traffic-marker.red{background:#dd2e24;box-shadow:0 0 0 1px #b8241d}.traffic-marker.orange{background:#f39a1d;box-shadow:0 0 0 1px #d77f10}.traffic-marker.green{background:#74ad45;box-shadow:0 0 0 1px #5b9134}
 
 /* v14: het goedgekeurde huis blijft visueel vast; alleen live waarden liggen erboven. */
-.home-screen{aspect-ratio:918/1682;background:#fbf4e8}
+.home-screen{aspect-ratio:935/1682;background:#fbf4e8}
 .home-screen .screen-img{object-fit:contain;width:100%;height:100%}
 .home-live{position:absolute;inset:0;pointer-events:none;z-index:5}
 .home-live-number,.home-live-balls,.home-live-bonus,.home-room-count{position:absolute;display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;font-weight:700;color:#2c2118;background:#fff8e9}
@@ -38,7 +38,7 @@
 
 
 /* v15: exact live counters on the approved 918x1682 house image. */
-.home-screen{aspect-ratio:918/1682}
+.home-screen{aspect-ratio:935/1682}
 .home-live-number,.home-live-balls,.home-live-bonus,.home-room-count{
   z-index:7;
   background:#fff9ef;
@@ -63,3 +63,19 @@
 .hc-living{left:37.0%;top:55.15%}.hc-kitchen{left:77.0%;top:55.15%}
 .hc-hall{left:36.8%;top:68.25%}.hc-laundry{left:77.1%;top:68.25%}
 .hc-terrace{left:31.8%;top:81.40%}
+
+
+/* v16: exact geometry of the approved 935x1682 house image. */
+.home-screen{aspect-ratio:935/1682}
+.home-screen .screen-img{object-fit:contain;width:100%;height:100%}
+/* Cover the baked-in values completely, then draw the live value in the same place. */
+.home-live-coins{left:53.45%;top:3.35%;width:6.9%;height:3.35%;font-size:clamp(18px,5.1vw,30px)}
+.home-live-points{left:72.55%;top:3.35%;width:7.5%;height:3.35%;font-size:clamp(18px,5.1vw,30px)}
+.home-live-balls{left:61.0%;top:11.65%;width:12.7%;height:3.45%;font-size:clamp(18px,5.2vw,30px)}
+.home-live-bonus{left:5.65%;top:24.9%;width:11.8%;height:3.35%;font-size:clamp(16px,4.4vw,25px)}
+.home-live-balltrack{left:21.0%;top:16.45%;width:57.2%;height:2.75%;background:#fff9ef;padding:0 .15%;gap:1.0%;border-radius:99px}
+.home-room-count{height:3.2%;width:8.1%;font-size:clamp(16px,4.8vw,28px)}
+.hc-bed{left:36.2%;top:39.0%}.hc-bath{left:74.7%;top:39.0%}
+.hc-living{left:36.2%;top:55.05%}.hc-kitchen{left:76.0%;top:55.05%}
+.hc-hall{left:35.8%;top:68.15%}.hc-laundry{left:76.0%;top:68.15%}
+.hc-terrace{left:30.7%;top:81.25%}
