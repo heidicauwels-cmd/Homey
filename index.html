@@ -1,16 +1,19 @@
 <!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f7efe5"><title>Homey</title><link rel="manifest" href="manifest.json"><link rel="stylesheet" href="style.css"></head><body><div class="app">
-<main id="home" class="screen active"><img class="screen-img" src="homey-house.png" alt="Homey huis">
-<div class="home-live home-coins-live" data-home-coins>0</div>
-<div class="home-live home-points-live" data-home-points>0</div>
-<div class="home-today-live"><b><span data-home-balls>0</span>/15 ⭐</b><div id="homeBallTrack" class="home-ball-track"></div></div>
-<div class="home-bonus-live"><span>Bonus</span><b><span data-home-bonus>0</span>/15</b></div>
-<div class="home-room-count hrc-bed" data-home-room="Slaapkamer"></div>
-<div class="home-room-count hrc-bath" data-home-room="Badkamer"></div>
-<div class="home-room-count hrc-living" data-home-room="Woonkamer"></div>
-<div class="home-room-count hrc-kitchen" data-home-room="Keuken"></div>
-<div class="home-room-count hrc-hall" data-home-room="Hal"></div>
-<div class="home-room-count hrc-laundry" data-home-room="Wasruimte"></div>
-<div class="home-room-count hrc-terrace" data-home-room="Terras"></div>
+<main id="home" class="screen active home-screen"><img class="screen-img" src="homey-house.png" alt="Homey huis">
+<div class="home-live" aria-hidden="true">
+  <span class="home-live-number home-live-coins" id="homeCoins">0</span>
+  <span class="home-live-number home-live-points" id="homePoints">0</span>
+  <span class="home-live-balls" id="homeBalls">0/15</span>
+  <div class="home-live-balltrack" id="homeBallTrack"></div>
+  <span class="home-live-bonus" id="homeBonus">0/15</span>
+  <span class="home-room-count hc-bed" data-home-room="Slaapkamer">0/3</span>
+  <span class="home-room-count hc-bath" data-home-room="Badkamer">0/4</span>
+  <span class="home-room-count hc-living" data-home-room="Woonkamer">0/6</span>
+  <span class="home-room-count hc-kitchen" data-home-room="Keuken">0/5</span>
+  <span class="home-room-count hc-hall" data-home-room="Hal">0/3</span>
+  <span class="home-room-count hc-laundry" data-home-room="Wasruimte">0/3</span>
+  <span class="home-room-count hc-terrace" data-home-room="Terras">0/3</span>
+</div>
 <button class="room r-bed" data-overview="Slaapkamer"></button><button class="room r-bath" data-overview="Badkamer"></button><button class="room r-living" data-overview="Woonkamer"></button><button class="room r-kitchen" data-overview="Keuken"></button><button class="room r-hall" data-overview="Hal"></button><button class="room r-laundry" data-overview="Wasruimte"></button><button class="room r-terrace" data-overview="Terras"></button><div class="home-nav"><button data-go="home"></button><button data-go="shop"></button><button data-go="inventory"></button><button data-go="levels"></button><button data-go="more"></button></div></main>
 <main id="overview" class="panel" hidden><header class="overview-head"><button class="round-back" data-go="home">←</button><div class="overview-title"><span>🌿</span><h1>Mijn huis ♡</h1><span>🌿</span><small>Vandaag</small></div></header><div class="live-stats"><div>⭐ <b data-points>0</b><small>punten</small></div><div>🪙 <b data-coins>0</b><small>munten</small></div><div><span class="blue-dot"></span> <b><i data-balls>0</i>/15</b><small>bollen vandaag</small></div></div><div class="bonusline"><div class="balls-track"></div><p><span class="to-bonus">15</span> bollen tot bonus! &nbsp; <strong>+15 punten</strong> 🎁</p></div><div id="roomCards" class="room-cards"></div><nav class="std-nav"><button data-go="home" class="selected"><img src="nav-home.png"></button><button data-go="shop"><img src="nav-shop.png"></button><button data-go="inventory"><img src="nav-inventory.png"></button><button data-go="levels"><img src="nav-levels.png"></button><button data-go="more"><img src="nav-more.png"></button></nav></main>
 <main id="roomScreen" class="panel" hidden><header class="room-head"><button id="roomBack" class="round-back">←</button><div class="room-title-wrap"><div class="room-icon" id="roomIcon">🛋️</div><div class="script-title"><span>🌿</span><h1 id="roomTitle"></h1><span>🌿</span></div></div></header><div class="live-stats"><div>⭐ <b data-points>0</b><small>punten</small></div><div>🪙 <b data-coins>0</b><small>munten</small></div><div><span class="blue-dot"></span> <b><i data-balls>0</i>/15</b><small>bollen vandaag</small></div></div><div class="bonusline"><div class="balls-track"></div><p><span class="to-bonus">15</span> bollen tot bonus! &nbsp; <strong>+15 punten</strong> 🎁</p></div><div class="room-progress"><div class="room-progress-copy"><strong id="taskProgressText"></strong><b id="taskPct"></b></div><div id="taskProgressBar" class="traffic-progress"></div></div><div id="tasks" class="tasks"></div><nav class="std-nav"><button data-go="home" class="selected"><img src="nav-home.png"></button><button data-go="shop"><img src="nav-shop.png"></button><button data-go="inventory"><img src="nav-inventory.png"></button><button data-go="levels"><img src="nav-levels.png"></button><button data-go="more"><img src="nav-more.png"></button></nav></main>
