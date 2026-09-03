@@ -1,15 +1,17 @@
-const roomTasks={Slaapkamer:["Bed opmaken","Nachtkastje opruimen","Kleding wegleggen"],Badkamer:["Wastafel schoonmaken","Handdoeken netjes","Spiegel afnemen"],Woonkamer:["Kussens netjes leggen","Salontafel opruimen","5 minuten opruimen"],Keuken:["Aanrecht opruimen","Tafel afnemen","Vaatwasser controleren"],Hal:["Schoenen opruimen","Jassen netjes hangen","Vloer vrijmaken"],Wasruimte:["Was sorteren","Machine leegmaken","Wasmand opruimen"],Terras:["Tafel netjes","Kussens goedleggen","Planten controleren"]};
-const icons={Slaapkamer:"🛏️",Badkamer:"🛁",Woonkamer:"🛋️",Keuken:"🍳",Hal:"🚪",Wasruimte:"🧺",Terras:"🌿"};
-const shopItems={"green-sofa":["Groene bank",8],"boho-chair":["Boho fauteuil",6],"rattan-love":["Rotan loveseat",9],"round-table":["Ronde salontafel",7],"light-table":["Lichte salontafel",6],"rattan-side":["Rotan bijzettafel",4],dresser:["Houten dressoir",10],"vintage-cab":["Vintage kastje",9]};
-function localDay(){const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
-let old=JSON.parse(localStorage.getItem('homey-v5')||localStorage.getItem('homey-v4')||'null');
-let state=JSON.parse(localStorage.getItem('homey-v6')||'null')||old||{points:0,coins:0,day:localDay(),done:{},bonusAwarded:false,bought:[]};
-state.bought=state.bought||[];state.done=state.done||{};if(state.day!==localDay()){state.day=localDay();state.done={};state.bonusAwarded=false}
-function save(){localStorage.setItem('homey-v6',JSON.stringify(state))}function count(){return Object.values(state.done).filter(Boolean).length}function level(){return Math.floor(state.points/25)+1}
-const toast=document.getElementById('toast');function showToast(t){toast.textContent=t;toast.classList.add('show');clearTimeout(window.tt);window.tt=setTimeout(()=>toast.classList.remove('show'),1800)}
-function renderStats(){document.getElementById('livePoints').textContent=state.points;document.getElementById('liveCoins').textContent=state.coins;document.getElementById('liveBalls').textContent=Math.min(15,count())}
-const panel=document.getElementById('panel'),list=document.getElementById('taskList');function openRoom(name){document.getElementById('panelTitle').textContent=name;document.getElementById('panelIcon').textContent=icons[name];document.getElementById('panelText').textContent='Tik een taak aan wanneer je ze hebt voltooid.';list.innerHTML=roomTasks[name].map((t,i)=>{const k=name+'-'+i,d=!!state.done[k];return `<button class="task-row ${d?'done':''}" data-task="${k}"><span class="task-check">${d?'✓':'○'}</span><span>${t}<span class="task-sub">1 bol • 1 munt • 1 punt</span></span></button>`}).join('');panel.hidden=false}
-document.querySelectorAll('.room').forEach(b=>b.onclick=()=>openRoom(b.dataset.room));list.onclick=e=>{const b=e.target.closest('[data-task]');if(!b)return;const k=b.dataset.task,was=!!state.done[k],before=Math.min(15,count());if(!was){state.done[k]=true;state.coins++;state.points++;if(before<15&&count()>=15&&!state.bonusAwarded){state.points+=15;state.bonusAwarded=true;showToast('Bonus! +15 punten 🎁')}else showToast('+1 bol • +1 munt • +1 punt')}else{state.done[k]=false;state.coins=Math.max(0,state.coins-1);state.points=Math.max(0,state.points-1);if(state.bonusAwarded&&count()<15){state.points=Math.max(0,state.points-15);state.bonusAwarded=false}showToast('Taak weer geopend')}save();renderStats();openRoom(document.getElementById('panelTitle').textContent)};document.getElementById('closePanel').onclick=()=>panel.hidden=true;panel.onclick=e=>{if(e.target===panel)panel.hidden=true};
-document.querySelectorAll('[data-buy]').forEach(b=>b.onclick=()=>{const [name,price]=shopItems[b.dataset.buy];if(state.bought.includes(b.dataset.buy)){showToast(`${name} zit al in je inventaris`);return}if(state.coins<price){showToast(`Je hebt ${price} munten nodig`);return}state.coins-=price;state.bought.push(b.dataset.buy);save();renderStats();showToast(`${name} staat nu in je inventaris 🎒`)});
-function showScreen(name){document.getElementById('homeScreen').classList.toggle('active',name==='home');document.getElementById('shopScreen').classList.toggle('active',name==='shop');const simple=document.getElementById('simpleScreen');simple.hidden=!['inventory','levels','more'].includes(name);if(name==='inventory'){document.getElementById('simpleIcon').textContent='🎒';document.getElementById('simpleTitle').textContent='Inventaris';document.getElementById('simpleText').textContent=`Je hebt ${state.bought.length} item(s) gekocht.`}if(name==='levels'){document.getElementById('simpleIcon').textContent='⭐';document.getElementById('simpleTitle').textContent=`Level ${level()}`;document.getElementById('simpleText').textContent='Elke 5 levels speel je iets nieuws vrij.'}if(name==='more'){document.getElementById('simpleIcon').textContent='🌿';document.getElementById('simpleTitle').textContent='Meer';document.getElementById('simpleText').textContent='Hier komen later instellingen en extra opties.'}window.scrollTo(0,0)}
-document.querySelectorAll('[data-nav]').forEach(b=>b.onclick=()=>showScreen(b.dataset.nav));renderStats();save();
+const KEY='homey-v15';
+let state=JSON.parse(localStorage.getItem(KEY)||'null')||{coins:256,bought:[]};
+const toast=document.getElementById('toast');
+function save(){localStorage.setItem(KEY,JSON.stringify(state));}
+function say(t){toast.textContent=t;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1500);}
+document.querySelectorAll('.buy').forEach(b=>b.addEventListener('click',()=>{
+  const item=b.dataset.item, price=Number(b.dataset.price);
+  if(state.coins<price){say('Niet genoeg munten');return;}
+  state.coins-=price; state.bought.push(item); save();
+  say(item+' gekocht! 🪙 '+price);
+}));
+document.querySelectorAll('[data-nav]').forEach(b=>b.addEventListener('click',()=>{
+  const n=b.dataset.nav;
+  if(n==='shop') return;
+  const names={home:'Mijn huis',inventory:'Inventaris',levels:'Levels',more:'Meer'};
+  say(names[n]+' bouwen we hierna');
+}));

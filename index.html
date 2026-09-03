@@ -3,40 +3,40 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#fbf2e5">
+<meta name="theme-color" content="#fffaf1">
 <link rel="manifest" href="manifest.json">
 <link rel="stylesheet" href="style.css">
 <title>Homey</title>
 </head>
 <body>
-<div class="homey-app">
-  <header class="fixed-top">
-    <img src="homey-fixed-top.jpg" alt="Homey">
-  </header>
+<div class="app">
+  <header class="top"><img src="homey-top.jpg" alt="Homey"></header>
 
-  <main id="contentViewport" class="content-viewport">
-    <div id="screenContent" class="screen-content">
-      <!-- Alle scherminhoud komt voortaan alleen hier. -->
+  <main class="viewport" id="viewport">
+    <div class="shop-content">
+      <img src="winkeltje-scroll.jpg" alt="Winkeltje" class="shop-image">
+      <button class="buy green" data-item="Groene bank" data-price="8"></button>
+      <button class="buy chair" data-item="Boho fauteuil" data-price="6"></button>
+      <button class="buy love" data-item="Rotan loveseat" data-price="9"></button>
+      <button class="buy round" data-item="Ronde salontafel" data-price="7"></button>
+      <button class="buy light" data-item="Lichte salontafel" data-price="6"></button>
+      <button class="buy side" data-item="Rotan bijzettafel" data-price="4"></button>
+      <button class="buy dresser" data-item="Houten dressoir" data-price="10"></button>
+      <button class="buy vintage" data-item="Vintage kastje" data-price="9"></button>
     </div>
   </main>
 
-  <nav class="fixed-bottom">
-    <img src="homey-fixed-bottom.jpg" alt="Homey navigatie">
-    <button class="nav-hit home" data-nav="home" aria-label="Mijn huis"></button>
-    <button class="nav-hit shop" data-nav="shop" aria-label="Winkeltje"></button>
-    <button class="nav-hit inventory" data-nav="inventory" aria-label="Inventaris"></button>
-    <button class="nav-hit levels" data-nav="levels" aria-label="Levels"></button>
-    <button class="nav-hit more" data-nav="more" aria-label="Meer"></button>
+  <nav class="bottom">
+    <img src="homey-bottom.jpg" alt="Navigatie">
+    <button class="nav-hit home" data-nav="home"></button>
+    <button class="nav-hit shop" data-nav="shop"></button>
+    <button class="nav-hit inventory" data-nav="inventory"></button>
+    <button class="nav-hit levels" data-nav="levels"></button>
+    <button class="nav-hit more" data-nav="more"></button>
   </nav>
+
+  <div class="toast" id="toast"></div>
 </div>
-<script>
-const viewport = document.getElementById('screenContent');
-document.querySelectorAll('[data-nav]').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const names = {home:'Mijn huis',shop:'Winkeltje',inventory:'Inventaris',levels:'Levels',more:'Meer'};
-    viewport.innerHTML = `<div class="placeholder"><h2>${names[btn.dataset.nav]}</h2><p>Dit scherm bouwen we in dit vaste Homey-frame.</p></div>`;
-  });
-});
-</script>
+<script src="app.js"></script>
 </body>
 </html>
