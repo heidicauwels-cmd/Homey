@@ -1,42 +1,24 @@
-<!doctype html>
-<html lang="nl">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#fffaf1">
-<link rel="manifest" href="manifest.json">
-<link rel="stylesheet" href="style.css">
-<title>Homey</title>
-</head>
-<body>
-<div class="app">
-  <header class="top"><img src="homey-top.jpg" alt="Homey"><span class="live-coins" data-live-coins>256</span></header>
-
-  <main class="viewport" id="viewport">
-    <div class="shop-content">
-      <img src="winkeltje-scroll.jpg" alt="Winkeltje" class="shop-image">
-      <button class="buy green" data-item="Groene bank" data-price="8"></button>
-      <button class="buy chair" data-item="Boho fauteuil" data-price="6"></button>
-      <button class="buy love" data-item="Rotan loveseat" data-price="9"></button>
-      <button class="buy round" data-item="Ronde salontafel" data-price="7"></button>
-      <button class="buy light" data-item="Lichte salontafel" data-price="6"></button>
-      <button class="buy side" data-item="Rotan bijzettafel" data-price="4"></button>
-      <button class="buy dresser" data-item="Houten dressoir" data-price="10"></button>
-      <button class="buy vintage" data-item="Vintage kastje" data-price="9"></button>
-    </div>
-  </main>
-
-  <nav class="bottom">
-    <img src="homey-bottom.jpg" alt="Navigatie">
-    <button class="nav-hit home" data-nav="home"></button>
-    <button class="nav-hit shop" data-nav="shop"></button>
-    <button class="nav-hit inventory" data-nav="inventory"></button>
-    <button class="nav-hit levels" data-nav="levels"></button>
-    <button class="nav-hit more" data-nav="more"></button>
-  </nav>
-
-  <div class="toast" id="toast"></div>
-</div>
-<script src="app.js"></script>
-</body>
-</html>
+<!doctype html><html lang="nl"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f7efe5"><title>Homey</title><link rel="manifest" href="manifest.json"><link rel="stylesheet" href="style.css">
+</head><body><div class="app">
+<main id="home" class="screen active">
+  <img class="screen-img" src="homey-house.png" alt="Homey huis">
+  <div class="live-stats"><b id="points">0</b><b id="coins">0</b><b><span id="balls">0</span>/15</b></div>
+  <button class="room r-bed" data-room="Slaapkamer"></button><button class="room r-bath" data-room="Badkamer"></button><button class="room r-living" data-room="Woonkamer"></button><button class="room r-kitchen" data-room="Keuken"></button><button class="room r-hall" data-room="Hal"></button><button class="room r-laundry" data-room="Wasruimte"></button><button class="room r-terrace" data-room="Terras"></button>
+  <div class="home-nav"><button data-go="home"></button><button data-go="shop"></button><button data-go="inventory"></button><button data-go="levels"></button><button data-go="more"></button></div>
+</main>
+<main id="shop" class="screen">
+  <div class="shop-viewport"><img class="shop-img" src="homey-shop.png" alt="Homey Winkeltje"></div>
+  <div class="shop-nav">
+    <button data-go="home"><img src="nav-home.png" alt="Mijn huis"></button>
+    <button data-go="shop" class="selected"><img src="nav-shop.png" alt="Winkeltje"></button>
+    <button data-go="inventory"><img src="nav-inventory.png" alt="Inventaris"></button>
+    <button data-go="levels"><img src="nav-levels.png" alt="Levels"></button>
+    <button data-go="more"><img src="nav-more.png" alt="Meer"></button>
+  </div>
+</main>
+<section id="placeholder" class="placeholder" hidden><button class="back" data-go="home">←</button><h2 id="placeholderTitle"></h2><p>Dit scherm bouwen we hierna in dezelfde Homey-stijl.</p></section>
+<section id="panel" class="panel" hidden><div class="card"><button id="close">×</button><h2 id="roomTitle"></h2><p>Tik een taak aan wanneer je ze hebt voltooid.</p><div id="tasks"></div></div></section>
+<div id="toast" class="toast"></div>
+</div><script src="app.js"></script></body></html>

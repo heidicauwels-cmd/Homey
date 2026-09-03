@@ -3,6 +3,7 @@
   "short_name": "Homey",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#fffaf1",
-  "theme_color": "#fffaf1"
+  "background_color": "#f7f0e7",
+  "theme_color": "#f7efe5",
+  "lang": "nl"
 }
