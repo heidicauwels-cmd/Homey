@@ -1,21 +1,117 @@
-<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f7efe5"><title>Homey</title><link rel="manifest" href="manifest.json"><link rel="stylesheet" href="style.css"></head><body><div class="app">
-<main id="home" class="screen active home-screen"><img class="screen-img" src="homey-house.png" alt="Homey huis">
-<div class="home-live" aria-hidden="true">
-  <span class="home-live-number home-live-coins" id="homeCoins">0</span>
-  <span class="home-live-number home-live-points" id="homePoints">0</span>
-  <span class="home-live-balls" id="homeBalls">0/15</span>
-  <div class="home-live-balltrack" id="homeBallTrack"></div>
-  <span class="home-live-bonus" id="homeBonus">0/15</span>
-  <span class="home-room-count hc-bed" data-home-room="Slaapkamer">0/3</span>
-  <span class="home-room-count hc-bath" data-home-room="Badkamer">0/4</span>
-  <span class="home-room-count hc-living" data-home-room="Woonkamer">0/6</span>
-  <span class="home-room-count hc-kitchen" data-home-room="Keuken">0/5</span>
-  <span class="home-room-count hc-hall" data-home-room="Hal">0/3</span>
-  <span class="home-room-count hc-laundry" data-home-room="Wasruimte">0/3</span>
-  <span class="home-room-count hc-terrace" data-home-room="Terras">0/3</span>
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#fff8ee">
+<title>Homey</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+
+  <!-- VASTE BASIS: dit is exact het goedgekeurde Homey-huis -->
+  <main id="home" class="screen active home-screen">
+    <img class="home-art" src="home-base.png" alt="Homey huis">
+
+    <!-- Alleen de dynamische waarden liggen bovenop de vaste basis -->
+    <div class="live coin-value" id="homeCoins">0</div>
+    <div class="live point-value" id="homePoints">0</div>
+    <div class="live today-value"><span id="homeBalls">0</span>/15</div>
+
+    <div class="ball-row" id="homeBallRow"></div>
+
+    <div class="live bonus-value"><span id="homeBonusCount">0</span>/15</div>
+    <div class="bonus-check" id="bonusCheck">✓</div>
+
+    <div class="room-value rv-bedroom" data-home-room="Slaapkamer">0/3</div>
+    <div class="room-value rv-bathroom" data-home-room="Badkamer">0/4</div>
+    <div class="room-value rv-living" data-home-room="Woonkamer">0/6</div>
+    <div class="room-value rv-kitchen" data-home-room="Keuken">0/5</div>
+    <div class="room-value rv-hall" data-home-room="Hal">0/3</div>
+    <div class="room-value rv-laundry" data-home-room="Wasruimte">0/3</div>
+    <div class="room-value rv-terrace" data-home-room="Terras">0/3</div>
+
+    <!-- klikzones: huis -> kameroverzicht -->
+    <button class="hotspot hs-bedroom" data-overview="Slaapkamer" aria-label="Slaapkamer"></button>
+    <button class="hotspot hs-bathroom" data-overview="Badkamer" aria-label="Badkamer"></button>
+    <button class="hotspot hs-living" data-overview="Woonkamer" aria-label="Woonkamer"></button>
+    <button class="hotspot hs-kitchen" data-overview="Keuken" aria-label="Keuken"></button>
+    <button class="hotspot hs-hall" data-overview="Hal" aria-label="Hal"></button>
+    <button class="hotspot hs-laundry" data-overview="Wasruimte" aria-label="Wasruimte"></button>
+    <button class="hotspot hs-terrace" data-overview="Terras" aria-label="Terras"></button>
+
+    <!-- navigatieklikzones op de vaste onderste balk -->
+    <button class="nav-hit nh-home" data-go="home" aria-label="Mijn huis"></button>
+    <button class="nav-hit nh-shop" data-go="shop" aria-label="Winkeltje"></button>
+    <button class="nav-hit nh-inventory" data-go="inventory" aria-label="Inventaris"></button>
+    <button class="nav-hit nh-levels" data-go="levels" aria-label="Levels"></button>
+    <button class="nav-hit nh-more" data-go="more" aria-label="Meer"></button>
+  </main>
+
+  <!-- Scherm 2: kameroverzicht -->
+  <section id="overview" class="panel" hidden>
+    <header class="panel-head">
+      <button class="back" data-go="home">←</button>
+      <div>
+        <div class="leaf-title">🌿 Kamers 🌿</div>
+        <div class="mini-stats">
+          <span>⭐ <b id="ovPoints">0</b></span>
+          <span>🪙 <b id="ovCoins">0</b></span>
+          <span>🔵 <b id="ovBalls">0</b>/15</span>
+        </div>
+      </div>
+    </header>
+    <div id="roomCards" class="room-cards"></div>
+    <nav class="bottom-nav">
+      <button data-go="home"><img src="nav-home.png"><span>Mijn huis</span></button>
+      <button data-go="shop"><img src="nav-shop.png"><span>Winkeltje</span></button>
+      <button data-go="inventory"><img src="nav-inventory.png"><span>Inventaris</span></button>
+      <button data-go="levels"><img src="nav-levels.png"><span>Levels</span></button>
+      <button data-go="more"><img src="nav-more.png"><span>Meer</span></button>
+    </nav>
+  </section>
+
+  <!-- Scherm 3: taken -->
+  <section id="roomScreen" class="panel" hidden>
+    <header class="panel-head">
+      <button class="back" id="roomBack">←</button>
+      <div>
+        <div class="leaf-title" id="roomTitle">🌿 Woonkamer 🌿</div>
+        <div class="mini-stats">
+          <span>⭐ <b id="taskPoints">0</b></span>
+          <span>🪙 <b id="taskCoins">0</b></span>
+          <span>🔵 <b id="taskBalls">0</b>/15</span>
+        </div>
+      </div>
+    </header>
+    <div class="room-progress">
+      <div><b id="taskProgressText">0 van 6 taken klaar</b><b id="taskPct">0%</b></div>
+      <div class="traffic" id="trafficBar"></div>
+    </div>
+    <div class="tasks" id="tasks"></div>
+    <nav class="bottom-nav">
+      <button data-go="home"><img src="nav-home.png"><span>Mijn huis</span></button>
+      <button data-go="shop"><img src="nav-shop.png"><span>Winkeltje</span></button>
+      <button data-go="inventory"><img src="nav-inventory.png"><span>Inventaris</span></button>
+      <button data-go="levels"><img src="nav-levels.png"><span>Levels</span></button>
+      <button data-go="more"><img src="nav-more.png"><span>Meer</span></button>
+    </nav>
+  </section>
+
+  <main id="shop" class="screen shop-screen" hidden>
+    <img src="homey-shop.png" alt="Homey Winkeltje">
+    <button class="shop-back" data-go="home" aria-label="Terug"></button>
+  </main>
+
+  <section id="placeholder" class="placeholder" hidden>
+    <button class="back" data-go="home">←</button>
+    <h2 id="placeholderTitle"></h2>
+    <p>Dit scherm bouwen we verder vanuit dezelfde vaste Homey-basis.</p>
+  </section>
+
+  <div id="toast" class="toast"></div>
 </div>
-<button class="room r-bed" data-overview="Slaapkamer"></button><button class="room r-bath" data-overview="Badkamer"></button><button class="room r-living" data-overview="Woonkamer"></button><button class="room r-kitchen" data-overview="Keuken"></button><button class="room r-hall" data-overview="Hal"></button><button class="room r-laundry" data-overview="Wasruimte"></button><button class="room r-terrace" data-overview="Terras"></button><div class="home-nav"><button data-go="home"></button><button data-go="shop"></button><button data-go="inventory"></button><button data-go="levels"></button><button data-go="more"></button></div></main>
-<main id="overview" class="panel" hidden><header class="overview-head"><button class="round-back" data-go="home">←</button><div class="overview-title"><span>🌿</span><h1>Mijn huis ♡</h1><span>🌿</span><small>Vandaag</small></div></header><div class="live-stats"><div>⭐ <b data-points>0</b><small>punten</small></div><div>🪙 <b data-coins>0</b><small>munten</small></div><div><span class="blue-dot"></span> <b><i data-balls>0</i>/15</b><small>bollen vandaag</small></div></div><div class="bonusline"><div class="balls-track"></div><p><span class="to-bonus">15</span> bollen tot bonus! &nbsp; <strong>+15 punten</strong> 🎁</p></div><div id="roomCards" class="room-cards"></div><nav class="std-nav"><button data-go="home" class="selected"><img src="nav-home.png"></button><button data-go="shop"><img src="nav-shop.png"></button><button data-go="inventory"><img src="nav-inventory.png"></button><button data-go="levels"><img src="nav-levels.png"></button><button data-go="more"><img src="nav-more.png"></button></nav></main>
-<main id="roomScreen" class="panel" hidden><header class="room-head"><button id="roomBack" class="round-back">←</button><div class="room-title-wrap"><div class="room-icon" id="roomIcon">🛋️</div><div class="script-title"><span>🌿</span><h1 id="roomTitle"></h1><span>🌿</span></div></div></header><div class="live-stats"><div>⭐ <b data-points>0</b><small>punten</small></div><div>🪙 <b data-coins>0</b><small>munten</small></div><div><span class="blue-dot"></span> <b><i data-balls>0</i>/15</b><small>bollen vandaag</small></div></div><div class="bonusline"><div class="balls-track"></div><p><span class="to-bonus">15</span> bollen tot bonus! &nbsp; <strong>+15 punten</strong> 🎁</p></div><div class="room-progress"><div class="room-progress-copy"><strong id="taskProgressText"></strong><b id="taskPct"></b></div><div id="taskProgressBar" class="traffic-progress"></div></div><div id="tasks" class="tasks"></div><nav class="std-nav"><button data-go="home" class="selected"><img src="nav-home.png"></button><button data-go="shop"><img src="nav-shop.png"></button><button data-go="inventory"><img src="nav-inventory.png"></button><button data-go="levels"><img src="nav-levels.png"></button><button data-go="more"><img src="nav-more.png"></button></nav></main>
-<main id="shop" class="screen"><div class="shop-viewport"><img class="shop-img" src="homey-shop.png" alt="Homey Winkeltje"></div><div class="shop-nav"><button data-go="home"><img src="nav-home.png"></button><button data-go="shop" class="selected"><img src="nav-shop.png"></button><button data-go="inventory"><img src="nav-inventory.png"></button><button data-go="levels"><img src="nav-levels.png"></button><button data-go="more"><img src="nav-more.png"></button></div></main>
-<section id="placeholder" class="placeholder" hidden><button class="back" data-go="home">←</button><h2 id="placeholderTitle"></h2><p>Dit scherm bouwen we hierna in dezelfde Homey-stijl.</p></section><div id="toast" class="toast"></div></div><script src="app.js"></script></body></html>
+<script src="app.js"></script>
+</body>
+</html>

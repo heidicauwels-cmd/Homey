@@ -1,81 +1,82 @@
-*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#eee8de;font-family:Arial,sans-serif;color:#34281e}.app{width:min(100vw,512px);margin:auto;min-height:100vh;position:relative;background:#fbf4e8;overflow:hidden}.screen{display:none;position:relative;width:100%;aspect-ratio:2/3;background:#f8f1e7}.screen.active{display:block}.screen-img,.shop-img{width:100%;height:100%;display:block;object-fit:cover}.room,.home-nav button{position:absolute;border:0;background:transparent;cursor:pointer}.r-bed{left:12%;top:28%;width:38%;height:15%}.r-bath{left:51%;top:28%;width:38%;height:15%}.r-living{left:12%;top:43%;width:38%;height:15%}.r-kitchen{left:51%;top:43%;width:38%;height:15%}.r-hall{left:12%;top:58%;width:38%;height:15%}.r-laundry{left:51%;top:58%;width:38%;height:15%}.r-terrace{left:14%;top:74%;width:72%;height:12%}.home-nav{position:absolute;left:3%;right:3%;bottom:1.5%;height:10%}.home-nav button{top:0;height:100%;width:20%}.home-nav button:nth-child(1){left:0}.home-nav button:nth-child(2){left:20%}.home-nav button:nth-child(3){left:40%}.home-nav button:nth-child(4){left:60%}.home-nav button:nth-child(5){left:80%}
-.stat-mask{position:absolute;top:3.45%;height:4.45%;display:flex;align-items:center;justify-content:center;background:#fffaf0;border-radius:18px;z-index:4;font-size:clamp(16px,4.4vw,24px);font-weight:700}.home-coins-mask{left:46.2%;width:12.1%}.home-points-mask{left:66.7%;width:13.1%}.home-today-mask{position:absolute;left:18.2%;right:18.2%;top:11.05%;height:7.7%;background:#fffaf0;z-index:4;padding:4px 9px;border-radius:10px}.home-today-mask>span{display:block;text-align:right;font-size:clamp(13px,3.4vw,18px);font-weight:700;margin-bottom:4px}.home-today-mask #homeBallTrack{display:grid;grid-template-columns:repeat(15,1fr);gap:3px}.home-ball{aspect-ratio:1;border-radius:50%;background:#fff;border:1px solid #8fa8aa}.home-ball.filled{background:#7db3d2;border-color:#568eaf;box-shadow:inset 0 1px 2px #fff8}
-.shop-viewport{height:89.5%;overflow:hidden}.shop-img{height:auto;min-height:100%;object-fit:cover;object-position:top}.shop-nav{height:10.5%;display:grid;grid-template-columns:repeat(5,1fr);background:#fffaf2;border-top:1px solid #e7d7c3;position:absolute;left:0;right:0;bottom:0}.shop-nav button{border:0;background:transparent;padding:0;overflow:hidden}.shop-nav button.selected{background:#dce9cf}.shop-nav img{width:100%;height:100%;object-fit:cover}.placeholder{position:absolute;inset:0;z-index:10;min-height:100vh;padding:30px;background:#fffaf2;text-align:center}.placeholder .back{float:left;border:0;background:#efd9cc;border-radius:50%;width:44px;height:44px;font-size:22px}.toast{position:fixed;left:50%;bottom:13%;transform:translateX(-50%) translateY(15px);background:#3f352c;color:white;padding:10px 16px;border-radius:20px;opacity:0;transition:.2s;z-index:30}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-.room-screen{min-height:100vh;background:#fffaf1;padding:12px 12px 82px;position:relative}.room-screen[hidden]{display:none}.room-head{height:145px;position:relative}.round-back{position:absolute;left:0;top:7px;width:44px;height:44px;border:1px solid #e6d6c1;border-radius:50%;background:#fffaf1;font-size:30px;color:#38291f}.room-title-wrap{position:absolute;left:54px;right:54px;top:0;text-align:center}.room-icon{width:58px;height:58px;margin:0 auto 1px;border:1px solid #e6d6c1;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:29px}.script-title{display:flex;justify-content:center;align-items:center;gap:8px}.script-title h1{font-family:'Segoe Print','Bradley Hand','Comic Sans MS',cursive;font-size:clamp(28px,8vw,38px);font-weight:500;margin:0;color:#2d2119}.script-title span{font-size:17px}.room-deco{position:absolute;font-size:32px}.room-deco.plant{left:44px;top:3px}.room-deco.lamp{right:2px;top:4px}
-.room-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:-2px 0 10px}.room-stats>div{background:#fff;border:1px solid #eadbc8;border-radius:16px;height:74px;display:grid;grid-template-columns:auto auto;justify-content:center;align-content:center;column-gap:5px}.room-stats span{font-size:22px}.room-stats b{font-size:22px}.room-stats small{grid-column:1/3;text-align:center;font-size:10px}.room-stats i{font-style:normal}.blue-dot{width:18px;height:18px;border-radius:50%;background:#2f8aa2;display:inline-block}.bonusline{margin:4px 0 12px;text-align:center}.bonusline #ballTrack{display:flex;justify-content:center;gap:5px}.ball{width:14px;height:14px;border-radius:50%;border:1px solid #b5b2a7;background:#fff}.ball.filled{background:#2d879e;border-color:#24768a}.bonusline p{font-size:12px;margin:6px 0}.bonusline strong{color:#1e7187}
-.room-progress{margin:0 0 12px;padding:10px 12px;background:#fffdf8;border:1px solid #eadbc8;border-radius:16px}.room-progress-copy{font-size:13px;margin-bottom:9px}.traffic-progress{position:relative;display:grid;grid-template-columns:repeat(12,1fr);gap:4px;height:9px}.traffic-seg{border-radius:99px}.traffic-seg.green{background:#74ad45}.traffic-seg.orange{background:#f39a1d}.traffic-seg.red{background:#dd2e24}.traffic-marker{position:absolute;top:50%;width:19px;height:19px;border-radius:50%;background:#f39a1d;border:2px solid #fff;box-shadow:0 0 0 1px #d77f10;transform:translate(-50%,-50%)}
-.tasks{display:flex;flex-direction:column;gap:9px}.task{display:grid;grid-template-columns:104px 1fr 50px 36px;align-items:center;width:100%;min-height:102px;padding:7px;border:1px solid #eadbc8;border-radius:18px;background:#fff;text-align:left;box-shadow:0 2px 8px #755c3d0a}.task img{width:96px;height:88px;object-fit:cover;border-radius:12px}.task-copy{padding:0 7px}.task-copy strong{display:block;font-size:15px;font-weight:500;line-height:1.22;color:#30261f}.task-copy small{display:block;font-size:11px;margin-top:7px;color:#5f554b}.rewards{display:flex;flex-direction:column;gap:8px;font-size:14px}.check{width:31px;height:31px;border:1.5px solid #d8c9b4;border-radius:50%;display:grid;place-items:center;font-size:20px;color:white}.task.done{background:#edf6e4;border-color:#c9dfb4}.task.done .check{background:#75ad45;border-color:#75ad45}.task.done .check::before{content:'✓'}.task-nav{position:absolute;left:0;right:0;bottom:0;height:72px;background:#fffaf1;border-top:1px solid #eadbc8;display:grid;grid-template-columns:repeat(5,1fr)}.task-nav button{position:relative;border:0;background:transparent;padding:0;overflow:hidden}.task-nav button.selected{background:#dfead3}.task-nav img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.task-nav small{position:absolute;left:0;right:0;bottom:2px;z-index:2;font-size:9px;color:#3b3027;background:#fffaf1c9}.task-nav button.selected small{background:#dfead3cc}
-@media(max-width:390px){.task{grid-template-columns:88px 1fr 44px 32px}.task img{width:80px;height:80px}.task-copy strong{font-size:13px}.task-copy small{font-size:10px}}
-@media(min-width:513px){body{padding:18px 0}.app{border-radius:28px;box-shadow:0 15px 50px #6b5a4730}.screen{border-radius:28px;overflow:hidden}}
-.panel{position:absolute;inset:0;background:#fffaf1;padding:12px 12px 78px;overflow-y:auto}.panel[hidden]{display:none}.overview-head{height:92px;position:relative}.overview-title{text-align:center;padding-top:2px}.overview-title h1{display:inline;margin:0 7px;font-family:'Segoe Print','Bradley Hand','Comic Sans MS',cursive;font-size:34px;font-weight:500}.overview-title>span{font-size:18px}.overview-title small{display:block;font-size:14px;margin-top:-4px}.live-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 0 9px}.live-stats>div{height:68px;background:#fff;border:1px solid #eadbc8;border-radius:16px;display:grid;grid-template-columns:auto auto;justify-content:center;align-content:center;column-gap:5px}.live-stats b{font-size:22px}.live-stats small{grid-column:1/3;text-align:center;font-size:10px}.room-cards{display:flex;flex-direction:column;gap:8px;padding-bottom:4px}.room-card{min-height:104px;width:100%;border:1px solid #eadbc8;border-radius:18px;background:#fff;display:grid;grid-template-columns:130px 1fr 34px;align-items:center;padding:5px;text-align:left}.room-card>img{width:122px;height:92px;object-fit:cover;border-radius:13px}.room-card-main{padding:0 8px}.room-card-main strong{display:block;font-size:18px}.room-card-main small{display:block;font-size:11px;margin:5px 0}.room-card.locked{filter:grayscale(.75);background:#f7f5f1}.room-arrow{font-size:30px;text-align:center}.mini-traffic{position:relative;display:grid;grid-template-columns:repeat(12,1fr);gap:3px;height:7px;margin-top:10px}.mini-traffic .traffic-marker{width:17px;height:17px}.std-nav{position:sticky;left:0;right:0;bottom:-78px;height:68px;margin:10px -12px -78px;background:#fffaf1;border-top:1px solid #eadbc8;display:grid;grid-template-columns:repeat(5,1fr);z-index:20}.std-nav button{border:0;background:transparent;padding:0;overflow:hidden}.std-nav button.selected{background:#dfead3}.std-nav img{width:100%;height:100%;object-fit:cover}.room-head{height:118px}.room-title-wrap{top:0}.room-progress-copy{display:flex;justify-content:space-between}.tasks{gap:7px}.task{min-height:88px;grid-template-columns:92px 1fr 48px 34px}.task img{width:84px;height:74px}.task-nav{display:none}@media(max-width:390px){.room-card{grid-template-columns:108px 1fr 28px}.room-card>img{width:100px;height:80px}.overview-title h1{font-size:29px}.task{grid-template-columns:76px 1fr 42px 30px;min-height:80px}.task img{width:70px;height:66px}}
 
-.traffic-marker.red{background:#dd2e24;box-shadow:0 0 0 1px #b8241d}.traffic-marker.orange{background:#f39a1d;box-shadow:0 0 0 1px #d77f10}.traffic-marker.green{background:#74ad45;box-shadow:0 0 0 1px #5b9134}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:#eee8de;font-family:Arial,sans-serif;color:#34281e}
+body{display:flex;justify-content:center}
+.app{position:relative;width:min(100vw,512px);min-height:100vh;background:#fff8ee;overflow:hidden}
+.screen,.panel,.placeholder{position:absolute;inset:0}
+[hidden]{display:none!important}
 
-/* v14: het goedgekeurde huis blijft visueel vast; alleen live waarden liggen erboven. */
-.home-screen{aspect-ratio:935/1682;background:#fbf4e8}
-.home-screen .screen-img{object-fit:contain;width:100%;height:100%}
-.home-live{position:absolute;inset:0;pointer-events:none;z-index:5}
-.home-live-number,.home-live-balls,.home-live-bonus,.home-room-count{position:absolute;display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;font-weight:700;color:#2c2118;background:#fff8e9}
-.home-live-number{top:3.15%;height:3.25%;font-size:clamp(18px,5vw,28px)}
-.home-live-coins{left:53.1%;width:7.2%}
-.home-live-points{left:72.1%;width:8.2%}
-.home-live-balls{left:60.4%;top:11.45%;width:12.8%;height:3.25%;font-size:clamp(18px,5.4vw,30px)}
-.home-live-balltrack{position:absolute;left:21.35%;top:16.85%;width:56.1%;height:2.55%;display:grid;grid-template-columns:repeat(15,1fr);gap:1.05%;align-items:center;background:#fff8e9;padding:0 .25%;border-radius:99px}
-.home-live-balltrack .home-ball{width:100%;aspect-ratio:1;border-radius:50%;background:#fffaf1;border:1.4px solid #839393}
-.home-live-balltrack .home-ball.filled{background:#83b9d7;border-color:#5d98ba}
-.home-live-bonus{left:5.8%;top:25.45%;width:11.6%;height:3.15%;font-size:clamp(15px,4.2vw,24px)}
-.home-room-count{height:3.5%;font-size:clamp(16px,4.9vw,27px);border-radius:12px}
-.hc-bed{left:35.8%;top:39.15%;width:8.7%}.hc-bath{left:74.5%;top:39.15%;width:8.7%}
-.hc-living{left:35.8%;top:55.2%;width:8.7%}.hc-kitchen{left:77.0%;top:55.2%;width:8.7%}
-.hc-hall{left:35.8%;top:68.25%;width:8.7%}.hc-laundry{left:77.0%;top:68.25%;width:8.7%}
-.hc-terrace{left:30.9%;top:81.4%;width:8.7%}
-/* klikzones exact over het goedgekeurde huis */
-.r-bed{left:7%;top:29%;width:44%;height:14%}.r-bath{left:51%;top:29%;width:44%;height:14%}
-.r-living{left:7%;top:43%;width:44%;height:16%}.r-kitchen{left:51%;top:43%;width:44%;height:16%}
-.r-hall{left:7%;top:59%;width:44%;height:13%}.r-laundry{left:51%;top:59%;width:44%;height:13%}
-.r-terrace{left:16%;top:72%;width:70%;height:14%}
-.home-nav{left:2.5%;right:2.5%;bottom:1.25%;height:9.6%}
+/* GOEDGEKEURDE VASTE BASIS */
+.home-screen{aspect-ratio:1024/1536;background:#fff8ee}
+.home-art{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;display:block}
+.live,.room-value{position:absolute;z-index:5;font-weight:700;color:#34281e;text-align:center;pointer-events:none}
+.coin-value{left:50.7%;top:3.2%;width:7.8%;font-size:clamp(14px,4.2vw,23px)}
+.point-value{left:70.0%;top:3.2%;width:9%;font-size:clamp(14px,4.2vw,23px)}
+.today-value{left:68.6%;top:12.0%;width:10.5%;font-size:clamp(15px,4.5vw,25px)}
+.ball-row{position:absolute;z-index:5;left:21.0%;top:14.75%;width:59.5%;height:3.2%;display:grid;grid-template-columns:repeat(15,1fr);gap:1.2%;align-items:center}
+.ball{aspect-ratio:1;border-radius:50%;border:1.5px solid #7598ad;background:#fffaf2}
+.ball.filled{background:linear-gradient(#84c5ec,#5f9ac3);border-color:#5d8cab}
+.bonus-value{left:5.8%;top:25.0%;width:9.2%;font-size:clamp(15px,4.8vw,25px)}
+.bonus-check{position:absolute;z-index:5;left:12.1%;top:27.5%;width:4.3%;aspect-ratio:1;border-radius:50%;display:none;align-items:center;justify-content:center;background:#86ad4a;color:#fff;font-weight:800;font-size:clamp(12px,3.6vw,20px)}
+.bonus-check.show{display:flex}
 
+.room-value{font-size:clamp(14px,4.4vw,24px);width:5.7%}
+.rv-bedroom{left:38.0%;top:38.4%}.rv-bathroom{left:74.8%;top:38.4%}
+.rv-living{left:38.0%;top:55.4%}.rv-kitchen{left:75.7%;top:55.4%}
+.rv-hall{left:38.0%;top:69.8%}.rv-laundry{left:75.7%;top:69.8%}
+.rv-terrace{left:34.6%;top:83.3%;width:6.5%}
 
-/* v15: exact live counters on the approved 918x1682 house image. */
-.home-screen{aspect-ratio:935/1682}
-.home-live-number,.home-live-balls,.home-live-bonus,.home-room-count{
-  z-index:7;
-  background:#fff9ef;
-  border-radius:10px;
-  line-height:1;
-  white-space:nowrap;
-}
-/* top resource values: cover only the baked-in digits, not the icons/card */
-.home-live-coins{left:54.7%;top:2.82%;width:6.0%;height:3.15%;font-size:clamp(18px,5.1vw,30px)}
-.home-live-points{left:74.2%;top:2.82%;width:6.5%;height:3.15%;font-size:clamp(18px,5.1vw,30px)}
-/* central daily progress value */
-.home-live-balls{left:61.5%;top:10.95%;width:12.2%;height:3.1%;font-size:clamp(18px,5.2vw,30px)}
-/* left bonus value */
-.home-live-bonus{left:7.15%;top:24.1%;width:10.0%;height:3.05%;font-size:clamp(16px,4.4vw,25px)}
-/* 15 daily balls: exactly on top of the baked circles */
-.home-live-balltrack{left:21.35%;top:16.68%;width:56.6%;height:2.45%;background:#fff9ef;padding:0 .2%;gap:1.03%}
-.home-live-balltrack .home-ball{width:100%;aspect-ratio:1;border-radius:50%;background:#fff9ef;border:1.35px solid #7aa4b7}
-.home-live-balltrack .home-ball.filled{background:#83b9d7;border-color:#5d98ba}
-/* room counters: mask only the numeric fraction, leave star icon from approved art visible */
-.home-room-count{height:3.05%;font-size:clamp(16px,4.8vw,28px);font-weight:700;color:#2c2118;width:7.0%}
-.hc-bed{left:37.0%;top:39.15%}.hc-bath{left:75.7%;top:39.15%}
-.hc-living{left:37.0%;top:55.15%}.hc-kitchen{left:77.0%;top:55.15%}
-.hc-hall{left:36.8%;top:68.25%}.hc-laundry{left:77.1%;top:68.25%}
-.hc-terrace{left:31.8%;top:81.40%}
+/* Klikzones */
+.hotspot,.nav-hit,.shop-back{position:absolute;z-index:8;background:transparent;border:0;cursor:pointer}
+.hs-bedroom{left:14%;top:28%;width:37%;height:15%}
+.hs-bathroom{left:51%;top:28%;width:39%;height:15%}
+.hs-living{left:14%;top:43%;width:37%;height:17%}
+.hs-kitchen{left:51%;top:43%;width:39%;height:17%}
+.hs-hall{left:14%;top:60%;width:37%;height:15%}
+.hs-laundry{left:51%;top:60%;width:39%;height:15%}
+.hs-terrace{left:23%;top:75%;width:55%;height:14%}
+.nh-home{left:3%;bottom:1.3%;width:18%;height:9.2%}
+.nh-shop{left:21%;bottom:1.3%;width:20%;height:9.2%}
+.nh-inventory{left:41%;bottom:1.3%;width:20%;height:9.2%}
+.nh-levels{left:61%;bottom:1.3%;width:18%;height:9.2%}
+.nh-more{left:79%;bottom:1.3%;width:18%;height:9.2%}
 
-
-/* v16: exact geometry of the approved 935x1682 house image. */
-.home-screen{aspect-ratio:935/1682}
-.home-screen .screen-img{object-fit:contain;width:100%;height:100%}
-/* Cover the baked-in values completely, then draw the live value in the same place. */
-.home-live-coins{left:53.45%;top:3.35%;width:6.9%;height:3.35%;font-size:clamp(18px,5.1vw,30px)}
-.home-live-points{left:72.55%;top:3.35%;width:7.5%;height:3.35%;font-size:clamp(18px,5.1vw,30px)}
-.home-live-balls{left:61.0%;top:11.65%;width:12.7%;height:3.45%;font-size:clamp(18px,5.2vw,30px)}
-.home-live-bonus{left:5.65%;top:24.9%;width:11.8%;height:3.35%;font-size:clamp(16px,4.4vw,25px)}
-.home-live-balltrack{left:21.0%;top:16.45%;width:57.2%;height:2.75%;background:#fff9ef;padding:0 .15%;gap:1.0%;border-radius:99px}
-.home-room-count{height:3.2%;width:8.1%;font-size:clamp(16px,4.8vw,28px)}
-.hc-bed{left:36.2%;top:39.0%}.hc-bath{left:74.7%;top:39.0%}
-.hc-living{left:36.2%;top:55.05%}.hc-kitchen{left:76.0%;top:55.05%}
-.hc-hall{left:35.8%;top:68.15%}.hc-laundry{left:76.0%;top:68.15%}
-.hc-terrace{left:30.7%;top:81.25%}
+/* KAMEROVERZICHT + TAKEN */
+.panel,.placeholder{background:#fffaf2;padding:14px 14px 86px;overflow-y:auto;z-index:20}
+.panel-head{min-height:112px;display:flex;gap:12px;align-items:flex-start}
+.back{border:1px solid #ead4b8;background:#fffaf2;border-radius:50%;width:42px;height:42px;font-size:26px}
+.leaf-title{font-family:"Comic Sans MS","Segoe Print",cursive;font-size:clamp(27px,7vw,40px);text-align:center;margin:4px 0 10px}
+.panel-head>div{flex:1}
+.mini-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.mini-stats span{background:#fff;border:1px solid #ead4b8;border-radius:14px;padding:10px 5px;text-align:center}
+.room-cards{display:flex;flex-direction:column;gap:10px}
+.room-card{display:grid;grid-template-columns:105px 1fr 30px;gap:12px;align-items:center;border:1px solid #ead4b8;border-radius:18px;background:#fff;padding:8px;min-height:120px}
+.room-card.locked{opacity:.55}
+.room-card img{width:100%;height:96px;object-fit:cover;border-radius:13px}
+.room-name{font-size:21px;font-weight:700}
+.room-sub{font-size:13px;margin:4px 0 10px}
+.small-traffic,.traffic{display:flex;gap:5px;align-items:center}
+.seg{height:8px;flex:1;border-radius:20px}
+.red{background:#dc2e24}.orange{background:#f39a1d}.green{background:#72ad45}
+.marker{width:18px;height:18px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px #8c7a66;flex:0 0 18px}
+.room-card .arrow{font-size:30px}
+.room-progress{border:1px solid #ead4b8;border-radius:16px;background:#fff;padding:12px;margin-bottom:12px}
+.room-progress>div:first-child{display:flex;justify-content:space-between;margin-bottom:10px}
+.tasks{display:flex;flex-direction:column;gap:10px}
+.task{display:grid;grid-template-columns:104px 1fr 54px 42px;gap:10px;align-items:center;background:#fff;border:1px solid #ead4b8;border-radius:18px;padding:8px;min-height:112px}
+.task.done{background:#eef8e8}
+.task img{width:100%;height:94px;object-fit:cover;border-radius:13px}
+.task-copy strong{display:block;font-size:16px;margin-bottom:7px}
+.task-copy small{font-size:12px}
+.rewards{font-size:14px;line-height:1.8;text-align:center}
+.check{width:36px;height:36px;border-radius:50%;border:1px solid #d9c6ad;display:flex;align-items:center;justify-content:center;font-size:24px}
+.task.done .check{background:#70b63d;color:#fff;border-color:#70b63d}
+.bottom-nav{position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:min(100vw,512px);height:76px;background:#fff8ee;border-top:1px solid #ead4b8;display:grid;grid-template-columns:repeat(5,1fr);z-index:30}
+.bottom-nav button{border:0;background:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11px;color:#34281e}
+.bottom-nav img{width:31px;height:31px;object-fit:contain;margin-bottom:3px}
+.shop-screen img{width:100%;height:100%;object-fit:cover}
+.shop-back{left:2%;top:2%;width:12%;height:8%}
+.placeholder{padding-top:30px}
+.toast{position:fixed;left:50%;bottom:92px;transform:translateX(-50%);background:#34281e;color:#fff;padding:9px 14px;border-radius:20px;opacity:0;pointer-events:none;transition:.2s;z-index:50}
+.toast.show{opacity:1}
+@media(min-width:513px){body{padding:12px}.app{border-radius:28px;box-shadow:0 15px 50px #6b5a4730}}
