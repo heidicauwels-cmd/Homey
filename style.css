@@ -1,80 +1,13 @@
-*{box-sizing:border-box}
-html,body{margin:0;min-height:100%;background:#eee8dd}
-body{display:flex;justify-content:center}
-#app{position:relative;width:min(100vw,512px);aspect-ratio:2/3;overflow:hidden;background:#fbf4e7}
-.screen{position:absolute;inset:0}
-.base{display:block;width:100%;height:100%;object-fit:fill}
-[hidden]{display:none!important}
-
-/* Huis: alleen onzichtbare klikzones. */
-.hot{position:absolute;border:0;background:transparent;cursor:pointer}
-.bedroom{left:14%;top:27%;width:37%;height:15%}
-.bathroom{left:51%;top:27%;width:39%;height:15%}
-.living{left:14%;top:42%;width:37%;height:17%}
-.kitchen{left:51%;top:42%;width:39%;height:17%}
-.hall{left:14%;top:59%;width:37%;height:15%}
-.laundry{left:51%;top:59%;width:39%;height:15%}
-.terrace{left:23%;top:73%;width:55%;height:13%}
-
-/* Alleen de LEGE middenzone van homey-frame.png wordt gevuld. */
-.overview-content{
-  position:absolute;
-  left:6.4%;
-  right:6.4%;
-  top:10.7%;
-  bottom:11.8%;
-  overflow:auto;
-  padding:4px 0 14px;
-  font-family:Arial,sans-serif;
-  color:#3b291b;
-}
-.overview-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:7px}
-.stat{background:#fffaf1;border:1px solid #ead9bd;border-radius:12px;text-align:center;padding:7px 2px 6px;box-shadow:0 2px 5px #5f472015}
-.stat b{display:block;font-size:13px;font-weight:600}
-.stat small{display:block;font-size:8px;margin-top:2px}
-.blue-dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:#2d7897}
-
-.ball-row{display:flex;justify-content:center;gap:4px;margin:5px 0 4px}
-.ball-row span{width:9px;height:9px;border-radius:50%;border:1px solid #d8c5aa;background:#fffaf2}
-.ball-row span.on{background:#2b7897;border-color:#2b7897}
-.bonus-line{text-align:center;font-size:9px;margin-bottom:8px}
-.bonus-line strong{color:#237c9e;margin-left:6px}
-
-.room-list{display:grid;gap:7px}
-.room-card{
-  width:100%;
-  min-height:76px;
-  border:1px solid #e4d6c0;
-  border-radius:13px;
-  background:#fffaf1;
-  display:grid;
-  grid-template-columns:88px 1fr 24px;
-  align-items:center;
-  padding:5px 6px;
-  color:#382718;
-  text-align:left;
-  box-shadow:0 2px 5px #61482712;
-}
-button.room-card{cursor:pointer}
-.room-card img{width:82px;height:62px;object-fit:cover;border-radius:8px;display:block}
-.room-text{padding:0 7px;min-width:0}
-.room-text b{display:block;font-size:14px;font-weight:500;margin-bottom:4px}
-.room-text small{display:block;font-size:9px;margin-bottom:7px}
-.chev{font-size:26px;text-align:center}
-.lock{font-size:15px;text-align:center}
-.locked{opacity:.72;filter:saturate(.55)}
-
-.progress{display:flex;align-items:center;gap:3px;width:100%}
-.progress i{display:block;flex:1;height:5px;border-radius:10px}
-.progress i.green{background:#67aa43}
-.progress i.orange{background:#f2a10d}
-.progress i.red{background:#e63d47}
-.progress em{display:block;width:10px;height:10px;border-radius:50%;background:#6daa45;border:2px solid #fff;box-shadow:0 0 0 1px #6daa45}
-
-.invisible-back{
-  position:fixed;
-  left:0; top:0;
-  width:10%; height:10%;
-  border:0; background:transparent;
-}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#eee8dd}body{display:flex;justify-content:center}
+#app{position:relative;width:min(100vw,512px);aspect-ratio:2/3;overflow:hidden;background:#fbf4e7}.screen{position:absolute;inset:0}.base{display:block;width:100%;height:100%;object-fit:fill}[hidden]{display:none!important}
+.hot{position:absolute;border:0;background:transparent}.bedroom{left:14%;top:27%;width:37%;height:15%}.bathroom{left:51%;top:27%;width:39%;height:15%}.living{left:14%;top:42%;width:37%;height:17%}.kitchen{left:51%;top:42%;width:39%;height:17%}.hall{left:14%;top:59%;width:37%;height:15%}.laundry{left:51%;top:59%;width:39%;height:15%}.terrace{left:23%;top:73%;width:55%;height:13%}
+.middle,.task-middle{position:absolute;left:6.4%;right:6.4%;top:10.7%;bottom:11.8%;overflow:auto;padding:4px 0 14px;font-family:Arial,sans-serif;color:#3b291b}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:6px}.stats div{background:#fffaf1;border:1px solid #ead9bd;border-radius:12px;text-align:center;padding:7px 2px 6px}.stats b{display:block;font-size:13px}.stats small{display:block;font-size:8px;margin-top:2px}
+.ballrow{display:flex;justify-content:center;gap:4px;margin:5px 0 4px}.ballrow span{width:9px;height:9px;border-radius:50%;border:1px solid #d8c5aa;background:#fffaf2}.ballrow span.on{background:#2b7897;border-color:#2b7897}.bonus{text-align:center;font-size:9px;margin-bottom:8px}.bonus strong{color:#237c9e;margin-left:6px}
+.roomlist{display:grid;gap:7px}.room-card{width:100%;min-height:76px;border:1px solid #e4d6c0;border-radius:13px;background:#fffaf1;display:grid;grid-template-columns:88px 1fr 24px;align-items:center;padding:5px 6px;color:#382718;text-align:left}.room-card img{width:82px;height:62px;object-fit:cover;border-radius:8px}.room-text{padding:0 7px}.room-text b{display:block;font-size:14px;font-weight:500}.room-text small{display:block;font-size:9px;margin:4px 0 7px}.chev{font-size:26px}.locked{opacity:.72;filter:saturate(.55)}
+.progress{display:flex;gap:3px;align-items:center}.progress i{height:5px;flex:1;border-radius:10px}.green{background:#67aa43}.orange{background:#f2a10d}.red{background:#e63d47}.progress em{width:10px;height:10px;border-radius:50%;background:#6daa45;border:2px solid white;box-shadow:0 0 0 1px #6daa45}
+.frameback{position:fixed;left:0;top:0;width:10%;height:10%;border:0;background:transparent}
+.task-head{display:grid;grid-template-columns:42px 1fr 42px;align-items:start;margin-bottom:5px;text-align:center}.task-head button{border:1px solid #e0c8a6;background:#fffaf1;border-radius:50%;width:38px;height:38px;font-size:28px;color:#5a402b}.room-badge{font-size:26px;line-height:25px}.task-head h1{font:25px "Segoe Print","Comic Sans MS",cursive;margin:2px 0 4px}
+.task-progress{background:#fffaf1;border:1px solid #e4d6c0;border-radius:11px;padding:7px 9px;margin:7px 0}.task-progress>div:first-child{display:flex;justify-content:space-between;font-size:9px}.track{height:7px;background:#eadfce;border-radius:10px;margin-top:5px;overflow:hidden}.track i{display:block;height:100%;width:0;background:#68aa43;border-radius:10px}
+.tasklist{display:grid;gap:6px}.task-card{width:100%;min-height:65px;border:1px solid #e4d6c0;border-radius:11px;background:#fffaf1;display:grid;grid-template-columns:65px 1fr 52px 24px;align-items:center;padding:5px;color:#3b291b;text-align:left}.task-card.done{background:#e8f2d8}.task-card img{width:59px;height:53px;object-fit:cover;border-radius:7px}.task-info{padding:0 6px}.task-info b{display:block;font-size:11px;font-weight:500}.task-info small{font-size:8px}.rewards{font-size:9px;line-height:16px}.check{width:20px;height:20px;border:1px solid #d8c7ad;border-radius:50%;display:grid;place-items:center;font-size:13px}.done .check{background:#72ae4c;color:white;border-color:#72ae4c}
 @media(min-width:513px){body{padding:12px}#app{border-radius:24px;box-shadow:0 12px 40px #0002}}

@@ -1,15 +1,6 @@
-HOMEY — CORRECTIE KAMEROVERZICHT
-
-Deze versie corrigeert de zojuist gecommitte verkeerde versie.
-
-Belangrijk:
-- homey-house.png blijft exact de goedgekeurde huispagina.
-- homey-frame.png blijft exact het goedgekeurde lege kader.
-- Er wordt GEEN tweede Homey-logo of navigatie getekend.
-- Alleen de lege middenzone wordt gevuld.
-- Kamerminiaturen zijn rechtstreeks gecropt uit jouw eigen referentiebeeld.
-- Woonkamer, Keuken en Badkamer zijn klikbaar.
-- Slaapkamer, Wasruimte en Caravan zijn vergrendeld.
-- De takenlijst komt in de volgende stap.
-
-Upload alle bestanden uit deze map over de huidige GitHub-bestanden en commit opnieuw.
+HOMEY — TAKENLIJST WOONKAMER
+Gebouwd bovenop de goedgekeurde kameroverzicht-correctie.
+Klik in kameroverzicht op Woonkamer om de takenlijst te openen.
+Taken hebben de illustraties uit jouw eigen voorbeeld, frequentie, +1 munt, +5 punten en afvinkrondje.
+Afvinken maakt de kaart groen en past de tellers in het overzicht/takenscherm aan.
+De vaste Homey-header en onderste navigatie zijn niet opnieuw getekend.

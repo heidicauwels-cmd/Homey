@@ -1,83 +1,34 @@
 <!doctype html>
-<html lang="nl">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <title>Homey</title>
-  <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<main id="app">
-  <section id="houseScreen" class="screen">
-    <img src="homey-house.png" class="base" alt="Homey huis">
-    <button class="hot bedroom" data-overview aria-label="Slaapkamer"></button>
-    <button class="hot bathroom" data-overview aria-label="Badkamer"></button>
-    <button class="hot living" data-overview aria-label="Woonkamer"></button>
-    <button class="hot kitchen" data-overview aria-label="Keuken"></button>
-    <button class="hot hall" data-overview aria-label="Hal"></button>
-    <button class="hot laundry" data-overview aria-label="Wasruimte"></button>
-    <button class="hot terrace" data-overview aria-label="Terras"></button>
-  </section>
+<html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Homey</title><link rel="manifest" href="manifest.json"><link rel="stylesheet" href="style.css"></head><body><main id="app">
 
-  <section id="overviewScreen" class="screen" hidden>
-    <img src="homey-frame.png" class="base" alt="">
-    <div class="overview-content">
-      <div class="overview-stats">
-        <div class="stat"><b>⭐ <span id="points">65</span></b><small>punten</small></div>
-        <div class="stat"><b>🪙 <span id="coins">14</span></b><small>munten</small></div>
-        <div class="stat"><b><span class="blue-dot"></span> <span id="today">10</span>/15</b><small>bollen vandaag</small></div>
-      </div>
+<section id="houseScreen" class="screen">
+<img src="homey-house.png" class="base" alt="Homey huis">
+<button class="hot bedroom" data-overview></button><button class="hot bathroom" data-overview></button>
+<button class="hot living" data-overview></button><button class="hot kitchen" data-overview></button>
+<button class="hot hall" data-overview></button><button class="hot laundry" data-overview></button>
+<button class="hot terrace" data-overview></button>
+</section>
 
-      <div class="ball-row" aria-label="10 van 15 bollen">
-        <span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span>
-        <span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span>
-        <span></span><span></span><span></span><span></span><span></span>
-      </div>
-      <div class="bonus-line">5 bollen tot bonus! <strong>+15 punten 🎁</strong></div>
+<section id="overviewScreen" class="screen" hidden>
+<img src="homey-frame.png" class="base" alt="">
+<div class="middle">
+  <div class="stats"><div><b>⭐ <span class="points">65</span></b><small>punten</small></div><div><b>🪙 <span class="coins">14</span></b><small>munten</small></div><div><b>🔵 <span class="today">10</span>/15</b><small>bollen vandaag</small></div></div>
+  <div class="ballrow"></div><div class="bonus">5 bollen tot bonus! <strong>+15 punten 🎁</strong></div>
+  <div id="roomCards" class="roomlist"></div>
+  <button id="overviewBack" class="frameback"></button>
+</div>
+</section>
 
-      <div class="room-list">
-        <button class="room-card" data-room="Woonkamer">
-          <img src="room-living.jpg" alt="">
-          <span class="room-text"><b>Woonkamer</b><small>6 taken</small><span class="progress"><i class="green"></i><i class="green"></i><em></em><i class="orange"></i><i class="orange"></i><i class="red"></i><i class="red"></i></span></span>
-          <span class="chev">›</span>
-        </button>
+<section id="taskScreen" class="screen" hidden>
+<img src="homey-frame.png" class="base" alt="">
+<div class="task-middle">
+  <div class="task-head"><button id="taskBack">‹</button><div><div class="room-badge">🛋️</div><h1>Woonkamer</h1></div><span></span></div>
+  <div class="stats"><div><b>⭐ <span class="points">65</span></b><small>punten</small></div><div><b>🪙 <span class="coins">14</span></b><small>munten</small></div><div><b>🔵 <span class="today">10</span>/15</b><small>bollen vandaag</small></div></div>
+  <div class="ballrow"></div><div class="bonus">5 bollen tot bonus! <strong>+15 punten 🎁</strong></div>
+  <div class="task-progress"><div><span id="doneText">0 van 6 taken klaar</span><b id="pct">0%</b></div><div class="track"><i id="taskFill"></i></div></div>
+  <div id="tasks" class="tasklist"></div>
+</div>
+</section>
 
-        <button class="room-card" data-room="Keuken">
-          <img src="room-kitchen.jpg" alt="">
-          <span class="room-text"><b>Keuken</b><small>5 taken</small><span class="progress"><i class="green"></i><i class="green"></i><em></em><i class="orange"></i><i class="orange"></i><i class="red"></i><i class="red"></i></span></span>
-          <span class="chev">›</span>
-        </button>
-
-        <button class="room-card" data-room="Badkamer">
-          <img src="room-bathroom.jpg" alt="">
-          <span class="room-text"><b>Badkamer</b><small>4 taken</small><span class="progress"><i class="green"></i><i class="green"></i><em></em><i class="orange"></i><i class="orange"></i><i class="red"></i><i class="red"></i></span></span>
-          <span class="chev">›</span>
-        </button>
-
-        <div class="room-card locked">
-          <img src="room-bedroom.jpg" alt="">
-          <span class="room-text"><b>Slaapkamer</b><small>🔒 Vrijspelen op level 5</small></span>
-          <span class="lock">🔒</span>
-        </div>
-
-        <div class="room-card locked">
-          <img src="room-laundry.jpg" alt="">
-          <span class="room-text"><b>Wasruimte</b><small>🔒 Vrijspelen op level 5</small></span>
-          <span class="lock">🔒</span>
-        </div>
-
-        <div class="room-card locked">
-          <img src="room-caravan.jpg" alt="">
-          <span class="room-text"><b>Caravan</b><small>🔒 Vrijspelen op level 5</small></span>
-          <span class="lock">🔒</span>
-        </div>
-      </div>
-
-      <button id="overviewBack" class="invisible-back" aria-label="Terug naar huis"></button>
-    </div>
-  </section>
-</main>
-<script src="app.js"></script>
-</body>
-</html>
+</main><script src="app.js"></script></body></html>
