@@ -1,12 +1,1 @@
-HOMEY — UPDATE KAMEROVERZICHT
-
-Upload de bestanden uit deze map naar GitHub en vervang de bestaande bestanden.
-
-Wat deze update doet:
-- de goedgekeurde huispagina blijft exact dezelfde afbeelding;
-- tik op een kamer in het huis -> kameroverzicht;
-- kameroverzicht staat binnen het vaste Homey-kader;
-- terugknop gaat terug naar het huis;
-- de rechterkant van elke kamerkaart is voorbereid voor de takenlijst.
-
-De taaklijsten en dynamische tellers zijn bewust nog niet gewijzigd.
+Upload deze bestanden naar GitHub en vervang de bestaande. Dit kameroverzicht volgt de linkerzijde van je voorbeeld. De vaste huispagina is niet gewijzigd.
