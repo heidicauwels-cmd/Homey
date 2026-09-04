@@ -96,3 +96,12 @@ document.getElementById('tasks').onclick=e=>{
 
 renderOverview();
 renderCounters();
+
+function goHome(){
+  T.hidden=true;
+  O.hidden=true;
+  H.hidden=false;
+  renderCounters();
+}
+document.getElementById('overviewHomeNav').onclick=goHome;
+document.getElementById('taskHomeNav').onclick=goHome;

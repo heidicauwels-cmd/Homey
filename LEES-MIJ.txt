@@ -1,14 +1,8 @@
-HOMEY — HUISTELLERS GEKOPPELD
+HOMEY — TERUG NAAR HUIS GEFIXT
 
-Deze versie bouwt verder op de goedgekeurde woonkamer-takenlijst.
+Correctie op Homey-huistellers:
+- vanuit het kameroverzicht kun je nu onderaan op 'Mijn huis' tikken;
+- vanuit de takenlijst kun je ook rechtstreeks onderaan op 'Mijn huis' tikken;
+- de tellers worden meteen opnieuw gerenderd wanneer je terug op de huispagina komt.
 
-Nieuw:
-- +1 munt bij taak afvinken wordt ook op de huispagina zichtbaar.
-- +5 punten wordt ook op de huispagina zichtbaar.
-- de dagelijkse bollen op de huispagina veranderen mee.
-- Bonus x/15 verandert mee en toont een groen vinkje bij 15/15.
-- de Woonkamer-teller op het huis toont hoeveel van de 6 taken klaar zijn.
-- teruggaan van taken -> overzicht -> huis behoudt dezelfde waarden.
-- alles blijft opgeslagen in de browser.
-
-Upload alle bestanden over de huidige GitHub-bestanden en commit opnieuw.
+Upload deze bestanden over de huidige GitHub-versie en commit opnieuw.
