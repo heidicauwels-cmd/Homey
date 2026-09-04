@@ -1,6 +1,14 @@
-HOMEY — TAKENLIJST WOONKAMER
-Gebouwd bovenop de goedgekeurde kameroverzicht-correctie.
-Klik in kameroverzicht op Woonkamer om de takenlijst te openen.
-Taken hebben de illustraties uit jouw eigen voorbeeld, frequentie, +1 munt, +5 punten en afvinkrondje.
-Afvinken maakt de kaart groen en past de tellers in het overzicht/takenscherm aan.
-De vaste Homey-header en onderste navigatie zijn niet opnieuw getekend.
+HOMEY — HUISTELLERS GEKOPPELD
+
+Deze versie bouwt verder op de goedgekeurde woonkamer-takenlijst.
+
+Nieuw:
+- +1 munt bij taak afvinken wordt ook op de huispagina zichtbaar.
+- +5 punten wordt ook op de huispagina zichtbaar.
+- de dagelijkse bollen op de huispagina veranderen mee.
+- Bonus x/15 verandert mee en toont een groen vinkje bij 15/15.
+- de Woonkamer-teller op het huis toont hoeveel van de 6 taken klaar zijn.
+- teruggaan van taken -> overzicht -> huis behoudt dezelfde waarden.
+- alles blijft opgeslagen in de browser.
+
+Upload alle bestanden over de huidige GitHub-bestanden en commit opnieuw.

@@ -3,18 +3,28 @@
 <title>Homey</title><link rel="manifest" href="manifest.json"><link rel="stylesheet" href="style.css"></head><body><main id="app">
 
 <section id="houseScreen" class="screen">
-<img src="homey-house.png" class="base" alt="Homey huis">
-<button class="hot bedroom" data-overview></button><button class="hot bathroom" data-overview></button>
-<button class="hot living" data-overview></button><button class="hot kitchen" data-overview></button>
-<button class="hot hall" data-overview></button><button class="hot laundry" data-overview></button>
-<button class="hot terrace" data-overview></button>
+  <img src="homey-house.png" class="base" alt="Homey huis">
+
+  <!-- Alleen de veranderlijke waarden liggen als kleine, afdekkende lagen boven het vaste beeld. -->
+  <div class="home-value home-coins"><span class="coins">14</span></div>
+  <div class="home-value home-points"><span class="points">65</span></div>
+  <div class="home-value home-today"><span class="today">10</span>/15</div>
+  <div id="homeBallRow" class="home-ballrow"></div>
+  <div class="home-value home-bonus"><span class="today">10</span>/15</div>
+  <div id="homeBonusCheck" class="home-bonus-check"></div>
+  <div class="home-value home-living-count"><span id="homeLivingDone">0</span>/6</div>
+
+  <button class="hot bedroom" data-overview></button><button class="hot bathroom" data-overview></button>
+  <button class="hot living" data-overview></button><button class="hot kitchen" data-overview></button>
+  <button class="hot hall" data-overview></button><button class="hot laundry" data-overview></button>
+  <button class="hot terrace" data-overview></button>
 </section>
 
 <section id="overviewScreen" class="screen" hidden>
 <img src="homey-frame.png" class="base" alt="">
 <div class="middle">
   <div class="stats"><div><b>⭐ <span class="points">65</span></b><small>punten</small></div><div><b>🪙 <span class="coins">14</span></b><small>munten</small></div><div><b>🔵 <span class="today">10</span>/15</b><small>bollen vandaag</small></div></div>
-  <div class="ballrow"></div><div class="bonus">5 bollen tot bonus! <strong>+15 punten 🎁</strong></div>
+  <div class="ballrow"></div><div class="bonus"><span class="bonusText">5 bollen tot bonus!</span> <strong>+15 punten 🎁</strong></div>
   <div id="roomCards" class="roomlist"></div>
   <button id="overviewBack" class="frameback"></button>
 </div>
@@ -25,7 +35,7 @@
 <div class="task-middle">
   <div class="task-head"><button id="taskBack">‹</button><div><div class="room-badge">🛋️</div><h1>Woonkamer</h1></div><span></span></div>
   <div class="stats"><div><b>⭐ <span class="points">65</span></b><small>punten</small></div><div><b>🪙 <span class="coins">14</span></b><small>munten</small></div><div><b>🔵 <span class="today">10</span>/15</b><small>bollen vandaag</small></div></div>
-  <div class="ballrow"></div><div class="bonus">5 bollen tot bonus! <strong>+15 punten 🎁</strong></div>
+  <div class="ballrow"></div><div class="bonus"><span class="bonusText">5 bollen tot bonus!</span> <strong>+15 punten 🎁</strong></div>
   <div class="task-progress"><div><span id="doneText">0 van 6 taken klaar</span><b id="pct">0%</b></div><div class="track"><i id="taskFill"></i></div></div>
   <div id="tasks" class="tasklist"></div>
 </div>
