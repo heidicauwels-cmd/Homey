@@ -1,1 +1,15 @@
-Upload deze bestanden naar GitHub en vervang de bestaande. Dit kameroverzicht volgt de linkerzijde van je voorbeeld. De vaste huispagina is niet gewijzigd.
+HOMEY — CORRECTIE KAMEROVERZICHT
+
+Deze versie corrigeert de zojuist gecommitte verkeerde versie.
+
+Belangrijk:
+- homey-house.png blijft exact de goedgekeurde huispagina.
+- homey-frame.png blijft exact het goedgekeurde lege kader.
+- Er wordt GEEN tweede Homey-logo of navigatie getekend.
+- Alleen de lege middenzone wordt gevuld.
+- Kamerminiaturen zijn rechtstreeks gecropt uit jouw eigen referentiebeeld.
+- Woonkamer, Keuken en Badkamer zijn klikbaar.
+- Slaapkamer, Wasruimte en Caravan zijn vergrendeld.
+- De takenlijst komt in de volgende stap.
+
+Upload alle bestanden uit deze map over de huidige GitHub-bestanden en commit opnieuw.

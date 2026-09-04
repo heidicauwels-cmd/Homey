@@ -1,1 +1,20 @@
-const h=document.getElementById("house"),o=document.getElementById("overview"),c=document.getElementById("cards");const rooms=[["Woonkamer","🛋️","6 taken",0],["Keuken","🍳","5 taken",0],["Badkamer","🛁","4 taken",0],["Slaapkamer","🛏️","Vrijspelen op level 5",1],["Wasruimte","🧺","Vrijspelen op level 5",1],["Caravan","🚐","Vrijspelen op level 5",1]];function draw(){c.innerHTML=rooms.map(x=>`<button class="card ${x[3]?"locked":""}" ${x[3]?"disabled":""}><span class="pic">${x[1]}</span><span><span class="name">${x[0]}</span><span class="sub">${x[3]?"🔒 ":""}${x[2]}</span>${x[3]?"":'<span class="prog"><i class="g"></i><i class="g"></i><i class="dot"></i><i class="o"></i><i class="o"></i><i class="r"></i><i class="r"></i></span>'}</span><span class="arrow">${x[3]?"🔒":"›"}</span></button>`).join("")}document.querySelectorAll("[data-open]").forEach(b=>b.onclick=()=>{draw();h.hidden=true;o.hidden=false});document.getElementById("back").onclick=()=>{o.hidden=true;h.hidden=false};
+const house=document.getElementById('houseScreen');
+const overview=document.getElementById('overviewScreen');
+
+document.querySelectorAll('[data-overview]').forEach(button=>{
+  button.addEventListener('click',()=>{
+    house.hidden=true;
+    overview.hidden=false;
+  });
+});
+
+document.getElementById('overviewBack').addEventListener('click',()=>{
+  overview.hidden=true;
+  house.hidden=false;
+});
+
+document.querySelectorAll('.room-card[data-room]').forEach(card=>{
+  card.addEventListener('click',()=>{
+    alert(card.dataset.room+' — de takenlijst koppelen we hierna.');
+  });
+});
