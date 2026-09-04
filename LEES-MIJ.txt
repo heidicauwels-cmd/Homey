@@ -1,8 +1,14 @@
-HOMEY — TERUG NAAR HUIS GEFIXT
+HOMEY — TERUG NAAR HUIS FIX V2
 
-Correctie op Homey-huistellers:
-- vanuit het kameroverzicht kun je nu onderaan op 'Mijn huis' tikken;
-- vanuit de takenlijst kun je ook rechtstreeks onderaan op 'Mijn huis' tikken;
-- de tellers worden meteen opnieuw gerenderd wanneer je terug op de huispagina komt.
+Deze correctie verplaatst de klikzone van 'Mijn huis' uit de scrollende middeninhoud
+naar het volledige scherm. Daardoor ligt de klikzone nu exact boven het huis-icoon
+in de vaste onderste navigatie.
+
+Test:
+1. Open Woonkamer.
+2. Ga naar de takenlijst.
+3. Ga terug naar het kameroverzicht.
+4. Tik onderaan links op 'Mijn huis'.
+5. Je moet direct terug op de huispagina komen.
 
 Upload deze bestanden over de huidige GitHub-versie en commit opnieuw.

@@ -80,15 +80,15 @@
   .home-living-count{font-size:13px}
 }
 
-/* Klikzone op 'Mijn huis' in de vaste onderste navigatie */
+/* Klikzone exact boven 'Mijn huis' in de vaste onderste navigatie */
 .home-nav-hotspot{
-  position:fixed;
-  left:2.7%;
-  bottom:0.8%;
-  width:18.2%;
-  height:9.4%;
+  position:absolute;
+  left:2.6%;
+  bottom:0.5%;
+  width:18.5%;
+  height:10.2%;
   border:0;
-  background:transparent;
-  z-index:20;
+  background:rgba(0,0,0,0);
+  z-index:50;
   cursor:pointer;
 }

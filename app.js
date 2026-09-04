@@ -103,5 +103,10 @@ function goHome(){
   H.hidden=false;
   renderCounters();
 }
-document.getElementById('overviewHomeNav').onclick=goHome;
-document.getElementById('taskHomeNav').onclick=goHome;
+
+
+
+const overviewHomeNav=document.getElementById('overviewHomeNav');
+const taskHomeNav=document.getElementById('taskHomeNav');
+if(overviewHomeNav) overviewHomeNav.addEventListener('click',goHome);
+if(taskHomeNav) taskHomeNav.addEventListener('click',goHome);
