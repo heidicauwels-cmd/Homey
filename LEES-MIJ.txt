@@ -1,18 +1,20 @@
-HOMEY — TELLERS GESYNCHRONISEERD
+HOMEY — KAMERS VRIJSPELEN
 
-Deze versie bouwt verder op Homey-levels-nav-fix.
+Deze versie bouwt verder op Homey-tellers-gesynchroniseerd.
 
-Gecorrigeerd:
-- de munten in de header van het huisscherm, kamerscherm, takenscherm en Levels-scherm
-  gebruiken nu allemaal dezelfde Homey-teller;
-- de punten in die vier headers gebruiken eveneens dezelfde Homey-teller;
-- wanneer je een taak voltooit, worden de waarden dus overal samen bijgewerkt;
-- de oude vaste waarden 256 en 1.842 in homey-frame.png worden op de andere schermen
-  afgedekt door de actuele waarden, net zoals dit al gebeurde op het huisscherm.
+Nieuw:
+- kies je op level 5, 10, 15, ... voor 🏡 Kamer, dan wordt je gekozen kamer echt ontgrendeld;
+- Slaapkamer, Wasruimte en Caravan kunnen zo vrijgespeeld worden;
+- na vrijspelen verdwijnt het slot op die kamer;
+- de kamer wordt aanklikbaar;
+- de kamer krijgt een eigen takenlijst;
+- andere vergrendelde kamers blijven op slot tot je ze op een later vrijspeelmoment kiest.
+
+Bewaren:
+- je keuze blijft opgeslagen via dezelfde Homey-opslag;
+- punten, munten, bollen, bonus, taakfrequenties en levels blijven behouden.
 
 Niet gewijzigd:
-- taken en frequenties;
-- dagbollen en bonus;
-- levels en vrijspeelkeuzes;
-- huisafbeelding;
-- navigatie.
+- de vaste Homey-afbeeldingen;
+- de navigatie;
+- de bestaande Woonkamer/Keuken/Badkamer-logica.

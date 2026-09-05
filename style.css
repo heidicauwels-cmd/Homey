@@ -408,3 +408,31 @@
   .frame-coins,
   .frame-points{font-size:12px}
 }
+
+
+/* ========== VRIJSPELEN KAMERS ========== */
+.room-card[data-unlocked="true"]{
+  opacity:1 !important;
+  filter:none !important;
+  cursor:pointer !important;
+}
+.room-card[data-unlocked="true"] .room-lock,
+.room-card[data-unlocked="true"] .lock,
+.room-card[data-unlocked="true"] [data-lock]{
+  display:none !important;
+}
+.room-card[data-unlocked="true"] .unlock-at-level,
+.room-card[data-unlocked="true"] .locked-copy{
+  display:none !important;
+}
+.room-card[data-unlocked="true"]::after{
+  content:"›";
+  position:absolute;
+  right:12px;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:28px;
+  line-height:1;
+  color:#8aa35b;
+  font-weight:700;
+}

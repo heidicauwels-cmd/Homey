@@ -30,7 +30,26 @@ const tasksByRoom={
   ['Hang handdoeken netjes','Elke dag','task-towels.jpg'],
   ['Neem de spiegel af','Elke 4 dagen','task-mirror.jpg'],
   ['Maak het bad schoon','Elke 5 dagen','task-bath.jpg']
- ]
+ ],
+
+  Slaapkamer:[
+    {title:'Maak het bed op',freq:'Elke dag',img:'room-bedroom.jpg'},
+    {title:'Ruim kleding op',freq:'Elke 2 dagen',img:'room-bedroom.jpg'},
+    {title:'Stof oppervlakken af',freq:'Elke 4 dagen',img:'room-bedroom.jpg'},
+    {title:'Stofzuig de vloer',freq:'Elke 5 dagen',img:'room-bedroom.jpg'}
+  ],
+  Wasruimte:[
+    {title:'Sorteer de was',freq:'Elke dag',img:'room-laundry.jpg'},
+    {title:'Zet een wasmachine aan',freq:'Elke 2 dagen',img:'room-laundry.jpg'},
+    {title:'Vouw droge was op',freq:'Elke 2 dagen',img:'room-laundry.jpg'},
+    {title:'Maak de wasruimte netjes',freq:'Elke 5 dagen',img:'room-laundry.jpg'}
+  ],
+  Caravan:[
+    {title:'Ruim de caravan op',freq:'Elke 3 dagen',img:'room-caravan.jpg'},
+    {title:'Maak het keukenblok schoon',freq:'Elke 3 dagen',img:'room-caravan.jpg'},
+    {title:'Controleer voorraad',freq:'Elke 7 dagen',img:'room-caravan.jpg'},
+    {title:'Stofzuig de vloer',freq:'Elke 5 dagen',img:'room-caravan.jpg'}
+  ],
 };
 
 const badges={Woonkamer:'🛋️',Keuken:'🍳',Badkamer:'🛁'};
@@ -84,6 +103,12 @@ delete state.done;
 if(!state.levelRewards || typeof state.levelRewards!=='object') state.levelRewards={};
 if(!Array.isArray(state.unlockedRooms)) state.unlockedRooms=[];
 if(!Array.isArray(state.unlockedItemTypes)) state.unlockedItemTypes=[];
+
+if(!state.completed) state.completed={};
+['Woonkamer','Keuken','Badkamer','Slaapkamer','Wasruimte','Caravan'].forEach(r=>{
+  if(!Array.isArray(state.completed[r])) state.completed[r]=[];
+});
+
 
 // Oudere opgeslagen versies hadden bonusAwarded/lastDate nog niet.
 if(typeof state.bonusAwarded!=='boolean'){
@@ -255,6 +280,27 @@ function chooseReward(name){
   save();
   closeRewardModal();
   renderLevels();
+  renderOverview();
+}
+
+
+function roomIsUnlocked(room){
+  return ['Woonkamer','Keuken','Badkamer'].includes(room) || state.unlockedRooms.includes(room);
+}
+
+function applyRoomUnlocks(){
+  document.querySelectorAll('.room-card[data-room]').forEach(card=>{
+    const room=card.dataset.room;
+    const unlocked=roomIsUnlocked(room);
+    card.dataset.unlocked=unlocked?'true':'false';
+
+    if(unlocked){
+      // Remove obvious lock text/icons when this room was chosen as a level reward.
+      card.querySelectorAll('.room-lock,.lock,[data-lock],.unlock-at-level,.locked-copy').forEach(el=>el.style.display='none');
+      card.classList.remove('locked');
+      card.setAttribute('aria-disabled','false');
+    }
+  });
 }
 
 function renderOverview(){
@@ -267,6 +313,7 @@ function renderOverview(){
    </span><span class="chev">${x[3]?'🔒':'›'}</span></button>`
  }).join('');
  renderCounters();
+  applyRoomUnlocks();
 }
 
 function renderTasks(){
@@ -337,6 +384,23 @@ const taskHomeNav=document.getElementById('taskHomeNav');
 if(overviewHomeNav)overviewHomeNav.addEventListener('click',goHome);
 if(taskHomeNav)taskHomeNav.addEventListener('click',goHome);
 
+
+
+function openRoomTasks(room){
+  if(!roomIsUnlocked(room)) return;
+  currentRoom=room;
+  T.hidden=false; O.hidden=true; H.hidden=true; L.hidden=true;
+  renderTasks(room);
+}
+
+
+document.querySelectorAll('.room-card[data-room]').forEach(card=>{
+  card.addEventListener('click',e=>{
+    const room=card.dataset.room;
+    if(!roomIsUnlocked(room)) return;
+    openRoomTasks(room);
+  });
+});
 
 document.querySelectorAll('[data-go-levels]').forEach(b=>b.addEventListener('click',showLevels));
 const levelHomeNav=document.getElementById('levelHomeNav');
