@@ -97,7 +97,11 @@ for(const room of ['Woonkamer','Keuken','Badkamer']){
   if(!Array.isArray(state.completed[room])) state.completed[room]=[];
 }
 
+
 delete state.done;
+
+// TIJDELIJKE TESTMODUS: zorg dat level 5 meteen bereikbaar is.
+if(state.points < 400) state.points = 400;
 
 // Levels/beloningskeuzes (migratie voor bestaande installaties).
 if(!state.levelRewards || typeof state.levelRewards!=='object') state.levelRewards={};

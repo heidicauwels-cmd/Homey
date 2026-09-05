@@ -1,20 +1,19 @@
-HOMEY — KAMERS VRIJSPELEN
+HOMEY — TIJDELIJKE LEVEL 5 TESTVERSIE
 
-Deze versie bouwt verder op Homey-tellers-gesynchroniseerd.
+Deze versie is alleen bedoeld om het vrijspelen te testen.
 
-Nieuw:
-- kies je op level 5, 10, 15, ... voor 🏡 Kamer, dan wordt je gekozen kamer echt ontgrendeld;
-- Slaapkamer, Wasruimte en Caravan kunnen zo vrijgespeeld worden;
-- na vrijspelen verdwijnt het slot op die kamer;
-- de kamer wordt aanklikbaar;
-- de kamer krijgt een eigen takenlijst;
-- andere vergrendelde kamers blijven op slot tot je ze op een later vrijspeelmoment kiest.
+Wat gebeurt er:
+- bij openen wordt je puntentotaal tijdelijk minstens 400 punten;
+- daardoor kom je meteen op level 5;
+- in Levels hoort een 🎁 vrijspeelmoment te verschijnen;
+- kies 🏡 Kamer;
+- kies bijvoorbeeld Slaapkamer;
+- ga terug naar het kamerscherm;
+- het slot van Slaapkamer hoort weg te zijn;
+- de kamer hoort aanklikbaar te zijn;
+- de takenlijst van die kamer hoort te openen.
 
-Bewaren:
-- je keuze blijft opgeslagen via dezelfde Homey-opslag;
-- punten, munten, bollen, bonus, taakfrequenties en levels blijven behouden.
-
-Niet gewijzigd:
-- de vaste Homey-afbeeldingen;
-- de navigatie;
-- de bestaande Woonkamer/Keuken/Badkamer-logica.
+Belangrijk:
+- dit is een TESTVERSIE;
+- upload na de test opnieuw de normale versie zonder testpunten;
+- alle andere logica blijft hetzelfde.
