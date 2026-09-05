@@ -97,3 +97,279 @@
 .home-living-count{
   display:none !important;
 }
+
+
+/* ========== LEVELS ========== */
+.levels-nav-hotspot{
+  position:absolute;
+  left:60.2%;
+  bottom:.5%;
+  width:18.8%;
+  height:10.2%;
+  border:0;
+  background:transparent;
+  z-index:51;
+  cursor:pointer;
+}
+
+.level-middle{
+  position:absolute;
+  left:6.4%;
+  right:6.4%;
+  top:10.7%;
+  bottom:11.8%;
+  overflow:auto;
+  padding:6px 1px 18px;
+  font-family:Arial,sans-serif;
+  color:#3b291b;
+}
+.level-title{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  margin:3px 0 9px;
+}
+.level-title h1{
+  margin:0;
+  font:26px "Segoe Print","Comic Sans MS",cursive;
+}
+.level-title p{
+  margin:1px 0 0;
+  font-size:9px;
+  color:#806b58;
+}
+.level-star{
+  width:42px;height:42px;border-radius:50%;
+  display:grid;place-items:center;
+  background:#f4d886;
+  border:2px solid #d7b958;
+  color:#fffaf0;
+  font-size:25px;
+  box-shadow:0 2px 0 #caa94d;
+}
+.level-card{
+  background:#fffaf1;
+  border:1px solid #e4d6c0;
+  border-radius:15px;
+}
+.main-level-card{
+  display:grid;
+  grid-template-columns:75px 1fr;
+  gap:10px;
+  align-items:center;
+  padding:10px;
+}
+.level-number-wrap{
+  width:68px;height:68px;border-radius:18px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:#eef0d8;
+  border:1px solid #cbd0a7;
+}
+.level-number-wrap span{
+  font-size:8px;letter-spacing:1px;color:#7a745d;
+}
+.level-number-wrap strong{
+  font:30px "Segoe Print","Comic Sans MS",cursive;
+  line-height:31px;color:#67783c;
+}
+.level-progress-copy b{display:block;font-size:13px}
+.level-progress-copy small{display:block;font-size:9px;margin:4px 0 7px;color:#806b58}
+.level-track{
+  height:9px;background:#eadfce;border-radius:20px;overflow:hidden;
+  border:1px solid #dfd1bb;
+}
+.level-track i{
+  display:block;height:100%;width:0%;
+  background:#8eae57;border-radius:20px;
+}
+.level-reward-note{
+  display:grid;grid-template-columns:34px 1fr;
+  align-items:center;
+  gap:5px;
+  padding:7px 10px;
+  margin:8px 0;
+  background:#fff3dc;
+  border:1px solid #ead2aa;
+  border-radius:13px;
+}
+.level-reward-note>span{font-size:22px;text-align:center}
+.level-reward-note b{display:block;font-size:10px}
+.level-reward-note small{display:block;font-size:8px;margin-top:2px;color:#7e6853}
+.level-roadmap{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:5px;
+  margin:8px 0;
+}
+.level-node{
+  min-height:52px;
+  border:1px solid #e1d2ba;
+  border-radius:12px;
+  background:#fffaf1;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  position:relative;
+}
+.level-node b{font-size:12px}
+.level-node small{font-size:13px;margin-top:2px}
+.level-node.reached{
+  background:#ebf2dc;
+  border-color:#bfd19b;
+}
+.level-node.reward{
+  background:#fff0d3;
+  border-color:#e2c17e;
+}
+.level-node.reward.reached{
+  background:#f3e5b5;
+  border-color:#caae59;
+}
+.pending-reward{
+  display:grid;
+  grid-template-columns:42px 1fr auto;
+  gap:7px;
+  align-items:center;
+  padding:8px;
+  margin:9px 0;
+  border-color:#d5b969;
+  background:#fff2cf;
+}
+.gift-badge{
+  width:38px;height:38px;border-radius:12px;
+  display:grid;place-items:center;
+  background:#fffaf1;
+  font-size:22px;
+}
+.pending-copy b{display:block;font-size:11px}
+.pending-copy small{display:block;font-size:8px;margin-top:2px}
+.pending-reward button{
+  border:1px solid #9caf69;
+  background:#edf3df;
+  color:#516235;
+  border-radius:10px;
+  padding:7px 10px;
+  font-weight:700;
+  font-size:9px;
+}
+.level-section-title{
+  font:15px "Segoe Print","Comic Sans MS",cursive;
+  margin:9px 2px 5px;
+}
+.unlocked-list{
+  display:grid;
+  gap:6px;
+}
+.unlocked-empty{
+  padding:11px;
+  text-align:center;
+  font-size:9px;
+  color:#8a7663;
+  background:#fffaf1;
+  border:1px dashed #d9c8ad;
+  border-radius:12px;
+}
+.unlock-row{
+  display:grid;
+  grid-template-columns:32px 1fr auto;
+  align-items:center;
+  gap:6px;
+  padding:7px 9px;
+  background:#fffaf1;
+  border:1px solid #e4d6c0;
+  border-radius:11px;
+}
+.unlock-row>span:first-child{font-size:19px;text-align:center}
+.unlock-row b{font-size:10px;font-weight:600}
+.unlock-row small{font-size:8px;color:#806b58}
+.unlock-row .unlock-level{
+  font-size:8px;
+  color:#6e7f45;
+  background:#ecf2df;
+  border-radius:10px;
+  padding:4px 6px;
+}
+
+/* Beloningsvenster */
+.reward-modal{
+  position:fixed;
+  inset:0;
+  z-index:999;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  background:rgba(59,41,27,.28);
+}
+.reward-sheet{
+  width:min(100%,512px);
+  max-height:78vh;
+  overflow:auto;
+  position:relative;
+  background:#fbf4e7;
+  border-radius:24px 24px 0 0;
+  padding:18px 20px 24px;
+  box-shadow:0 -12px 35px #0002;
+  font-family:Arial,sans-serif;
+  color:#3b291b;
+}
+.reward-sheet h2{
+  margin:4px 0;
+  text-align:center;
+  font:24px "Segoe Print","Comic Sans MS",cursive;
+}
+.reward-sheet p{
+  margin:3px 0 13px;
+  text-align:center;
+  font-size:10px;
+  color:#7e6956;
+}
+.reward-gift{text-align:center;font-size:34px}
+.reward-close{
+  position:absolute;right:14px;top:10px;
+  width:32px;height:32px;border-radius:50%;
+  border:1px solid #dcc7aa;background:#fffaf1;
+  color:#6d5642;font-size:23px;line-height:25px;
+}
+.reward-type-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:9px;
+}
+.reward-type{
+  border:1px solid #dfceb2;
+  border-radius:15px;
+  background:#fffaf1;
+  min-height:128px;
+  padding:10px;
+  color:#3b291b;
+}
+.reward-type>span{display:block;font-size:35px;margin-bottom:4px}
+.reward-type b{display:block;font-size:12px}
+.reward-type small{display:block;font-size:8px;margin-top:5px;color:#806b58}
+.reward-back{
+  border:0;background:transparent;color:#705943;
+  font-size:11px;padding:0 0 5px;
+}
+.reward-choices{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:7px;
+}
+.reward-choice{
+  min-height:55px;
+  border:1px solid #dfceb2;
+  border-radius:12px;
+  background:#fffaf1;
+  color:#3b291b;
+  padding:7px;
+  text-align:left;
+  display:grid;
+  grid-template-columns:28px 1fr;
+  align-items:center;
+  gap:5px;
+}
+.reward-choice span{font-size:21px;text-align:center}
+.reward-choice b{font-size:10px;font-weight:600}
+.reward-choice:disabled{
+  opacity:.45;
+}

@@ -1,8 +1,24 @@
-HOMEY — HUISTELLER CORRECTIE
+HOMEY — LEVELS
 
-Correctie:
-- de extra dynamische Woonkamer-teller (zoals 2/6) bovenop het huis is verwijderd;
-- de oorspronkelijke teller/visual in het huisontwerp blijft zichtbaar;
-- taken, frequenties, punten, munten, bollen, dagbonus en navigatie blijven ongewijzigd.
+Deze versie bouwt verder op Homey-huisteller-correct.
 
-Deze versie bouwt verder op Homey-taakfrequenties en bevat NIET de foutieve brede afdekking.
+Nieuw:
+- het onderste tabblad 'Levels' is nu klikbaar;
+- je begint op level 1;
+- elke 100 punten ga je één level omhoog;
+- het Levels-scherm toont je huidige level en voortgang naar het volgende;
+- op level 5, 10, 15, 20, ... krijg je een vrijspeelmoment;
+- je kiest dan zelf:
+    🏡 een kamer
+    OF
+    🛍️ een itemtype;
+- daarna kies je de concrete kamer of categorie;
+- je keuze wordt blijvend opgeslagen in Homey;
+- eerder gekozen beloningen verschijnen onder 'Vrijgespeeld'.
+
+Belangrijk:
+- bestaande punten, munten, bollen, taken en taakfrequenties blijven behouden;
+- de huisafbeelding is niet gewijzigd;
+- de extra foutieve Woonkamer-teller blijft verwijderd;
+- een vrijgespeelde kamer/itemcategorie wordt in deze stap alleen als keuze opgeslagen.
+  We kunnen die in de volgende stap koppelen aan het kameroverzicht en het winkeltje.

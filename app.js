@@ -1,4 +1,4 @@
-const H=document.getElementById('houseScreen'),O=document.getElementById('overviewScreen'),T=document.getElementById('taskScreen');
+const H=document.getElementById('houseScreen'),O=document.getElementById('overviewScreen'),T=document.getElementById('taskScreen'),L=document.getElementById('levelScreen');
 
 const roomData=[
  ['Woonkamer','room-living.jpg','6 taken',0],
@@ -77,7 +77,13 @@ if(!state.completed){
 for(const room of ['Woonkamer','Keuken','Badkamer']){
   if(!Array.isArray(state.completed[room])) state.completed[room]=[];
 }
+
 delete state.done;
+
+// Levels/beloningskeuzes (migratie voor bestaande installaties).
+if(!state.levelRewards || typeof state.levelRewards!=='object') state.levelRewards={};
+if(!Array.isArray(state.unlockedRooms)) state.unlockedRooms=[];
+if(!Array.isArray(state.unlockedItemTypes)) state.unlockedItemTypes=[];
 
 // Oudere opgeslagen versies hadden bonusAwarded/lastDate nog niet.
 if(typeof state.bonusAwarded!=='boolean'){
@@ -135,6 +141,120 @@ function renderCounters(){
  document.getElementById('homeLivingDone').textContent=roomDone('Woonkamer');
  document.getElementById('homeBonusCheck').classList.toggle('done',state.today>=15);
  renderBalls();
+}
+
+
+const rewardRooms=['Slaapkamer','Wasruimte','Caravan','Hobbykamer'];
+const rewardItemTypes=['Planten','Tapijten','Verlichting','Decoratie','Vloeren','Behang & verf','Zetels','Bedden','Nachtkastjes','Badkamer','Keuken'];
+
+function currentLevel(){
+  // Je begint op level 1. Elke volle 100 punten brengt je één level hoger.
+  return Math.floor(state.points/100)+1;
+}
+function levelProgressPoints(){
+  return state.points%100;
+}
+function reachedRewardLevels(){
+  const lv=currentLevel();
+  const arr=[];
+  for(let m=5;m<=lv;m+=5) arr.push(m);
+  return arr;
+}
+function pendingRewardLevel(){
+  return reachedRewardLevels().find(m=>!state.levelRewards[String(m)]) || null;
+}
+
+function renderLevels(){
+  const lv=currentLevel();
+  const p=levelProgressPoints();
+  document.getElementById('levelNumber').textContent=lv;
+  document.getElementById('levelPointsText').textContent=`${p} / 100 punten`;
+  document.getElementById('levelNextText').textContent=`${100-p} punten tot level ${lv+1}`;
+  document.getElementById('levelFill').style.width=`${p}%`;
+
+  // Toon een venster van vijf levels rond de huidige voortgang.
+  const groupStart=Math.floor((lv-1)/5)*5+1;
+  const nodes=[];
+  for(let n=groupStart;n<groupStart+5;n++){
+    const isReward=n%5===0;
+    const reached=n<=lv;
+    nodes.push(`<div class="level-node ${isReward?'reward':''} ${reached?'reached':''}">
+      <b>${n}</b><small>${isReward?'🎁':(reached?'✓':'•')}</small>
+    </div>`);
+  }
+  document.getElementById('levelRoadmap').innerHTML=nodes.join('');
+
+  const pending=pendingRewardLevel();
+  const box=document.getElementById('pendingReward');
+  if(pending){
+    box.hidden=false;
+    document.getElementById('pendingTitle').textContent=`Level ${pending} bereikt!`;
+  }else{
+    box.hidden=true;
+  }
+
+  const unlocked=[];
+  Object.keys(state.levelRewards)
+    .map(Number)
+    .sort((a,b)=>a-b)
+    .forEach(level=>{
+      const r=state.levelRewards[String(level)];
+      if(!r) return;
+      const icon=r.type==='room'?'🏡':'🛍️';
+      const label=r.type==='room'?'Kamer':'Itemtype';
+      unlocked.push(`<div class="unlock-row"><span>${icon}</span><div><b>${r.name}</b><small>${label}</small></div><span class="unlock-level">level ${level}</span></div>`);
+    });
+
+  document.getElementById('unlockedList').innerHTML=unlocked.length
+    ? unlocked.join('')
+    : `<div class="unlocked-empty">Je eerste keuze komt vrij op level 5. 🎁</div>`;
+}
+
+function showLevels(){
+  H.hidden=true;O.hidden=true;T.hidden=true;L.hidden=false;
+  renderLevels();renderCounters();
+}
+
+let rewardType=null;
+function openRewardModal(){
+  const pending=pendingRewardLevel();
+  if(!pending) return;
+  rewardType=null;
+  document.getElementById('rewardLevelTitle').textContent=`Level ${pending}!`;
+  document.getElementById('rewardStepType').hidden=false;
+  document.getElementById('rewardStepChoice').hidden=true;
+  document.getElementById('rewardModal').hidden=false;
+}
+function closeRewardModal(){
+  document.getElementById('rewardModal').hidden=true;
+}
+function showRewardChoices(type){
+  rewardType=type;
+  const choices=type==='room'?rewardRooms:rewardItemTypes;
+  const already=type==='room'?state.unlockedRooms:state.unlockedItemTypes;
+  document.getElementById('choiceTitle').textContent=type==='room'?'Kies een kamer':'Kies een itemtype';
+  document.getElementById('choiceHelp').textContent='Deze keuze wordt meteen bewaard.';
+  document.getElementById('rewardChoices').innerHTML=choices.map(name=>{
+    const used=already.includes(name);
+    return `<button class="reward-choice" data-reward-name="${name.replace(/"/g,'&quot;')}" ${used?'disabled':''}>
+      <span>${type==='room'?'🏡':'🛍️'}</span><b>${name}${used?' ✓':''}</b>
+    </button>`;
+  }).join('');
+  document.getElementById('rewardStepType').hidden=true;
+  document.getElementById('rewardStepChoice').hidden=false;
+}
+function chooseReward(name){
+  const pending=pendingRewardLevel();
+  if(!pending || !rewardType) return;
+
+  const collection=rewardType==='room'?state.unlockedRooms:state.unlockedItemTypes;
+  if(collection.includes(name)) return;
+
+  collection.push(name);
+  state.levelRewards[String(pending)]={type:rewardType,name};
+  save();
+  closeRewardModal();
+  renderLevels();
 }
 
 function renderOverview(){
@@ -211,10 +331,36 @@ document.getElementById('tasks').onclick=e=>{
  save();renderTasks();
 };
 
-function goHome(){T.hidden=true;O.hidden=true;H.hidden=false;renderCounters()}
+function goHome(){T.hidden=true;O.hidden=true;L.hidden=true;H.hidden=false;renderCounters()}
 const overviewHomeNav=document.getElementById('overviewHomeNav');
 const taskHomeNav=document.getElementById('taskHomeNav');
 if(overviewHomeNav)overviewHomeNav.addEventListener('click',goHome);
 if(taskHomeNav)taskHomeNav.addEventListener('click',goHome);
+
+
+document.querySelectorAll('[data-go-levels]').forEach(b=>b.addEventListener('click',showLevels));
+const levelHomeNav=document.getElementById('levelHomeNav');
+if(levelHomeNav) levelHomeNav.addEventListener('click',goHome);
+
+const openReward=document.getElementById('openReward');
+const closeReward=document.getElementById('closeReward');
+const rewardBack=document.getElementById('rewardBack');
+if(openReward) openReward.addEventListener('click',openRewardModal);
+if(closeReward) closeReward.addEventListener('click',closeRewardModal);
+if(rewardBack) rewardBack.addEventListener('click',()=>{
+  document.getElementById('rewardStepChoice').hidden=true;
+  document.getElementById('rewardStepType').hidden=false;
+});
+document.querySelectorAll('.reward-type').forEach(b=>b.addEventListener('click',()=>showRewardChoices(b.dataset.rewardType)));
+const rewardChoices=document.getElementById('rewardChoices');
+if(rewardChoices) rewardChoices.addEventListener('click',e=>{
+  const b=e.target.closest('[data-reward-name]');
+  if(!b || b.disabled) return;
+  chooseReward(b.dataset.rewardName);
+});
+const rewardModal=document.getElementById('rewardModal');
+if(rewardModal) rewardModal.addEventListener('click',e=>{
+  if(e.target===rewardModal) closeRewardModal();
+});
 
 renderOverview();renderCounters();

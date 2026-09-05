@@ -18,6 +18,7 @@
   <button class="hot living" data-overview></button><button class="hot kitchen" data-overview></button>
   <button class="hot hall" data-overview></button><button class="hot laundry" data-overview></button>
   <button class="hot terrace" data-overview></button>
+<button class="levels-nav-hotspot" data-go-levels aria-label="Levels"></button>
 </section>
 
 <section id="overviewScreen" class="screen" hidden>
@@ -29,6 +30,7 @@
   <button id="overviewBack" class="frameback" aria-label="Terug naar huis"></button>
 </div>
 <button id="overviewHomeNav" class="home-nav-hotspot" aria-label="Mijn huis"></button>
+<button class="levels-nav-hotspot" data-go-levels aria-label="Levels"></button>
 </section>
 
 <section id="taskScreen" class="screen" hidden>
@@ -41,6 +43,80 @@
   <div id="tasks" class="tasklist"></div>
 </div>
 <button id="taskHomeNav" class="home-nav-hotspot" aria-label="Mijn huis"></button>
+<button class="levels-nav-hotspot" data-go-levels aria-label="Levels"></button>
 </section>
+
+<section id="levelScreen" class="screen" hidden>
+  <img src="homey-frame.png" class="base" alt="">
+  <div class="level-middle">
+    <div class="level-title">
+      <div class="level-star">★</div>
+      <div>
+        <h1>Levels</h1>
+        <p>100 punten = een nieuw level</p>
+      </div>
+    </div>
+
+    <div class="level-card main-level-card">
+      <div class="level-number-wrap">
+        <span>LEVEL</span>
+        <strong id="levelNumber">1</strong>
+      </div>
+      <div class="level-progress-copy">
+        <b id="levelPointsText">65 / 100 punten</b>
+        <small id="levelNextText">35 punten tot level 2</small>
+        <div class="level-track"><i id="levelFill"></i></div>
+      </div>
+    </div>
+
+    <div class="level-reward-note">
+      <span>🎁</span>
+      <div><b>Elke 5 levels kies jij je beloning</b><small>🏡 een kamer óf 🛍️ een itemtype</small></div>
+    </div>
+
+    <div class="level-roadmap" id="levelRoadmap"></div>
+
+    <div id="pendingReward" class="level-card pending-reward" hidden>
+      <div class="gift-badge">🎁</div>
+      <div class="pending-copy">
+        <b id="pendingTitle">Level 5 bereikt!</b>
+        <small>Kies wat je wilt vrijspelen.</small>
+      </div>
+      <button id="openReward">Kiezen</button>
+    </div>
+
+    <div class="level-section-title">Vrijgespeeld</div>
+    <div id="unlockedList" class="unlocked-list"></div>
+  </div>
+
+  <button id="levelHomeNav" class="home-nav-hotspot" aria-label="Mijn huis"></button>
+</section>
+
+<div id="rewardModal" class="reward-modal" hidden>
+  <div class="reward-sheet">
+    <button id="closeReward" class="reward-close" aria-label="Sluiten">×</button>
+
+    <div id="rewardStepType">
+      <div class="reward-gift">🎁</div>
+      <h2 id="rewardLevelTitle">Level 5!</h2>
+      <p>Wat wil je deze keer vrijspelen?</p>
+      <div class="reward-type-grid">
+        <button class="reward-type" data-reward-type="room">
+          <span>🏡</span><b>Een kamer</b><small>Kies een nieuwe kamer voor je huis</small>
+        </button>
+        <button class="reward-type" data-reward-type="item">
+          <span>🛍️</span><b>Een itemtype</b><small>Maak een nieuwe categorie in het winkeltje vrij</small>
+        </button>
+      </div>
+    </div>
+
+    <div id="rewardStepChoice" hidden>
+      <button id="rewardBack" class="reward-back">‹ Terug</button>
+      <h2 id="choiceTitle">Kies een kamer</h2>
+      <p id="choiceHelp">Deze keuze wordt meteen bewaard.</p>
+      <div id="rewardChoices" class="reward-choices"></div>
+    </div>
+  </div>
+</div>
 
 </main><script src="app.js"></script></body></html>
