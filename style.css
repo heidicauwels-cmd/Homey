@@ -102,14 +102,27 @@
 /* ========== LEVELS ========== */
 .levels-nav-hotspot{
   position:absolute;
-  left:60.2%;
-  bottom:.5%;
-  width:18.8%;
-  height:10.2%;
   border:0;
   background:transparent;
   z-index:51;
   cursor:pointer;
+}
+
+/* Huisscherm gebruikt homey-house.png */
+.levels-house{
+  left:58.7%;
+  bottom:0%;
+  width:20.6%;
+  height:9.3%;
+}
+
+/* Kamer- en takenscherm gebruiken homey-frame.png */
+.levels-overview,
+.levels-task{
+  left:58.7%;
+  bottom:0%;
+  width:20.6%;
+  height:9.3%;
 }
 
 .level-middle{
