@@ -406,19 +406,6 @@ document.querySelectorAll('[data-go-levels]').forEach(b=>b.addEventListener('cli
 const levelHomeNav=document.getElementById('levelHomeNav');
 if(levelHomeNav) levelHomeNav.addEventListener('click',goHome);
 
-
-const testLevel5=document.getElementById('testLevel5');
-if(testLevel5) testLevel5.addEventListener('click',()=>{
-  // Alleen voor testen: level 5 = 400 punten omdat Homey start op level 1.
-  state.points=400;
-  // Maak de level-5 keuze opnieuw beschikbaar voor de test als die eerder al gebruikt was.
-  delete state.levelRewards['5'];
-  state.unlockedRooms=state.unlockedRooms.filter(r=>!['Slaapkamer','Wasruimte','Caravan','Hobbykamer'].includes(r));
-  save();
-  renderCounters();
-  renderLevels();
-});
-
 const openReward=document.getElementById('openReward');
 const closeReward=document.getElementById('closeReward');
 const rewardBack=document.getElementById('rewardBack');

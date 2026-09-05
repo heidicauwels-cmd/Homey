@@ -1,18 +1,18 @@
-HOMEY — LEVEL 5 TESTKNOP
+HOMEY — DEFINITIEVE BASIS NA TEST KAMERS VRIJSPELEN
 
-Dit is een tijdelijke testversie.
+Deze versie bevat de geteste levelbeloning zonder tijdelijke testknop.
 
-Ga naar Levels en tik op:
-🧪 Test level 5
+Werkt:
+- 100 punten per level;
+- op level 5, 10, 15, ... verschijnt een vrijspeelbeloning;
+- keuze tussen kamer of itemtype;
+- bij keuze voor een kamer wordt de gekozen kamer opgeslagen;
+- het slot van de gekozen kamer verdwijnt;
+- de kamer wordt toegankelijk;
+- bestaande punten, munten, bollen, dagbonus en taakfrequenties blijven behouden;
+- tellers blijven op de schermen gesynchroniseerd.
 
-Dan:
-1. Homey zet de teststand op 400 punten = level 5.
-2. Het 🎁 vrijspeelmoment verschijnt.
-3. Kies 🏡 Kamer.
-4. Kies bijvoorbeeld Slaapkamer.
-5. Ga terug naar het kamerscherm.
-6. Controleer of het slot weg is.
-7. Open de kamer en controleer de takenlijst.
+De tijdelijke knop 'Test level 5' staat NIET in deze versie.
 
-De knop is alleen bedoeld om deze functie te testen.
-Na een geslaagde test maken we hem weer weg en gaan we terug naar de normale puntentelling.
+Dit is de nieuwe propere basis voor de volgende stap: het Winkeltje en
+vrij te spelen itemtypes.
