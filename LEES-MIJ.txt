@@ -1,27 +1,16 @@
-HOMEY — TAAKFREQUENTIES
+HOMEY — HUISTELLER VISUELE FIX
 
-Deze versie bouwt verder op Homey-nieuwe-dag.
+Deze versie bouwt verder op Homey-taakfrequenties.
 
-Nieuw:
-- Een taak blijft groen zolang ze volgens haar frequentie nog niet opnieuw aan de beurt is.
-- Daarna wordt ze automatisch opnieuw actief.
-- De frequentie telt vanaf de dag waarop je de taak voltooit.
+Gefixt:
+- het afdekkende vlak achter de dynamische Woonkamer-teller is breder gemaakt;
+- het oude ingebakken teller/icoontje rechts van bijvoorbeeld 2/6 hoort nu volledig verborgen te zijn;
+- alleen de dynamische Woonkamer-teller blijft zichtbaar.
 
-Voorbeelden:
-- Elke dag → de taak is de volgende kalenderdag opnieuw actief.
-- Elke 2 dagen → na 2 dagen opnieuw actief.
-- Elke 3 dagen → na 3 dagen opnieuw actief.
-- Elke 5 dagen → na 5 dagen opnieuw actief.
-- Elke 7 dagen → na 7 dagen opnieuw actief.
-
-Belangrijk:
-- Punten en munten blijven behouden.
-- Vandaag reset elke nieuwe dag naar 0/15.
-- De dagbonus kan elke nieuwe dag opnieuw verdiend worden.
-- Een taak die vandaag werd afgevinkt kan vandaag nog ongedaan gemaakt worden.
-- Een taak die op een vorige dag werd voltooid en nog niet opnieuw aan de beurt is,
-  blijft groen en kan niet per ongeluk oude punten/munten aftrekken.
-
-Bestaande true/false taakgegevens uit oudere Homey-versies worden automatisch omgezet.
+Verder is niets gewijzigd:
+- taken en frequenties blijven hetzelfde;
+- punten, munten, bollen en dagbonus blijven hetzelfde;
+- navigatie blijft hetzelfde;
+- de originele huisafbeelding is niet aangepast.
 
 Upload alle bestanden over de huidige GitHub-versie en commit opnieuw.
