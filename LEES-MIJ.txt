@@ -1,23 +1,27 @@
-HOMEY — AUTOMATISCHE NIEUWE DAG
+HOMEY — TAAKFREQUENTIES
 
-Deze versie bouwt verder op de werkende versie met:
-- correcte voortgangsbalk rood → oranje → groen
-- bewegend bolletje
-- dagbonus van +15 punten
-- Woonkamer, Keuken en Badkamer
-- werkende munten, punten en bollen
+Deze versie bouwt verder op Homey-nieuwe-dag.
 
 Nieuw:
-- Homey bewaart de kalenderdatum.
-- Bij de eerste opening op een nieuwe dag:
-  • Vandaag gaat automatisch terug naar 0/15.
-  • De dagbonus wordt opnieuw beschikbaar.
-  • Totale punten blijven behouden.
-  • Totale munten blijven behouden.
-  • Afgevinkte taken blijven voorlopig behouden.
+- Een taak blijft groen zolang ze volgens haar frequentie nog niet opnieuw aan de beurt is.
+- Daarna wordt ze automatisch opnieuw actief.
+- De frequentie telt vanaf de dag waarop je de taak voltooit.
+
+Voorbeelden:
+- Elke dag → de taak is de volgende kalenderdag opnieuw actief.
+- Elke 2 dagen → na 2 dagen opnieuw actief.
+- Elke 3 dagen → na 3 dagen opnieuw actief.
+- Elke 5 dagen → na 5 dagen opnieuw actief.
+- Elke 7 dagen → na 7 dagen opnieuw actief.
 
 Belangrijk:
-De taken zelf resetten nog NIET automatisch volgens 'elke dag / elke 2 dagen / ...'.
-Dat bouwen we in de volgende stap bij de taakfrequenties.
+- Punten en munten blijven behouden.
+- Vandaag reset elke nieuwe dag naar 0/15.
+- De dagbonus kan elke nieuwe dag opnieuw verdiend worden.
+- Een taak die vandaag werd afgevinkt kan vandaag nog ongedaan gemaakt worden.
+- Een taak die op een vorige dag werd voltooid en nog niet opnieuw aan de beurt is,
+  blijft groen en kan niet per ongeluk oude punten/munten aftrekken.
+
+Bestaande true/false taakgegevens uit oudere Homey-versies worden automatisch omgezet.
 
 Upload alle bestanden over de huidige GitHub-versie en commit opnieuw.

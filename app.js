@@ -43,12 +43,41 @@ function localDateKey(){
   return `${y}-${m}-${day}`;
 }
 
+function daysBetween(fromKey,toKey){
+  const [fy,fm,fd]=fromKey.split('-').map(Number);
+  const [ty,tm,td]=toKey.split('-').map(Number);
+  return Math.floor((Date.UTC(ty,tm-1,td)-Date.UTC(fy,fm-1,fd))/86400000);
+}
+
+function frequencyDays(label){
+  if(label==='Elke dag') return 1;
+  const m=label.match(/Elke (\d+) dagen/);
+  return m ? Number(m[1]) : 1;
+}
+
 let state=JSON.parse(localStorage.getItem('homey-multiroom')||'null') || {
   points:65, coins:14, today:10,
   bonusAwarded:false,
   lastDate:localDateKey(),
-  done:{Woonkamer:[],Keuken:[],Badkamer:[]}
+  completed:{Woonkamer:[],Keuken:[],Badkamer:[]}
 };
+
+const todayKey=localDateKey();
+
+// Migratie van oudere versies met true/false naar voltooiingsdatums.
+if(!state.completed){
+  state.completed={Woonkamer:[],Keuken:[],Badkamer:[]};
+  if(state.done){
+    for(const room of ['Woonkamer','Keuken','Badkamer']){
+      const old=state.done[room]||[];
+      state.completed[room]=old.map(v=>v ? todayKey : null);
+    }
+  }
+}
+for(const room of ['Woonkamer','Keuken','Badkamer']){
+  if(!Array.isArray(state.completed[room])) state.completed[room]=[];
+}
+delete state.done;
 
 // Oudere opgeslagen versies hadden bonusAwarded/lastDate nog niet.
 if(typeof state.bonusAwarded!=='boolean'){
@@ -59,22 +88,35 @@ if(typeof state.bonusAwarded!=='boolean'){
   }
 }
 
-const todayKey=localDateKey();
 if(!state.lastDate){
-  // Eerste keer met datumondersteuning: behoud de huidige dagstand.
   state.lastDate=todayKey;
 }else if(state.lastDate!==todayKey){
-  // Nieuwe kalenderdag: alleen de dagteller en dagbonus beginnen opnieuw.
-  // Punten, munten en voltooide taken blijven behouden.
+  // Nieuwe kalenderdag: dagteller en dagbonus opnieuw beschikbaar.
+  // Taken worden NIET allemaal gereset; dat gebeurt hieronder per frequentie.
   state.today=0;
   state.bonusAwarded=false;
   state.lastDate=todayKey;
 }
 localStorage.setItem('homey-multiroom',JSON.stringify(state));
 
+function taskIsDone(room,index){
+  const completedOn=state.completed[room]?.[index];
+  if(!completedOn) return false;
+  const interval=frequencyDays(tasksByRoom[room][index][1]);
+  return daysBetween(completedOn,todayKey) < interval;
+}
+
+function taskCompletedToday(room,index){
+  return state.completed[room]?.[index]===todayKey;
+}
+
 function save(){localStorage.setItem('homey-multiroom',JSON.stringify(state))}
-function roomDone(room){return (state.done[room]||[]).filter(Boolean).length}
-function totalDone(){return Object.values(state.done).reduce((a,b)=>a+b.filter(Boolean).length,0)}
+function roomDone(room){
+  return (tasksByRoom[room]||[]).reduce((n,_,i)=>n+(taskIsDone(room,i)?1:0),0);
+}
+function totalDone(){
+  return Object.keys(tasksByRoom).reduce((n,room)=>n+roomDone(room),0);
+}
 
 function renderBalls(){
  document.querySelectorAll('.ballrow').forEach(r=>{
@@ -112,10 +154,13 @@ function renderTasks(){
  document.getElementById('roomTitle').textContent=currentRoom;
  document.getElementById('roomBadge').textContent=badges[currentRoom]||'🏡';
  const box=document.getElementById('tasks');
- box.innerHTML=data.map((x,i)=>`<button class="task-card ${(state.done[currentRoom]||[])[i]?'done':''}" data-task="${i}">
+ box.innerHTML=data.map((x,i)=>{
+   const done=taskIsDone(currentRoom,i);
+   return `<button class="task-card ${done?'done':''}" data-task="${i}">
    <img src="${x[2]}"><span class="task-info"><b>${x[0]}</b><small>${x[1]}</small></span>
-   <span class="rewards">🪙 1<br>⭐ 5</span><span class="check">${(state.done[currentRoom]||[])[i]?'✓':''}</span>
- </button>`).join('');
+   <span class="rewards">🪙 1<br>⭐ 5</span><span class="check">${done?'✓':''}</span>
+ </button>`;
+ }).join('');
  const d=roomDone(currentRoom);
  document.getElementById('doneText').textContent=`${d} van ${data.length} taken klaar`;
  document.getElementById('pct').textContent=Math.round(d/data.length*100)+'%';
@@ -138,14 +183,20 @@ document.getElementById('taskBack').onclick=()=>{T.hidden=true;O.hidden=false;re
 document.getElementById('tasks').onclick=e=>{
  const b=e.target.closest('[data-task]');if(!b)return;
  const i=+b.dataset.task;
- state.done[currentRoom]=state.done[currentRoom]||[];
- if(state.done[currentRoom][i]){
-   state.done[currentRoom][i]=false;
-   state.points=Math.max(0,state.points-5);
-   state.coins=Math.max(0,state.coins-1);
-   state.today=Math.max(0,state.today-1);
+ state.completed[currentRoom]=state.completed[currentRoom]||[];
+
+ if(taskIsDone(currentRoom,i)){
+   // Alleen een taak die VANDAAG werd afgevinkt kan nog ongedaan gemaakt worden.
+   // Zo trekken we geen oude punten/munten af van een taak die gisteren werd voltooid.
+   if(taskCompletedToday(currentRoom,i)){
+     state.completed[currentRoom][i]=null;
+     state.points=Math.max(0,state.points-5);
+     state.coins=Math.max(0,state.coins-1);
+     state.today=Math.max(0,state.today-1);
+   }
  }else{
-   state.done[currentRoom][i]=true;
+   // De taak is opnieuw aan de beurt volgens haar frequentie.
+   state.completed[currentRoom][i]=todayKey;
    state.points+=5;
    state.coins+=1;
    const wasBelowBonus=state.today<15;
