@@ -1,12 +1,13 @@
-HOMEY — KEUKEN + BADKAMER
+HOMEY — DAGBONUS +15 PUNTEN
 
 Nieuw:
-- Keuken heeft nu 5 eigen taken.
-- Badkamer heeft nu 4 eigen taken.
-- Woonkamer blijft werken zoals voordien.
-- Punten, munten en bollen worden gedeeld over alle drie kamers.
-- Elke kamer houdt zijn eigen afgevinkte taken bij.
-- In het kameroverzicht zie je per kamer hoeveel taken klaar zijn.
-- De vaste huispagina en bestaande navigatie blijven behouden.
+- zodra je van 14/15 naar 15/15 bollen gaat, krijg je automatisch +15 extra punten;
+- de gewone taak geeft tegelijk +5 punten en +1 munt;
+- de dagbonus wordt maar één keer toegekend;
+- als je in de vorige versie al 15/15 had bereikt, wordt de bonus éénmalig alsnog toegevoegd.
 
+Voorbeeld:
+14/15 bollen + 1 taak = +5 taakpunten +15 bonus = +20 punten totaal.
+
+De vormgeving en navigatie zijn niet gewijzigd.
 Upload alle bestanden over de huidige GitHub-versie en commit opnieuw.

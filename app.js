@@ -37,8 +37,20 @@ const badges={Woonkamer:'🛋️',Keuken:'🍳',Badkamer:'🛁'};
 let currentRoom='Woonkamer';
 let state=JSON.parse(localStorage.getItem('homey-multiroom')||'null') || {
   points:65, coins:14, today:10,
+  bonusAwarded:false,
   done:{Woonkamer:[],Keuken:[],Badkamer:[]}
 };
+
+// Oudere opgeslagen versies hadden bonusAwarded nog niet.
+// Als 15/15 al bereikt was, wordt de +15 punten éénmalig alsnog toegekend.
+if(typeof state.bonusAwarded!=='boolean'){
+  state.bonusAwarded=false;
+  if(state.today>=15){
+    state.points+=15;
+    state.bonusAwarded=true;
+    localStorage.setItem('homey-multiroom',JSON.stringify(state));
+  }
+}
 
 function save(){localStorage.setItem('homey-multiroom',JSON.stringify(state))}
 function roomDone(room){return (state.done[room]||[]).filter(Boolean).length}
@@ -116,7 +128,14 @@ document.getElementById('tasks').onclick=e=>{
    state.done[currentRoom][i]=true;
    state.points+=5;
    state.coins+=1;
+   const wasBelowBonus=state.today<15;
    state.today=Math.min(15,state.today+1);
+
+   // Dagbonus: precies één keer +15 punten wanneer 15/15 wordt bereikt.
+   if(wasBelowBonus && state.today===15 && !state.bonusAwarded){
+     state.points+=15;
+     state.bonusAwarded=true;
+   }
  }
  save();renderTasks();
 };
