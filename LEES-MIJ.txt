@@ -1,14 +1,12 @@
-HOMEY — WINKELTJE
+HOMEY — WINKELTJE MET NIEUWE ILLUSTRATIES
 
-Nieuw in deze versie:
-- het Winkeltje is bereikbaar via het vaste winkeltje-icoon onderaan;
-- dezelfde live punten- en muntentellers blijven zichtbaar;
-- startcategorieën: Zetels, Tafels, Stoelen en Kasten;
-- extra categorieën worden zichtbaar zodra je ze via een levelbeloning vrijspeelt;
-- items hebben verschillende prijzen, van kleine decoratie tot grote meubels;
-- kopen trekt munten af;
-- elk gekocht item wordt als afzonderlijk stuk opgeslagen in de inventaris;
-- je kunt hetzelfde item meerdere keren kopen;
-- Filter toont desgewenst alleen betaalbare items.
+Deze versie gebruikt de nieuwe goedgekeurde visuele stijl voor het Winkeltje:
+- losse getekende boho-meubels;
+- crème kaarten;
+- collecties zoals Zetels, Tafels, Kasten en Stoelen;
+- zichtbare vergrendelde items;
+- muntprijzen;
+- balk 'Meer collecties vrijspelen';
+- de vaste Homey-header en onderste Homey-navigatie blijven behouden.
 
-De vaste Homey-header, illustraties, navigatie en bestaande taak/level-logica zijn behouden.
+Dit is de visuele Winkeltje-versie waarop we verder kunnen bouwen.

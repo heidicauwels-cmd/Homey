@@ -660,3 +660,26 @@
   box-shadow:0 3px 12px #0002;
   pointer-events:none;
 }
+
+
+/* ===== NIEUWE GOEDGEKEURDE WINKELTJE-ILLUSTRATIES ===== */
+.shop-visual-middle{
+  overflow:auto !important;
+  padding:0 0 12px !important;
+}
+.shop-fixed-title{
+  position:sticky;
+  top:0;
+  z-index:5;
+  text-align:center;
+  font:700 22px "Segoe Print","Comic Sans MS",cursive;
+  color:#4b3324;
+  background:rgba(255,250,241,.96);
+  padding:3px 0 5px;
+}
+.shop-visual{
+  display:block;
+  width:100%;
+  height:auto;
+  border-radius:14px;
+}

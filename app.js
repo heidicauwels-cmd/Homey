@@ -246,50 +246,6 @@ function renderShopCategories(){
 }
 function renderShop(){
   renderCounters();
-  renderShopCategories();
-
-  const content=document.getElementById('shopContent');
-  const message=document.getElementById('shopMessage');
-  message.hidden=true;
-
-  let types;
-  if(shopCategory==='Alles'){
-    types=shopTypeOrder.filter(itemTypeUnlocked);
-  }else if(!itemTypeUnlocked(shopCategory)){
-    content.innerHTML=`<div class="shop-empty">🔒 <b>${shopCategory}</b> is nog niet vrijgespeeld.<br>Bij elk 5e level kun je een itemtype kiezen.</div>`;
-    message.hidden=false;
-    message.textContent='Ga naar Levels om een nieuw itemtype vrij te spelen. 🎁';
-    return;
-  }else{
-    types=[shopCategory];
-  }
-
-  content.innerHTML=types.map(type=>{
-    let items=shopItems.filter(x=>x.type===type);
-    if(shopAffordableOnly) items=items.filter(x=>x.price<=state.coins);
-
-    const itemHtml=items.length ? items.map(item=>{
-      const owned=ownedCount(item.id);
-      const canBuy=state.coins>=item.price;
-      return `<article class="shop-item">
-        <img src="${item.img}" alt="">
-        <div class="shop-item-name">${item.name}</div>
-        <div class="shop-item-meta">
-          <span class="shop-price">🪙 ${item.price}</span>
-          <span class="shop-owned">${owned?`x${owned} in inventaris`:''}</span>
-        </div>
-        <button class="shop-buy" data-buy="${item.id}" ${canBuy?'':'disabled'}>${canBuy?'Kopen':'Te weinig munten'}</button>
-      </article>`;
-    }).join('') : `<div class="shop-empty">Geen betaalbare items in deze categorie.</div>`;
-
-    return `<section class="shop-section">
-      <div class="shop-section-head">
-        <div><b>${type}</b><small>${shopTypeCount(type)} items</small></div>
-        <button data-shop-cat="${type}">Bekijk collectie ›</button>
-      </div>
-      <div class="shop-items">${itemHtml}</div>
-    </section>`;
-  }).join('');
 }
 function showShop(){
   H.hidden=true;O.hidden=true;T.hidden=true;L.hidden=true;S.hidden=false;
@@ -580,31 +536,6 @@ const shopBack=document.getElementById('shopBack');
 if(shopHomeNav) shopHomeNav.addEventListener('click',goHome);
 if(shopBack) shopBack.addEventListener('click',goHome);
 
-const shopCategories=document.getElementById('shopCategories');
-if(shopCategories) shopCategories.addEventListener('click',e=>{
-  const b=e.target.closest('[data-shop-cat]');
-  if(!b) return;
-  shopCategory=b.dataset.shopCat;
-  renderShop();
-});
-const shopContent=document.getElementById('shopContent');
-if(shopContent) shopContent.addEventListener('click',e=>{
-  const cat=e.target.closest('[data-shop-cat]');
-  if(cat){
-    shopCategory=cat.dataset.shopCat;
-    renderShop();
-    document.querySelector('.shop-middle').scrollTop=0;
-    return;
-  }
-  const buy=e.target.closest('[data-buy]');
-  if(buy) buyShopItem(buy.dataset.buy);
-});
-const shopFilter=document.getElementById('shopFilter');
-if(shopFilter) shopFilter.addEventListener('click',()=>{
-  shopAffordableOnly=!shopAffordableOnly;
-  shopFilter.textContent=shopAffordableOnly?'✓ Betaalbaar':'☷ Filter';
-  renderShop();
-});
 
 
 renderOverview();renderCounters();
