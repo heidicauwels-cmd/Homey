@@ -1,4 +1,4 @@
-const H=document.getElementById('houseScreen'),O=document.getElementById('overviewScreen'),T=document.getElementById('taskScreen'),L=document.getElementById('levelScreen');
+const H=document.getElementById('houseScreen'),O=document.getElementById('overviewScreen'),T=document.getElementById('taskScreen'),L=document.getElementById('levelScreen'),S=document.getElementById('shopScreen');
 
 const roomData=[
  ['Woonkamer','room-living.jpg','6 taken',0],
@@ -104,6 +104,9 @@ if(!state.levelRewards || typeof state.levelRewards!=='object') state.levelRewar
 if(!Array.isArray(state.unlockedRooms)) state.unlockedRooms=[];
 if(!Array.isArray(state.unlockedItemTypes)) state.unlockedItemTypes=[];
 
+if(!Array.isArray(state.inventoryItems)) state.inventoryItems=[];
+
+
 if(!state.completed) state.completed={};
 ['Woonkamer','Keuken','Badkamer','Slaapkamer','Wasruimte','Caravan'].forEach(r=>{
   if(!Array.isArray(state.completed[r])) state.completed[r]=[];
@@ -166,6 +169,149 @@ function renderCounters(){
  document.getElementById('homeLivingDone').textContent=roomDone('Woonkamer');
  document.getElementById('homeBonusCheck').classList.toggle('done',state.today>=15);
  renderBalls();
+}
+
+
+
+const starterItemTypes=['Zetels','Tafels','Stoelen','Kasten'];
+
+const shopItems=[
+  {id:'sofa-green',type:'Zetels',name:'Groene bank',price:80,img:'shop-sofa-green.jpg'},
+  {id:'chair-boho',type:'Zetels',name:'Boho fauteuil',price:60,img:'shop-chair-boho.jpg'},
+  {id:'sofa-rattan',type:'Zetels',name:'Rieten loveseat',price:90,img:'shop-sofa-rattan.jpg'},
+
+  {id:'table-round',type:'Tafels',name:'Ronde salontafel',price:45,img:'shop-table-round.jpg'},
+  {id:'table-light',type:'Tafels',name:'Lichte salontafel',price:55,img:'shop-table-light.jpg'},
+  {id:'table-rattan',type:'Tafels',name:'Rotan bijzettafel',price:35,img:'shop-table-rattan.jpg'},
+
+  {id:'chair-natural',type:'Stoelen',name:'Naturel stoel',price:40,img:'shop-chair-boho.jpg'},
+  {id:'chair-rattan',type:'Stoelen',name:'Rotan stoel',price:55,img:'shop-sofa-rattan.jpg'},
+
+  {id:'cabinet-wood',type:'Kasten',name:'Houten dressoir',price:110,img:'shop-cabinet-wood.jpg'},
+  {id:'cabinet-green',type:'Kasten',name:'Vintage kastje',price:95,img:'shop-cabinet-green.jpg'},
+
+  {id:'plant-hang',type:'Planten',name:'Hangplant',price:30,img:'shop-plant.jpg'},
+  {id:'plant-large',type:'Planten',name:'Grote kamerplant',price:45,img:'shop-plant.jpg'},
+  {id:'plant-palm',type:'Planten',name:'Boho palm',price:55,img:'shop-plant.jpg'},
+
+  {id:'rug-boho',type:'Tapijten',name:'Boho vloerkleed',price:70,img:'shop-rug.jpg'},
+  {id:'rug-round',type:'Tapijten',name:'Rond tapijt',price:55,img:'shop-rug.jpg'},
+
+  {id:'light-table',type:'Verlichting',name:'Tafellamp',price:35,img:'shop-light.jpg'},
+  {id:'light-rattan',type:'Verlichting',name:'Rotan hanglamp',price:50,img:'shop-light.jpg'},
+
+  {id:'decor-vase',type:'Decoratie',name:'Vaas met droogbloemen',price:25,img:'shop-decor.jpg'},
+  {id:'decor-wall',type:'Decoratie',name:'Boho wanddecoratie',price:30,img:'shop-decor.jpg'},
+
+  {id:'floor-light',type:'Vloeren',name:'Lichte houten vloer',price:250,img:'shop-floor.jpg'},
+  {id:'floor-warm',type:'Vloeren',name:'Warme houten vloer',price:300,img:'shop-floor.jpg'},
+
+  {id:'wall-beige',type:'Behang & verf',name:'Zandbeige muur',price:180,img:'shop-wall.jpg'},
+  {id:'wall-green',type:'Behang & verf',name:'Zachtgroene muur',price:180,img:'shop-wall.jpg'},
+
+  {id:'bed-double',type:'Bedden',name:'Boho dubbel bed',price:450,img:'shop-bed.jpg'},
+  {id:'bed-single',type:'Bedden',name:'Gezellig enkel bed',price:300,img:'shop-bed.jpg'},
+
+  {id:'night-rattan',type:'Nachtkastjes',name:'Rotan nachtkastje',price:80,img:'shop-nightstand.jpg'},
+  {id:'night-wood',type:'Nachtkastjes',name:'Houten nachtkastje',price:70,img:'shop-nightstand.jpg'},
+
+  {id:'bath-free',type:'Badkamer',name:'Vrijstaand bad',price:500,img:'shop-bath.jpg'},
+  {id:'bath-shower',type:'Badkamer',name:'Inloopdouche',price:550,img:'shop-bath.jpg'},
+
+  {id:'kitchen-block',type:'Keuken',name:'Boho keukenblok',price:500,img:'shop-kitchen.jpg'},
+  {id:'kitchen-island',type:'Keuken',name:'Keukeneiland',price:350,img:'shop-kitchen.jpg'}
+];
+
+const shopTypeOrder=['Zetels','Tafels','Stoelen','Kasten','Planten','Tapijten','Verlichting','Decoratie','Vloeren','Behang & verf','Bedden','Nachtkastjes','Badkamer','Keuken'];
+let shopCategory='Alles';
+let shopAffordableOnly=false;
+
+function itemTypeUnlocked(type){
+  return starterItemTypes.includes(type) || state.unlockedItemTypes.includes(type);
+}
+function ownedCount(id){
+  return state.inventoryItems.filter(x=>x===id).length;
+}
+function shopTypeCount(type){
+  return shopItems.filter(x=>x.type===type).length;
+}
+function renderShopCategories(){
+  const cats=['Alles',...shopTypeOrder];
+  document.getElementById('shopCategories').innerHTML=cats.map(type=>{
+    const locked=type!=='Alles' && !itemTypeUnlocked(type);
+    return `<button class="shop-cat ${shopCategory===type?'active':''} ${locked?'locked':''}" data-shop-cat="${type}">
+      ${locked?'🔒 ':''}${type}
+    </button>`;
+  }).join('');
+}
+function renderShop(){
+  renderCounters();
+  renderShopCategories();
+
+  const content=document.getElementById('shopContent');
+  const message=document.getElementById('shopMessage');
+  message.hidden=true;
+
+  let types;
+  if(shopCategory==='Alles'){
+    types=shopTypeOrder.filter(itemTypeUnlocked);
+  }else if(!itemTypeUnlocked(shopCategory)){
+    content.innerHTML=`<div class="shop-empty">🔒 <b>${shopCategory}</b> is nog niet vrijgespeeld.<br>Bij elk 5e level kun je een itemtype kiezen.</div>`;
+    message.hidden=false;
+    message.textContent='Ga naar Levels om een nieuw itemtype vrij te spelen. 🎁';
+    return;
+  }else{
+    types=[shopCategory];
+  }
+
+  content.innerHTML=types.map(type=>{
+    let items=shopItems.filter(x=>x.type===type);
+    if(shopAffordableOnly) items=items.filter(x=>x.price<=state.coins);
+
+    const itemHtml=items.length ? items.map(item=>{
+      const owned=ownedCount(item.id);
+      const canBuy=state.coins>=item.price;
+      return `<article class="shop-item">
+        <img src="${item.img}" alt="">
+        <div class="shop-item-name">${item.name}</div>
+        <div class="shop-item-meta">
+          <span class="shop-price">🪙 ${item.price}</span>
+          <span class="shop-owned">${owned?`x${owned} in inventaris`:''}</span>
+        </div>
+        <button class="shop-buy" data-buy="${item.id}" ${canBuy?'':'disabled'}>${canBuy?'Kopen':'Te weinig munten'}</button>
+      </article>`;
+    }).join('') : `<div class="shop-empty">Geen betaalbare items in deze categorie.</div>`;
+
+    return `<section class="shop-section">
+      <div class="shop-section-head">
+        <div><b>${type}</b><small>${shopTypeCount(type)} items</small></div>
+        <button data-shop-cat="${type}">Bekijk collectie ›</button>
+      </div>
+      <div class="shop-items">${itemHtml}</div>
+    </section>`;
+  }).join('');
+}
+function showShop(){
+  H.hidden=true;O.hidden=true;T.hidden=true;L.hidden=true;S.hidden=false;
+  renderShop();
+}
+function shopToast(text){
+  const old=document.querySelector('.shop-toast');
+  if(old) old.remove();
+  const t=document.createElement('div');
+  t.className='shop-toast';
+  t.textContent=text;
+  document.getElementById('shopScreen').appendChild(t);
+  setTimeout(()=>t.remove(),1400);
+}
+function buyShopItem(id){
+  const item=shopItems.find(x=>x.id===id);
+  if(!item || !itemTypeUnlocked(item.type) || state.coins<item.price) return;
+  state.coins-=item.price;
+  state.inventoryItems.push(item.id);
+  save();
+  renderShop();
+  shopToast(`${item.name} staat in je inventaris ♡`);
 }
 
 
@@ -236,7 +382,7 @@ function renderLevels(){
 }
 
 function showLevels(){
-  H.hidden=true;O.hidden=true;T.hidden=true;L.hidden=false;
+  H.hidden=true;O.hidden=true;T.hidden=true;S.hidden=true;L.hidden=false;
   renderLevels();renderCounters();
 }
 
@@ -378,7 +524,7 @@ document.getElementById('tasks').onclick=e=>{
  save();renderTasks();
 };
 
-function goHome(){T.hidden=true;O.hidden=true;L.hidden=true;H.hidden=false;renderCounters()}
+function goHome(){T.hidden=true;O.hidden=true;L.hidden=true;S.hidden=true;H.hidden=false;renderCounters()}
 const overviewHomeNav=document.getElementById('overviewHomeNav');
 const taskHomeNav=document.getElementById('taskHomeNav');
 if(overviewHomeNav)overviewHomeNav.addEventListener('click',goHome);
@@ -426,5 +572,39 @@ const rewardModal=document.getElementById('rewardModal');
 if(rewardModal) rewardModal.addEventListener('click',e=>{
   if(e.target===rewardModal) closeRewardModal();
 });
+
+
+document.querySelectorAll('[data-go-shop]').forEach(b=>b.addEventListener('click',showShop));
+const shopHomeNav=document.getElementById('shopHomeNav');
+const shopBack=document.getElementById('shopBack');
+if(shopHomeNav) shopHomeNav.addEventListener('click',goHome);
+if(shopBack) shopBack.addEventListener('click',goHome);
+
+const shopCategories=document.getElementById('shopCategories');
+if(shopCategories) shopCategories.addEventListener('click',e=>{
+  const b=e.target.closest('[data-shop-cat]');
+  if(!b) return;
+  shopCategory=b.dataset.shopCat;
+  renderShop();
+});
+const shopContent=document.getElementById('shopContent');
+if(shopContent) shopContent.addEventListener('click',e=>{
+  const cat=e.target.closest('[data-shop-cat]');
+  if(cat){
+    shopCategory=cat.dataset.shopCat;
+    renderShop();
+    document.querySelector('.shop-middle').scrollTop=0;
+    return;
+  }
+  const buy=e.target.closest('[data-buy]');
+  if(buy) buyShopItem(buy.dataset.buy);
+});
+const shopFilter=document.getElementById('shopFilter');
+if(shopFilter) shopFilter.addEventListener('click',()=>{
+  shopAffordableOnly=!shopAffordableOnly;
+  shopFilter.textContent=shopAffordableOnly?'✓ Betaalbaar':'☷ Filter';
+  renderShop();
+});
+
 
 renderOverview();renderCounters();

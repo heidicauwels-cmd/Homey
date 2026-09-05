@@ -1,18 +1,14 @@
-HOMEY — DEFINITIEVE BASIS NA TEST KAMERS VRIJSPELEN
+HOMEY — WINKELTJE
 
-Deze versie bevat de geteste levelbeloning zonder tijdelijke testknop.
+Nieuw in deze versie:
+- het Winkeltje is bereikbaar via het vaste winkeltje-icoon onderaan;
+- dezelfde live punten- en muntentellers blijven zichtbaar;
+- startcategorieën: Zetels, Tafels, Stoelen en Kasten;
+- extra categorieën worden zichtbaar zodra je ze via een levelbeloning vrijspeelt;
+- items hebben verschillende prijzen, van kleine decoratie tot grote meubels;
+- kopen trekt munten af;
+- elk gekocht item wordt als afzonderlijk stuk opgeslagen in de inventaris;
+- je kunt hetzelfde item meerdere keren kopen;
+- Filter toont desgewenst alleen betaalbare items.
 
-Werkt:
-- 100 punten per level;
-- op level 5, 10, 15, ... verschijnt een vrijspeelbeloning;
-- keuze tussen kamer of itemtype;
-- bij keuze voor een kamer wordt de gekozen kamer opgeslagen;
-- het slot van de gekozen kamer verdwijnt;
-- de kamer wordt toegankelijk;
-- bestaande punten, munten, bollen, dagbonus en taakfrequenties blijven behouden;
-- tellers blijven op de schermen gesynchroniseerd.
-
-De tijdelijke knop 'Test level 5' staat NIET in deze versie.
-
-Dit is de nieuwe propere basis voor de volgende stap: het Winkeltje en
-vrij te spelen itemtypes.
+De vaste Homey-header, illustraties, navigatie en bestaande taak/level-logica zijn behouden.
