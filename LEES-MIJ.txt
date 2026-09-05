@@ -1,11 +1,23 @@
-HOMEY — VOORTGANGSBALK: KLEUREN GECORRIGEERD
+HOMEY — AUTOMATISCHE NIEUWE DAG
 
-Correcte volgorde:
-- weinig taken gedaan = rood
-- halfweg = oranje
-- bijna/helemaal klaar = groen
+Deze versie bouwt verder op de werkende versie met:
+- correcte voortgangsbalk rood → oranje → groen
+- bewegend bolletje
+- dagbonus van +15 punten
+- Woonkamer, Keuken en Badkamer
+- werkende munten, punten en bollen
 
-De ronde indicator beweegt nog steeds mee volgens het echte percentage.
-Verder is niets gewijzigd aan vormgeving, navigatie, taken, tellers of dagbonus.
+Nieuw:
+- Homey bewaart de kalenderdatum.
+- Bij de eerste opening op een nieuwe dag:
+  • Vandaag gaat automatisch terug naar 0/15.
+  • De dagbonus wordt opnieuw beschikbaar.
+  • Totale punten blijven behouden.
+  • Totale munten blijven behouden.
+  • Afgevinkte taken blijven voorlopig behouden.
+
+Belangrijk:
+De taken zelf resetten nog NIET automatisch volgens 'elke dag / elke 2 dagen / ...'.
+Dat bouwen we in de volgende stap bij de taakfrequenties.
 
 Upload alle bestanden over de huidige GitHub-versie en commit opnieuw.

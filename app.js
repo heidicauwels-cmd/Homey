@@ -35,22 +35,42 @@ const tasksByRoom={
 
 const badges={Woonkamer:'🛋️',Keuken:'🍳',Badkamer:'🛁'};
 let currentRoom='Woonkamer';
+function localDateKey(){
+  const d=new Date();
+  const y=d.getFullYear();
+  const m=String(d.getMonth()+1).padStart(2,'0');
+  const day=String(d.getDate()).padStart(2,'0');
+  return `${y}-${m}-${day}`;
+}
+
 let state=JSON.parse(localStorage.getItem('homey-multiroom')||'null') || {
   points:65, coins:14, today:10,
   bonusAwarded:false,
+  lastDate:localDateKey(),
   done:{Woonkamer:[],Keuken:[],Badkamer:[]}
 };
 
-// Oudere opgeslagen versies hadden bonusAwarded nog niet.
-// Als 15/15 al bereikt was, wordt de +15 punten éénmalig alsnog toegekend.
+// Oudere opgeslagen versies hadden bonusAwarded/lastDate nog niet.
 if(typeof state.bonusAwarded!=='boolean'){
   state.bonusAwarded=false;
   if(state.today>=15){
     state.points+=15;
     state.bonusAwarded=true;
-    localStorage.setItem('homey-multiroom',JSON.stringify(state));
   }
 }
+
+const todayKey=localDateKey();
+if(!state.lastDate){
+  // Eerste keer met datumondersteuning: behoud de huidige dagstand.
+  state.lastDate=todayKey;
+}else if(state.lastDate!==todayKey){
+  // Nieuwe kalenderdag: alleen de dagteller en dagbonus beginnen opnieuw.
+  // Punten, munten en voltooide taken blijven behouden.
+  state.today=0;
+  state.bonusAwarded=false;
+  state.lastDate=todayKey;
+}
+localStorage.setItem('homey-multiroom',JSON.stringify(state));
 
 function save(){localStorage.setItem('homey-multiroom',JSON.stringify(state))}
 function roomDone(room){return (state.done[room]||[]).filter(Boolean).length}
