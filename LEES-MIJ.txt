@@ -1,16 +1,8 @@
-HOMEY — HUISTELLER VISUELE FIX
+HOMEY — HUISTELLER CORRECTIE
 
-Deze versie bouwt verder op Homey-taakfrequenties.
+Correctie:
+- de extra dynamische Woonkamer-teller (zoals 2/6) bovenop het huis is verwijderd;
+- de oorspronkelijke teller/visual in het huisontwerp blijft zichtbaar;
+- taken, frequenties, punten, munten, bollen, dagbonus en navigatie blijven ongewijzigd.
 
-Gefixt:
-- het afdekkende vlak achter de dynamische Woonkamer-teller is breder gemaakt;
-- het oude ingebakken teller/icoontje rechts van bijvoorbeeld 2/6 hoort nu volledig verborgen te zijn;
-- alleen de dynamische Woonkamer-teller blijft zichtbaar.
-
-Verder is niets gewijzigd:
-- taken en frequenties blijven hetzelfde;
-- punten, munten, bollen en dagbonus blijven hetzelfde;
-- navigatie blijft hetzelfde;
-- de originele huisafbeelding is niet aangepast.
-
-Upload alle bestanden over de huidige GitHub-versie en commit opnieuw.
+Deze versie bouwt verder op Homey-taakfrequenties en bevat NIET de foutieve brede afdekking.
