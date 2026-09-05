@@ -179,19 +179,19 @@ function renderCounters(){
 const starterItemTypes=['Zetels','Tafels','Stoelen','Kasten'];
 
 const shopItems=[
-  {id:'sofa-green',type:'Zetels',name:'Groene bank',price:80,img:'shop-sofa-green.jpg'},
-  {id:'chair-boho',type:'Zetels',name:'Boho fauteuil',price:60,img:'shop-chair-boho.jpg'},
-  {id:'sofa-rattan',type:'Zetels',name:'Rieten loveseat',price:90,img:'shop-sofa-rattan.jpg'},
+  {id:'sofa-green',type:'Zetels',name:'Groene bank',price:8,img:'shop-sofa-green.jpg'},
+  {id:'chair-boho',type:'Zetels',name:'Boho fauteuil',price:6,img:'shop-chair-boho.jpg'},
+  {id:'sofa-rattan',type:'Zetels',name:'Rotan loveseat',price:9,img:'shop-sofa-rattan.jpg'},
 
-  {id:'table-round',type:'Tafels',name:'Ronde salontafel',price:45,img:'shop-table-round.jpg'},
-  {id:'table-light',type:'Tafels',name:'Lichte salontafel',price:55,img:'shop-table-light.jpg'},
-  {id:'table-rattan',type:'Tafels',name:'Rotan bijzettafel',price:35,img:'shop-table-rattan.jpg'},
+  {id:'table-round',type:'Tafels',name:'Ronde salontafel',price:7,img:'shop-table-round.jpg'},
+  {id:'table-light',type:'Tafels',name:'Lichte salontafel',price:6,img:'shop-table-light.jpg'},
+  {id:'table-rattan',type:'Tafels',name:'Rotan bijzettafel',price:4,img:'shop-table-rattan.jpg'},
 
   {id:'chair-natural',type:'Stoelen',name:'Naturel stoel',price:40,img:'shop-chair-boho.jpg'},
   {id:'chair-rattan',type:'Stoelen',name:'Rotan stoel',price:55,img:'shop-sofa-rattan.jpg'},
 
-  {id:'cabinet-wood',type:'Kasten',name:'Houten dressoir',price:110,img:'shop-cabinet-wood.jpg'},
-  {id:'cabinet-green',type:'Kasten',name:'Vintage kastje',price:95,img:'shop-cabinet-green.jpg'},
+  {id:'cabinet-wood',type:'Kasten',name:'Houten dressoir',price:10,img:'shop-cabinet-wood.jpg'},
+  {id:'cabinet-green',type:'Kasten',name:'Vintage kastje',price:9,img:'shop-cabinet-green.jpg'},
 
   {id:'plant-hang',type:'Planten',name:'Hangplant',price:30,img:'shop-plant.jpg'},
   {id:'plant-large',type:'Planten',name:'Grote kamerplant',price:45,img:'shop-plant.jpg'},
@@ -615,6 +615,27 @@ if(rewardModal) rewardModal.addEventListener('click',e=>{
 });
 
 
+
+
+document.querySelectorAll('[data-visual-buy]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const item=shopItems.find(x=>x.id===btn.dataset.visualBuy);
+    if(!item) return;
+    if(state.inventoryItems.length>=inventoryCapacity()){
+      shopToast('Je inventaris zit vol');
+      return;
+    }
+    if(state.coins<item.price){
+      shopToast(`Je hebt ${item.price} munten nodig`);
+      return;
+    }
+    state.coins-=item.price;
+    state.inventoryItems.push(item.id);
+    save();
+    renderCounters();
+    shopToast(`${item.name} gekocht ♡`);
+  });
+});
 
 document.querySelectorAll('[data-go-inventory]').forEach(b=>b.addEventListener('click',showInventory));
 const inventoryHomeNav=document.getElementById('inventoryHomeNav');

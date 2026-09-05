@@ -1,15 +1,13 @@
-HOMEY — INVENTARIS
+HOMEY — WINKELTJE KOPEN FIX
 
-Nieuw:
-- Inventaris bereikbaar via het vaste rugzak-icoon onderaan;
-- elk gekocht item wordt als apart stuk bewaard;
-- meerdere dezelfde items blijven dus afzonderlijk zichtbaar;
-- opslagcapaciteit: 5 basisplaatsen + 1 extra plaats per level;
-- actuele capaciteit wordt bovenaan getoond;
-- bij volle inventaris kun je niets nieuws kopen;
-- elk item kan geplaatst worden;
-- elk item kan verkocht worden voor ongeveer 1/3 van de aankoopprijs;
-- verkoop voegt munten terug toe;
-- plaatsen haalt het item uit de inventaris en bewaart het als geplaatst item.
+Opgelost:
+- de goedgekeurde Winkeltje-illustratie blijft exact behouden;
+- de zichtbare ontgrendelde meubels zijn nu aanklikbaar;
+- tik op een meubelkaart om het te kopen;
+- de juiste muntprijs wordt afgetrokken;
+- het item verschijnt daarna als apart stuk in Inventaris;
+- hetzelfde item kan meerdere keren gekocht worden;
+- bij te weinig munten verschijnt een melding;
+- bij een volle inventaris verschijnt een melding.
 
-De bestaande Homey-schermen, winkeltje-stijl, levels, taken, tellers en navigatie blijven behouden.
+Prijzen van de zichtbare items zijn gelijkgetrokken met de illustratie.

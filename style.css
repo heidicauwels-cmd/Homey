@@ -872,3 +872,28 @@
   box-shadow:0 3px 12px #0002;
   pointer-events:none;
 }
+
+/* ===== KOPEN IN HET GOEDGEKEURDE WINKELTJE ===== */
+.shop-visual-wrap{position:relative;width:100%}
+.shop-item-hotspot{
+  position:absolute;
+  border:0;
+  background:transparent;
+  cursor:pointer;
+  z-index:8;
+  border-radius:10px;
+}
+.shop-item-hotspot:active{
+  background:rgba(139,164,91,.16);
+}
+/* Zetels */
+.hs-sofa1{left:2%;top:14.2%;width:24.5%;height:15.1%}
+.hs-sofa2{left:27.5%;top:14.2%;width:24.5%;height:15.1%}
+.hs-sofa3{left:53%;top:14.2%;width:24.5%;height:15.1%}
+/* Tafels */
+.hs-table1{left:2%;top:34.6%;width:24.5%;height:14.8%}
+.hs-table2{left:27.5%;top:34.6%;width:24.5%;height:14.8%}
+.hs-table3{left:53%;top:34.6%;width:24.5%;height:14.8%}
+/* Kasten */
+.hs-cab1{left:2%;top:55.2%;width:24.5%;height:14.6%}
+.hs-cab2{left:27.5%;top:55.2%;width:24.5%;height:14.6%}
