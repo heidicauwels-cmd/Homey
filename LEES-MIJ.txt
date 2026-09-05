@@ -1,16 +1,18 @@
-HOMEY — LEVELS NAVIGATIE FIX
+HOMEY — TELLERS GESYNCHRONISEERD
 
-Deze versie bouwt verder op Homey-levels.
+Deze versie bouwt verder op Homey-levels-nav-fix.
 
-Aangepast:
-- Levels heeft nu een eigen klikzone op het huisscherm;
-- Levels heeft een eigen klikzone op het kamerscherm;
-- Levels heeft een eigen klikzone op het takenscherm;
-- de klikzones zijn opnieuw uitgelijnd met het vaste onderste navigatiemenu.
+Gecorrigeerd:
+- de munten in de header van het huisscherm, kamerscherm, takenscherm en Levels-scherm
+  gebruiken nu allemaal dezelfde Homey-teller;
+- de punten in die vier headers gebruiken eveneens dezelfde Homey-teller;
+- wanneer je een taak voltooit, worden de waarden dus overal samen bijgewerkt;
+- de oude vaste waarden 256 en 1.842 in homey-frame.png worden op de andere schermen
+  afgedekt door de actuele waarden, net zoals dit al gebeurde op het huisscherm.
 
 Niet gewijzigd:
-- het Levels-systeem zelf;
-- punten, munten, bollen en dagbonus;
 - taken en frequenties;
-- huisafbeelding en vaste navigatie-afbeeldingen;
-- de correcte Woonkamer-teller.
+- dagbollen en bonus;
+- levels en vrijspeelkeuzes;
+- huisafbeelding;
+- navigatie.

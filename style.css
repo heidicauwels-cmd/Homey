@@ -386,3 +386,25 @@
 .reward-choice:disabled{
   opacity:.45;
 }
+
+
+/* Dezelfde live tellers in de vaste header van kamer-, taken- en Levels-scherm.
+   Ze gebruiken exact dezelfde .coins/.points state als het huisscherm. */
+.frame-coins{
+  left:51.2%;
+  top:3.72%;
+  width:7.3%;
+  height:2.45%;
+  font-size:15px;
+}
+.frame-points{
+  left:69.2%;
+  top:3.72%;
+  width:9.2%;
+  height:2.45%;
+  font-size:15px;
+}
+@media(max-width:420px){
+  .frame-coins,
+  .frame-points{font-size:12px}
+}
