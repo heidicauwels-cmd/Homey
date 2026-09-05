@@ -683,3 +683,192 @@
   height:auto;
   border-radius:14px;
 }
+
+
+/* ========== INVENTARIS ========== */
+.inventory-nav-hotspot{
+  position:absolute;
+  left:39.5%;
+  bottom:.4%;
+  width:19.2%;
+  height:10.3%;
+  border:0;
+  background:transparent;
+  z-index:40;
+}
+.levels-inventory{left:58.7%;bottom:0%;width:20.6%;height:9.3%}
+.inventory-middle{
+  position:absolute;
+  left:6.4%;
+  right:6.4%;
+  top:10.45%;
+  bottom:11.8%;
+  overflow:auto;
+  padding:3px 0 16px;
+  font-family:Arial,sans-serif;
+  color:#3b291b;
+}
+.inventory-title-row{
+  display:grid;
+  grid-template-columns:38px 1fr auto;
+  align-items:center;
+  gap:6px;
+  margin-bottom:7px;
+}
+.inventory-back{
+  border:1px solid #e0c8a6;
+  background:#fffaf1;
+  border-radius:50%;
+  width:36px;height:36px;
+  font-size:27px;
+  color:#5a402b;
+}
+.inventory-title-copy{text-align:center}
+.inventory-title-copy h1{
+  font:24px "Segoe Print","Comic Sans MS",cursive;
+  margin:0;
+  line-height:1.05;
+}
+.inventory-title-copy small{
+  display:block;
+  font-size:7.5px;
+  color:#806b58;
+  margin-top:1px;
+}
+.inventory-capacity{
+  border:1px solid #d9c5a7;
+  background:#fff8e9;
+  border-radius:10px;
+  padding:6px 8px;
+  font-size:8px;
+  font-weight:700;
+  white-space:nowrap;
+}
+.inventory-summary{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:6px;
+  margin-bottom:7px;
+}
+.inventory-summary>div{
+  text-align:center;
+  background:rgba(255,250,241,.88);
+  border:1px solid #e6d7c2;
+  border-radius:10px;
+  padding:6px 4px;
+}
+.inventory-summary b{
+  display:block;
+  font-size:11px;
+}
+.inventory-summary small{
+  display:block;
+  color:#806f5e;
+  font-size:6.8px;
+  margin-top:1px;
+}
+.inventory-message{
+  background:#f5efdf;
+  border:1px solid #dfd0b7;
+  border-radius:11px;
+  padding:8px 10px;
+  margin-bottom:8px;
+  font-size:8px;
+  text-align:center;
+  color:#6d5b49;
+}
+.inventory-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:8px;
+}
+.inventory-card{
+  position:relative;
+  background:#fffaf1;
+  border:1px solid #e5d7c2;
+  border-radius:13px;
+  padding:6px;
+  min-width:0;
+}
+.inventory-card img{
+  width:100%;
+  height:105px;
+  object-fit:cover;
+  border-radius:9px;
+  background:#eee7db;
+  display:block;
+}
+.inventory-card-name{
+  font-size:9px;
+  font-weight:700;
+  margin-top:5px;
+  line-height:1.2;
+}
+.inventory-card-type{
+  font-size:7px;
+  color:#857260;
+  margin-top:1px;
+}
+.inventory-card-actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:5px;
+  margin-top:6px;
+}
+.inventory-place,
+.inventory-sell{
+  border-radius:8px;
+  padding:5px 3px;
+  font-size:7px;
+  font-weight:700;
+}
+.inventory-place{
+  border:1px solid #b9c997;
+  background:#eaf1de;
+  color:#53673a;
+}
+.inventory-sell{
+  border:1px solid #dfc6a2;
+  background:#fff3e4;
+  color:#7a5732;
+}
+.inventory-index{
+  position:absolute;
+  top:10px;
+  left:10px;
+  min-width:22px;
+  height:22px;
+  border-radius:12px;
+  background:rgba(255,250,241,.94);
+  border:1px solid #ddcbae;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:7px;
+  font-weight:700;
+}
+.inventory-empty{
+  grid-column:1/-1;
+  background:#fffaf1;
+  border:1px dashed #d8c5a8;
+  border-radius:13px;
+  padding:20px 12px;
+  text-align:center;
+  color:#7c6b5b;
+  font-size:9px;
+}
+.inventory-toast{
+  position:absolute;
+  left:50%;
+  bottom:12.2%;
+  transform:translateX(-50%);
+  z-index:70;
+  background:#5f7044;
+  color:white;
+  border-radius:16px;
+  padding:7px 12px;
+  font-size:8px;
+  font-family:Arial,sans-serif;
+  box-shadow:0 3px 12px #0002;
+  pointer-events:none;
+}

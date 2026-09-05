@@ -1,4 +1,4 @@
-const H=document.getElementById('houseScreen'),O=document.getElementById('overviewScreen'),T=document.getElementById('taskScreen'),L=document.getElementById('levelScreen'),S=document.getElementById('shopScreen');
+const H=document.getElementById('houseScreen'),O=document.getElementById('overviewScreen'),T=document.getElementById('taskScreen'),L=document.getElementById('levelScreen'),S=document.getElementById('shopScreen'),I=document.getElementById('inventoryScreen');
 
 const roomData=[
  ['Woonkamer','room-living.jpg','6 taken',0],
@@ -105,6 +105,9 @@ if(!Array.isArray(state.unlockedRooms)) state.unlockedRooms=[];
 if(!Array.isArray(state.unlockedItemTypes)) state.unlockedItemTypes=[];
 
 if(!Array.isArray(state.inventoryItems)) state.inventoryItems=[];
+
+if(!Array.isArray(state.placedItems)) state.placedItems=[];
+
 
 
 if(!state.completed) state.completed={};
@@ -248,7 +251,7 @@ function renderShop(){
   renderCounters();
 }
 function showShop(){
-  H.hidden=true;O.hidden=true;T.hidden=true;L.hidden=true;S.hidden=false;
+  H.hidden=true;O.hidden=true;T.hidden=true;L.hidden=true;I.hidden=true;S.hidden=false;
   renderShop();
 }
 function shopToast(text){
@@ -263,6 +266,7 @@ function shopToast(text){
 function buyShopItem(id){
   const item=shopItems.find(x=>x.id===id);
   if(!item || !itemTypeUnlocked(item.type) || state.coins<item.price) return;
+  if(state.inventoryItems.length>=inventoryCapacity()){ shopToast('Je inventaris zit vol'); return; }
   state.coins-=item.price;
   state.inventoryItems.push(item.id);
   save();
@@ -270,6 +274,87 @@ function buyShopItem(id){
   shopToast(`${item.name} staat in je inventaris ♡`);
 }
 
+
+
+function inventoryCapacity(){
+  return 5 + currentLevel();
+}
+function inventoryItemData(id){
+  return shopItems.find(x=>x.id===id) || null;
+}
+function inventoryToast(text){
+  const old=document.querySelector('.inventory-toast');
+  if(old) old.remove();
+  const t=document.createElement('div');
+  t.className='inventory-toast';
+  t.textContent=text;
+  document.getElementById('inventoryScreen').appendChild(t);
+  setTimeout(()=>t.remove(),1400);
+}
+function renderInventory(){
+  renderCounters();
+  const cap=inventoryCapacity();
+  const count=state.inventoryItems.length;
+  document.getElementById('inventoryCapacity').textContent=`${count} / ${cap}`;
+  document.getElementById('inventoryCount').textContent=count;
+  document.getElementById('inventoryFree').textContent=Math.max(0,cap-count);
+
+  const msg=document.getElementById('inventoryMessage');
+  if(count===0){
+    msg.textContent='Je inventaris is nog leeg. Koop iets in het Winkeltje om hier te bewaren. 🛍️';
+  }else if(count>=cap){
+    msg.textContent='Je inventaris zit vol. Plaats of verkoop een item om ruimte te maken.';
+  }else{
+    msg.textContent=`Je kunt nog ${cap-count} item${cap-count===1?'':'s'} bewaren.`;
+  }
+
+  const grid=document.getElementById('inventoryGrid');
+  if(!count){
+    grid.innerHTML='<div class="inventory-empty">Nog geen items in je inventaris.<br>Elk gekocht meubel verschijnt hier als een apart stuk.</div>';
+    return;
+  }
+
+  grid.innerHTML=state.inventoryItems.map((id,index)=>{
+    const item=inventoryItemData(id);
+    if(!item) return '';
+    const sell=Math.max(1,Math.floor(item.price/3));
+    return `<article class="inventory-card">
+      <div class="inventory-index">${index+1}</div>
+      <img src="${item.img}" alt="">
+      <div class="inventory-card-name">${item.name}</div>
+      <div class="inventory-card-type">${item.type}</div>
+      <div class="inventory-card-actions">
+        <button class="inventory-place" data-place-index="${index}">Plaatsen</button>
+        <button class="inventory-sell" data-sell-index="${index}">Verkoop 🪙${sell}</button>
+      </div>
+    </article>`;
+  }).join('');
+}
+function showInventory(){
+  H.hidden=true;O.hidden=true;T.hidden=true;L.hidden=true;S.hidden=true;I.hidden=false;
+  renderInventory();
+}
+function sellInventoryItem(index){
+  const id=state.inventoryItems[index];
+  const item=inventoryItemData(id);
+  if(!item) return;
+  const value=Math.max(1,Math.floor(item.price/3));
+  state.inventoryItems.splice(index,1);
+  state.coins+=value;
+  save();
+  renderInventory();
+  inventoryToast(`${item.name} verkocht voor ${value} munten`);
+}
+function placeInventoryItem(index){
+  const id=state.inventoryItems[index];
+  const item=inventoryItemData(id);
+  if(!item) return;
+  state.inventoryItems.splice(index,1);
+  state.placedItems.push(id);
+  save();
+  renderInventory();
+  inventoryToast(`${item.name} is geplaatst ♡`);
+}
 
 const rewardRooms=['Slaapkamer','Wasruimte','Caravan','Hobbykamer'];
 const rewardItemTypes=['Planten','Tapijten','Verlichting','Decoratie','Vloeren','Behang & verf','Zetels','Bedden','Nachtkastjes','Badkamer','Keuken'];
@@ -338,7 +423,7 @@ function renderLevels(){
 }
 
 function showLevels(){
-  H.hidden=true;O.hidden=true;T.hidden=true;S.hidden=true;L.hidden=false;
+  H.hidden=true;O.hidden=true;T.hidden=true;S.hidden=true;I.hidden=true;L.hidden=false;
   renderLevels();renderCounters();
 }
 
@@ -480,7 +565,7 @@ document.getElementById('tasks').onclick=e=>{
  save();renderTasks();
 };
 
-function goHome(){T.hidden=true;O.hidden=true;L.hidden=true;S.hidden=true;H.hidden=false;renderCounters()}
+function goHome(){T.hidden=true;O.hidden=true;L.hidden=true;S.hidden=true;I.hidden=true;H.hidden=false;renderCounters()}
 const overviewHomeNav=document.getElementById('overviewHomeNav');
 const taskHomeNav=document.getElementById('taskHomeNav');
 if(overviewHomeNav)overviewHomeNav.addEventListener('click',goHome);
@@ -529,6 +614,26 @@ if(rewardModal) rewardModal.addEventListener('click',e=>{
   if(e.target===rewardModal) closeRewardModal();
 });
 
+
+
+document.querySelectorAll('[data-go-inventory]').forEach(b=>b.addEventListener('click',showInventory));
+const inventoryHomeNav=document.getElementById('inventoryHomeNav');
+const inventoryBack=document.getElementById('inventoryBack');
+if(inventoryHomeNav) inventoryHomeNav.addEventListener('click',goHome);
+if(inventoryBack) inventoryBack.addEventListener('click',goHome);
+
+const inventoryGrid=document.getElementById('inventoryGrid');
+if(inventoryGrid) inventoryGrid.addEventListener('click',e=>{
+  const sell=e.target.closest('[data-sell-index]');
+  if(sell){
+    sellInventoryItem(Number(sell.dataset.sellIndex));
+    return;
+  }
+  const place=e.target.closest('[data-place-index]');
+  if(place){
+    placeInventoryItem(Number(place.dataset.placeIndex));
+  }
+});
 
 document.querySelectorAll('[data-go-shop]').forEach(b=>b.addEventListener('click',showShop));
 const shopHomeNav=document.getElementById('shopHomeNav');

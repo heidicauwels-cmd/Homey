@@ -21,6 +21,8 @@
 <button class="levels-nav-hotspot levels-house" data-go-levels aria-label="Levels"></button>
 
 <button class="shop-nav-hotspot" data-go-shop aria-label="Winkeltje"></button>
+
+<button class="inventory-nav-hotspot" data-go-inventory aria-label="Inventaris"></button>
 </section>
 
 <section id="overviewScreen" class="screen" hidden>
@@ -37,6 +39,8 @@
 <button class="levels-nav-hotspot levels-overview" data-go-levels aria-label="Levels"></button>
 
 <button class="shop-nav-hotspot" data-go-shop aria-label="Winkeltje"></button>
+
+<button class="inventory-nav-hotspot" data-go-inventory aria-label="Inventaris"></button>
 </section>
 
 <section id="taskScreen" class="screen" hidden>
@@ -54,6 +58,8 @@
 <button class="levels-nav-hotspot levels-task" data-go-levels aria-label="Levels"></button>
 
 <button class="shop-nav-hotspot" data-go-shop aria-label="Winkeltje"></button>
+
+<button class="inventory-nav-hotspot" data-go-inventory aria-label="Inventaris"></button>
 </section>
 
 <section id="levelScreen" class="screen" hidden>
@@ -104,6 +110,8 @@
   <button id="levelHomeNav" class="home-nav-hotspot" aria-label="Mijn huis"></button>
 
 <button class="shop-nav-hotspot" data-go-shop aria-label="Winkeltje"></button>
+
+<button class="inventory-nav-hotspot" data-go-inventory aria-label="Inventaris"></button>
 </section>
 
 
@@ -120,6 +128,40 @@
   <button id="shopHomeNav" class="home-nav-hotspot" aria-label="Mijn huis"></button>
   <button class="shop-nav-hotspot shop-current" data-go-shop aria-label="Winkeltje"></button>
   <button class="levels-nav-hotspot levels-shop" data-go-levels aria-label="Levels"></button>
+
+<button class="inventory-nav-hotspot" data-go-inventory aria-label="Inventaris"></button>
+</section>
+
+
+<section id="inventoryScreen" class="screen" hidden>
+  <img src="homey-frame.png" class="base" alt="">
+  <div class="home-value frame-coins"><span class="coins">14</span></div>
+  <div class="home-value frame-points"><span class="points">65</span></div>
+
+  <div class="inventory-middle">
+    <div class="inventory-title-row">
+      <button id="inventoryBack" class="inventory-back" aria-label="Terug">‹</button>
+      <div class="inventory-title-copy">
+        <h1>Inventaris ♡</h1>
+        <small>Bewaar je spullen en kies later waar je ze plaatst</small>
+      </div>
+      <div id="inventoryCapacity" class="inventory-capacity">0 / 5</div>
+    </div>
+
+    <div class="inventory-summary">
+      <div><b id="inventoryCount">0</b><small>items</small></div>
+      <div><b id="inventoryFree">5</b><small>vrije plaatsen</small></div>
+      <div><b>+1</b><small>plaats per level</small></div>
+    </div>
+
+    <div id="inventoryMessage" class="inventory-message"></div>
+    <div id="inventoryGrid" class="inventory-grid"></div>
+  </div>
+
+  <button id="inventoryHomeNav" class="home-nav-hotspot" aria-label="Mijn huis"></button>
+  <button class="shop-nav-hotspot" data-go-shop aria-label="Winkeltje"></button>
+  <button class="inventory-nav-hotspot inventory-current" data-go-inventory aria-label="Inventaris"></button>
+  <button class="levels-nav-hotspot levels-inventory" data-go-levels aria-label="Levels"></button>
 </section>
 
 <div id="rewardModal" class="reward-modal" hidden>
