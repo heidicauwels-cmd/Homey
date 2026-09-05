@@ -1,13 +1,13 @@
-HOMEY — DAGBONUS +15 PUNTEN
+HOMEY — VOORTGANGSBALK FIX
 
-Nieuw:
-- zodra je van 14/15 naar 15/15 bollen gaat, krijg je automatisch +15 extra punten;
-- de gewone taak geeft tegelijk +5 punten en +1 munt;
-- de dagbonus wordt maar één keer toegekend;
-- als je in de vorige versie al 15/15 had bereikt, wordt de bonus éénmalig alsnog toegevoegd.
+Deze versie bouwt verder op Homey-dagbonus.
 
-Voorbeeld:
-14/15 bollen + 1 taak = +5 taakpunten +15 bonus = +20 punten totaal.
+Gefixt:
+- de ronde indicator onder Woonkamer, Keuken en Badkamer beweegt nu echt mee;
+- 0 taken = helemaal links;
+- halfweg = ongeveer midden;
+- alle taken gedaan = helemaal rechts;
+- de bestaande dagbonus +15 punten blijft behouden;
+- vormgeving, navigatie en taken zijn verder niet gewijzigd.
 
-De vormgeving en navigatie zijn niet gewijzigd.
 Upload alle bestanden over de huidige GitHub-versie en commit opnieuw.

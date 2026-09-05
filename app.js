@@ -81,7 +81,7 @@ function renderOverview(){
    const total=(tasksByRoom[x[0]]||[]).length;
    return `<button class="room-card ${x[3]?'locked':''}" data-room="${x[0]}" ${x[3]?'disabled':''}>
    <img src="${x[1]}"><span class="room-text"><b>${x[0]}</b><small>${x[3]?x[2]:`${done}/${total} taken`}</small>
-   ${x[3]?'':`<span class="progress"><i class="green"></i><i class="green"></i><em style="margin-left:${Math.min(done,total)*2}px"></em><i class="orange"></i><i class="orange"></i><i class="red"></i><i class="red"></i></span>`}
+   ${x[3]?'':`<span class="progress" style="--progress:${total ? Math.round((done/total)*100) : 0}%"><i class="green"></i><i class="green"></i><i class="orange"></i><i class="orange"></i><i class="red"></i><i class="red"></i><em></em></span>`}
    </span><span class="chev">${x[3]?'🔒':'›'}</span></button>`
  }).join('');
  renderCounters();
