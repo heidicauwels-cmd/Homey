@@ -436,3 +436,18 @@
   color:#8aa35b;
   font-weight:700;
 }
+
+/* Tijdelijke testknop: alleen om level 5 / kamer vrijspelen te testen */
+.test-level5-btn{
+  display:block;
+  width:100%;
+  margin:8px 0;
+  padding:9px 12px;
+  border:1px dashed #b99a58;
+  border-radius:12px;
+  background:#fff7df;
+  color:#66512f;
+  font-size:10px;
+  font-weight:700;
+  cursor:pointer;
+}

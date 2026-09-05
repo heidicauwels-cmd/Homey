@@ -1,19 +1,18 @@
-HOMEY — TIJDELIJKE LEVEL 5 TESTVERSIE
+HOMEY — LEVEL 5 TESTKNOP
 
-Deze versie is alleen bedoeld om het vrijspelen te testen.
+Dit is een tijdelijke testversie.
 
-Wat gebeurt er:
-- bij openen wordt je puntentotaal tijdelijk minstens 400 punten;
-- daardoor kom je meteen op level 5;
-- in Levels hoort een 🎁 vrijspeelmoment te verschijnen;
-- kies 🏡 Kamer;
-- kies bijvoorbeeld Slaapkamer;
-- ga terug naar het kamerscherm;
-- het slot van Slaapkamer hoort weg te zijn;
-- de kamer hoort aanklikbaar te zijn;
-- de takenlijst van die kamer hoort te openen.
+Ga naar Levels en tik op:
+🧪 Test level 5
 
-Belangrijk:
-- dit is een TESTVERSIE;
-- upload na de test opnieuw de normale versie zonder testpunten;
-- alle andere logica blijft hetzelfde.
+Dan:
+1. Homey zet de teststand op 400 punten = level 5.
+2. Het 🎁 vrijspeelmoment verschijnt.
+3. Kies 🏡 Kamer.
+4. Kies bijvoorbeeld Slaapkamer.
+5. Ga terug naar het kamerscherm.
+6. Controleer of het slot weg is.
+7. Open de kamer en controleer de takenlijst.
+
+De knop is alleen bedoeld om deze functie te testen.
+Na een geslaagde test maken we hem weer weg en gaan we terug naar de normale puntentelling.

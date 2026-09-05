@@ -97,11 +97,7 @@ for(const room of ['Woonkamer','Keuken','Badkamer']){
   if(!Array.isArray(state.completed[room])) state.completed[room]=[];
 }
 
-
 delete state.done;
-
-// TIJDELIJKE TESTMODUS: zorg dat level 5 meteen bereikbaar is.
-if(state.points < 400) state.points = 400;
 
 // Levels/beloningskeuzes (migratie voor bestaande installaties).
 if(!state.levelRewards || typeof state.levelRewards!=='object') state.levelRewards={};
@@ -409,6 +405,19 @@ document.querySelectorAll('.room-card[data-room]').forEach(card=>{
 document.querySelectorAll('[data-go-levels]').forEach(b=>b.addEventListener('click',showLevels));
 const levelHomeNav=document.getElementById('levelHomeNav');
 if(levelHomeNav) levelHomeNav.addEventListener('click',goHome);
+
+
+const testLevel5=document.getElementById('testLevel5');
+if(testLevel5) testLevel5.addEventListener('click',()=>{
+  // Alleen voor testen: level 5 = 400 punten omdat Homey start op level 1.
+  state.points=400;
+  // Maak de level-5 keuze opnieuw beschikbaar voor de test als die eerder al gebruikt was.
+  delete state.levelRewards['5'];
+  state.unlockedRooms=state.unlockedRooms.filter(r=>!['Slaapkamer','Wasruimte','Caravan','Hobbykamer'].includes(r));
+  save();
+  renderCounters();
+  renderLevels();
+});
 
 const openReward=document.getElementById('openReward');
 const closeReward=document.getElementById('closeReward');
