@@ -291,45 +291,7 @@ function inventoryToast(text){
   document.getElementById('inventoryScreen').appendChild(t);
   setTimeout(()=>t.remove(),1400);
 }
-function renderInventory(){
-  renderCounters();
-  const cap=inventoryCapacity();
-  const count=state.inventoryItems.length;
-  document.getElementById('inventoryCapacity').textContent=`${count} / ${cap}`;
-  document.getElementById('inventoryCount').textContent=count;
-  document.getElementById('inventoryFree').textContent=Math.max(0,cap-count);
-
-  const msg=document.getElementById('inventoryMessage');
-  if(count===0){
-    msg.textContent='Je inventaris is nog leeg. Koop iets in het Winkeltje om hier te bewaren. 🛍️';
-  }else if(count>=cap){
-    msg.textContent='Je inventaris zit vol. Plaats of verkoop een item om ruimte te maken.';
-  }else{
-    msg.textContent=`Je kunt nog ${cap-count} item${cap-count===1?'':'s'} bewaren.`;
-  }
-
-  const grid=document.getElementById('inventoryGrid');
-  if(!count){
-    grid.innerHTML='<div class="inventory-empty">Nog geen items in je inventaris.<br>Elk gekocht meubel verschijnt hier als een apart stuk.</div>';
-    return;
-  }
-
-  grid.innerHTML=state.inventoryItems.map((id,index)=>{
-    const item=inventoryItemData(id);
-    if(!item) return '';
-    const sell=Math.max(1,Math.floor(item.price/3));
-    return `<article class="inventory-card">
-      <div class="inventory-index">${index+1}</div>
-      <img src="${item.img}" alt="">
-      <div class="inventory-card-name">${item.name}</div>
-      <div class="inventory-card-type">${item.type}</div>
-      <div class="inventory-card-actions">
-        <button class="inventory-place" data-place-index="${index}">Plaatsen</button>
-        <button class="inventory-sell" data-sell-index="${index}">Verkoop 🪙${sell}</button>
-      </div>
-    </article>`;
-  }).join('');
-}
+function renderInventory(){ renderCounters(); }
 function showInventory(){
   H.hidden=true;O.hidden=true;T.hidden=true;L.hidden=true;S.hidden=true;I.hidden=false;
   renderInventory();
@@ -643,18 +605,6 @@ const inventoryBack=document.getElementById('inventoryBack');
 if(inventoryHomeNav) inventoryHomeNav.addEventListener('click',goHome);
 if(inventoryBack) inventoryBack.addEventListener('click',goHome);
 
-const inventoryGrid=document.getElementById('inventoryGrid');
-if(inventoryGrid) inventoryGrid.addEventListener('click',e=>{
-  const sell=e.target.closest('[data-sell-index]');
-  if(sell){
-    sellInventoryItem(Number(sell.dataset.sellIndex));
-    return;
-  }
-  const place=e.target.closest('[data-place-index]');
-  if(place){
-    placeInventoryItem(Number(place.dataset.placeIndex));
-  }
-});
 
 document.querySelectorAll('[data-go-shop]').forEach(b=>b.addEventListener('click',showShop));
 const shopHomeNav=document.getElementById('shopHomeNav');

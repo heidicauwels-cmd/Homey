@@ -1,13 +1,5 @@
-HOMEY — WINKELTJE KOPEN FIX
+HOMEY — INVENTARIS NIEUWE ILLUSTRATIES
 
-Opgelost:
-- de goedgekeurde Winkeltje-illustratie blijft exact behouden;
-- de zichtbare ontgrendelde meubels zijn nu aanklikbaar;
-- tik op een meubelkaart om het te kopen;
-- de juiste muntprijs wordt afgetrokken;
-- het item verschijnt daarna als apart stuk in Inventaris;
-- hetzelfde item kan meerdere keren gekocht worden;
-- bij te weinig munten verschijnt een melding;
-- bij een volle inventaris verschijnt een melding.
-
-Prijzen van de zichtbare items zijn gelijkgetrokken met de illustratie.
+De Inventaris gebruikt nu de goedgekeurde getekende illustratie.
+De foute gestreepte fotocrops zijn verwijderd.
+De Homey-basis, navigatie, Winkeltje en opgeslagen gegevens blijven behouden.
