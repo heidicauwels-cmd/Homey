@@ -1,5 +1,11 @@
-HOMEY — INVENTARIS NIEUWE ILLUSTRATIES
+HOMEY — INVENTARIS CORRECTIE
 
-De Inventaris gebruikt nu de goedgekeurde getekende illustratie.
-De foute gestreepte fotocrops zijn verwijderd.
-De Homey-basis, navigatie, Winkeltje en opgeslagen gegevens blijven behouden.
+Opgelost:
+- geen volledige Inventaris-afbeelding meer in een tweede Homey-scherm;
+- dus geen dubbele header of dubbele onderste navigatie;
+- de normale interactieve Inventaris blijft behouden;
+- Lichte salontafel en Rotan bijzettafel gebruiken nu losse getekende illustraties;
+- Plaatsen en Verkopen blijven werken;
+- meubels worden volledig getoond en niet meer vreemd afgesneden.
+
+Deze versie bouwt op de werkende Winkeltje-kopen-versie.

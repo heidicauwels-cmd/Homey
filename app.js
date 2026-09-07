@@ -184,8 +184,8 @@ const shopItems=[
   {id:'sofa-rattan',type:'Zetels',name:'Rotan loveseat',price:9,img:'shop-sofa-rattan.jpg'},
 
   {id:'table-round',type:'Tafels',name:'Ronde salontafel',price:7,img:'shop-table-round.jpg'},
-  {id:'table-light',type:'Tafels',name:'Lichte salontafel',price:6,img:'shop-table-light.jpg'},
-  {id:'table-rattan',type:'Tafels',name:'Rotan bijzettafel',price:4,img:'shop-table-rattan.jpg'},
+  {id:'table-light',type:'Tafels',name:'Lichte salontafel',price:6,img:'inventory-table-light.jpg'},
+  {id:'table-rattan',type:'Tafels',name:'Rotan bijzettafel',price:4,img:'inventory-table-rattan.jpg'},
 
   {id:'chair-natural',type:'Stoelen',name:'Naturel stoel',price:40,img:'shop-chair-boho.jpg'},
   {id:'chair-rattan',type:'Stoelen',name:'Rotan stoel',price:55,img:'shop-sofa-rattan.jpg'},
@@ -291,7 +291,45 @@ function inventoryToast(text){
   document.getElementById('inventoryScreen').appendChild(t);
   setTimeout(()=>t.remove(),1400);
 }
-function renderInventory(){renderCounters();const box=document.getElementById('inventoryInteractive');if(!box)return;box.innerHTML=state.inventoryItems.map((id,index)=>{const item=inventoryItemData(id);if(!item)return '';const value=Math.max(1,Math.floor(item.price/3));return `<div class="inv-live-card"><img src="${item.img}"><b>${item.name}</b><small>${item.type}</small><div class="inv-live-actions"><button class="inv-place" data-live-place="${index}">Plaatsen</button><button class="inv-sell" data-live-sell="${index}">Verkoop 🪙${value}</button></div></div>`}).join('');}
+function renderInventory(){
+  renderCounters();
+  const cap=inventoryCapacity();
+  const count=state.inventoryItems.length;
+  document.getElementById('inventoryCapacity').textContent=`${count} / ${cap}`;
+  document.getElementById('inventoryCount').textContent=count;
+  document.getElementById('inventoryFree').textContent=Math.max(0,cap-count);
+
+  const msg=document.getElementById('inventoryMessage');
+  if(count===0){
+    msg.textContent='Je inventaris is nog leeg. Koop iets in het Winkeltje om hier te bewaren. 🛍️';
+  }else if(count>=cap){
+    msg.textContent='Je inventaris zit vol. Plaats of verkoop een item om ruimte te maken.';
+  }else{
+    msg.textContent=`Je kunt nog ${cap-count} item${cap-count===1?'':'s'} bewaren.`;
+  }
+
+  const grid=document.getElementById('inventoryGrid');
+  if(!count){
+    grid.innerHTML='<div class="inventory-empty">Nog geen items in je inventaris.<br>Elk gekocht meubel verschijnt hier als een apart stuk.</div>';
+    return;
+  }
+
+  grid.innerHTML=state.inventoryItems.map((id,index)=>{
+    const item=inventoryItemData(id);
+    if(!item) return '';
+    const sell=Math.max(1,Math.floor(item.price/3));
+    return `<article class="inventory-card">
+      <div class="inventory-index">${index+1}</div>
+      <img src="${item.img}" alt="">
+      <div class="inventory-card-name">${item.name}</div>
+      <div class="inventory-card-type">${item.type}</div>
+      <div class="inventory-card-actions">
+        <button class="inventory-place" data-place-index="${index}">Plaatsen</button>
+        <button class="inventory-sell" data-sell-index="${index}">Verkoop 🪙${sell}</button>
+      </div>
+    </article>`;
+  }).join('');
+}
 function showInventory(){
   H.hidden=true;O.hidden=true;T.hidden=true;L.hidden=true;S.hidden=true;I.hidden=false;
   renderInventory();
@@ -599,13 +637,24 @@ document.querySelectorAll('[data-visual-buy]').forEach(btn=>{
   });
 });
 
-const inventoryInteractive=document.getElementById('inventoryInteractive');if(inventoryInteractive)inventoryInteractive.addEventListener('click',e=>{const s=e.target.closest('[data-live-sell]');if(s){sellInventoryItem(Number(s.dataset.liveSell));return}const p=e.target.closest('[data-live-place]');if(p)placeInventoryItem(Number(p.dataset.livePlace));});
 document.querySelectorAll('[data-go-inventory]').forEach(b=>b.addEventListener('click',showInventory));
 const inventoryHomeNav=document.getElementById('inventoryHomeNav');
 const inventoryBack=document.getElementById('inventoryBack');
 if(inventoryHomeNav) inventoryHomeNav.addEventListener('click',goHome);
 if(inventoryBack) inventoryBack.addEventListener('click',goHome);
 
+const inventoryGrid=document.getElementById('inventoryGrid');
+if(inventoryGrid) inventoryGrid.addEventListener('click',e=>{
+  const sell=e.target.closest('[data-sell-index]');
+  if(sell){
+    sellInventoryItem(Number(sell.dataset.sellIndex));
+    return;
+  }
+  const place=e.target.closest('[data-place-index]');
+  if(place){
+    placeInventoryItem(Number(place.dataset.placeIndex));
+  }
+});
 
 document.querySelectorAll('[data-go-shop]').forEach(b=>b.addEventListener('click',showShop));
 const shopHomeNav=document.getElementById('shopHomeNav');

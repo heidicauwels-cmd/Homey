@@ -898,7 +898,8 @@
 .hs-cab1{left:2%;top:55.2%;width:24.5%;height:14.6%}
 .hs-cab2{left:27.5%;top:55.2%;width:24.5%;height:14.6%}
 
-/* Goedgekeurde Inventaris-illustratie */
-.inventory-visual-middle{overflow:auto!important;padding:0 0 12px!important}
-.inventory-visual{display:block;width:100%;height:auto;border-radius:14px}
-.inventory-art-wrap{position:relative}.inventory-interactive{position:absolute;left:5%;right:5%;top:32%;display:grid;grid-template-columns:1fr 1fr;gap:8px}.inv-live-card{background:#fffaf1;border:1px solid #e4d1b5;border-radius:12px;padding:5px}.inv-live-card img{width:100%;height:90px;object-fit:contain}.inv-live-card b{display:block;font-size:8px}.inv-live-card small{font-size:6px}.inv-live-actions{display:grid;grid-template-columns:1fr 1fr;gap:4px}.inv-live-actions button{font-size:6px;padding:4px;border-radius:7px}.inv-place{background:#eaf1de;border:1px solid #b8c995}.inv-sell{background:#fff2e1;border:1px solid #dfc49e}
+/* Inventaris-correctie: losse meubelillustraties, geen fotocrops */
+.inventory-card img{
+  object-fit:contain !important;
+  background:#fff8ec !important;
+}
