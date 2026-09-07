@@ -291,7 +291,7 @@ function inventoryToast(text){
   document.getElementById('inventoryScreen').appendChild(t);
   setTimeout(()=>t.remove(),1400);
 }
-function renderInventory(){ renderCounters(); }
+function renderInventory(){renderCounters();const box=document.getElementById('inventoryInteractive');if(!box)return;box.innerHTML=state.inventoryItems.map((id,index)=>{const item=inventoryItemData(id);if(!item)return '';const value=Math.max(1,Math.floor(item.price/3));return `<div class="inv-live-card"><img src="${item.img}"><b>${item.name}</b><small>${item.type}</small><div class="inv-live-actions"><button class="inv-place" data-live-place="${index}">Plaatsen</button><button class="inv-sell" data-live-sell="${index}">Verkoop 🪙${value}</button></div></div>`}).join('');}
 function showInventory(){
   H.hidden=true;O.hidden=true;T.hidden=true;L.hidden=true;S.hidden=true;I.hidden=false;
   renderInventory();
@@ -599,6 +599,7 @@ document.querySelectorAll('[data-visual-buy]').forEach(btn=>{
   });
 });
 
+const inventoryInteractive=document.getElementById('inventoryInteractive');if(inventoryInteractive)inventoryInteractive.addEventListener('click',e=>{const s=e.target.closest('[data-live-sell]');if(s){sellInventoryItem(Number(s.dataset.liveSell));return}const p=e.target.closest('[data-live-place]');if(p)placeInventoryItem(Number(p.dataset.livePlace));});
 document.querySelectorAll('[data-go-inventory]').forEach(b=>b.addEventListener('click',showInventory));
 const inventoryHomeNav=document.getElementById('inventoryHomeNav');
 const inventoryBack=document.getElementById('inventoryBack');
