@@ -185,19 +185,19 @@ function renderCounters(){
 const starterItemTypes=['Zetels','Tafels','Stoelen','Kasten'];
 
 const shopItems=[
-  {id:'sofa-green',type:'Zetels',name:'Groene bank',price:8,img:'shop-sofa-green.jpg'},
-  {id:'chair-boho',type:'Zetels',name:'Boho fauteuil',price:6,img:'shop-chair-boho.jpg'},
-  {id:'sofa-rattan',type:'Zetels',name:'Rotan loveseat',price:9,img:'shop-sofa-rattan.jpg'},
+  {id:'sofa-green',type:'Zetels',name:'Groene bank',price:8,img:'inventory-sofa-green.jpg'},
+  {id:'chair-boho',type:'Zetels',name:'Boho fauteuil',price:6,img:'inventory-chair-boho.jpg'},
+  {id:'sofa-rattan',type:'Zetels',name:'Rotan loveseat',price:9,img:'inventory-sofa-rattan.jpg'},
 
-  {id:'table-round',type:'Tafels',name:'Ronde salontafel',price:7,img:'shop-table-round.jpg'},
+  {id:'table-round',type:'Tafels',name:'Ronde salontafel',price:7,img:'inventory-table-round.jpg'},
   {id:'table-light',type:'Tafels',name:'Lichte salontafel',price:6,img:'inventory-table-light.jpg'},
   {id:'table-rattan',type:'Tafels',name:'Rotan bijzettafel',price:4,img:'inventory-table-rattan.jpg'},
 
   {id:'chair-natural',type:'Stoelen',name:'Naturel stoel',price:40,img:'shop-chair-boho.jpg'},
   {id:'chair-rattan',type:'Stoelen',name:'Rotan stoel',price:55,img:'shop-sofa-rattan.jpg'},
 
-  {id:'cabinet-wood',type:'Kasten',name:'Houten dressoir',price:10,img:'shop-cabinet-wood.jpg'},
-  {id:'cabinet-green',type:'Kasten',name:'Vintage kastje',price:9,img:'shop-cabinet-green.jpg'},
+  {id:'cabinet-wood',type:'Kasten',name:'Houten dressoir',price:10,img:'inventory-cabinet-wood.jpg'},
+  {id:'cabinet-green',type:'Kasten',name:'Vintage kastje',price:9,img:'inventory-cabinet-green.jpg'},
 
   {id:'plant-hang',type:'Planten',name:'Hangplant',price:30,img:'shop-plant.jpg'},
   {id:'plant-large',type:'Planten',name:'Grote kamerplant',price:45,img:'shop-plant.jpg'},
