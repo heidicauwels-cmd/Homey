@@ -903,3 +903,81 @@
   object-fit:contain !important;
   background:#fff8ec !important;
 }
+
+
+/* ========== PLAATSMODUS ========== */
+.placement-middle{
+  position:absolute;left:6.4%;right:6.4%;top:10.45%;bottom:11.8%;
+  overflow:auto;padding:3px 0 14px;font-family:Arial,sans-serif;color:#3b291b;
+}
+.placement-head{
+  display:grid;grid-template-columns:38px 1fr 38px;align-items:center;
+  text-align:center;margin-bottom:8px;
+}
+.placement-head h1{
+  font:22px "Segoe Print","Comic Sans MS",cursive;margin:0;line-height:1.05;
+}
+.placement-head small{font-size:7.5px;color:#806b58}
+.placement-back{
+  border:1px solid #e0c8a6;background:#fffaf1;border-radius:50%;
+  width:36px;height:36px;font-size:27px;color:#5a402b;
+}
+.placement-canvas{
+  position:relative;width:100%;aspect-ratio:1/1.05;overflow:hidden;
+  border:1px solid #dfcfb8;border-radius:15px;background:#f5ead7;
+  box-shadow:0 3px 10px #0001;touch-action:none;
+}
+.placement-room-image{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  image-rendering:auto;filter:saturate(.94) brightness(1.03);
+}
+.placement-canvas::after{
+  content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(255,255,255,.03),rgba(255,248,235,.08));
+  pointer-events:none;
+}
+.placed-layer{position:absolute;inset:0;z-index:3;pointer-events:none}
+.placed-furniture{
+  position:absolute;width:25%;max-height:28%;object-fit:contain;transform:translate(-50%,-50%);
+  filter:drop-shadow(0 3px 2px #0002);
+}
+.pending-furniture{
+  position:absolute;left:50%;top:63%;width:28%;max-height:30%;object-fit:contain;
+  transform:translate(-50%,-50%);z-index:6;cursor:grab;touch-action:none;
+  filter:drop-shadow(0 4px 3px #0003);
+}
+.pending-furniture.dragging{cursor:grabbing;filter:drop-shadow(0 5px 4px #0004)}
+.placement-help{
+  margin-top:7px;padding:7px 9px;text-align:center;font-size:8px;
+  border:1px solid #dfd0b7;border-radius:10px;background:#f7f1e4;color:#6d5a48;
+}
+.placement-actions{display:grid;grid-template-columns:1fr 1.25fr;gap:7px;margin-top:7px}
+.placement-actions button{border-radius:10px;padding:8px;font-size:9px;font-weight:700}
+.placement-cancel{border:1px solid #dec7a6;background:#fff5e7;color:#79593b}
+.placement-save{border:1px solid #aabd83;background:#dfeccd;color:#4f6734}
+
+.room-picker-modal{
+  position:fixed;inset:0;background:#0004;display:flex;align-items:flex-end;justify-content:center;
+  z-index:120;padding:14px;
+}
+.room-picker-modal[hidden]{display:none}
+.room-picker-sheet{
+  position:relative;width:min(440px,100%);background:#fff8eb;border:1px solid #ddc7a8;
+  border-radius:20px 20px 14px 14px;padding:18px 14px 16px;text-align:center;
+  font-family:Arial,sans-serif;color:#4b3524;box-shadow:0 -8px 30px #0002;
+}
+.room-picker-close{
+  position:absolute;right:10px;top:8px;border:0;background:transparent;font-size:24px;color:#775f48;
+}
+.room-picker-icon{font-size:26px}
+.room-picker-sheet h2{
+  font:20px "Segoe Print","Comic Sans MS",cursive;margin:3px 0 2px;
+}
+.room-picker-sheet p{font-size:8px;color:#806d5b;margin:0 0 10px}
+.room-picker-choices{display:grid;grid-template-columns:repeat(2,1fr);gap:7px}
+.room-picker-choice{
+  border:1px solid #d9c5aa;background:#fffdf7;border-radius:12px;padding:8px 5px;
+  font-size:9px;color:#523d2c;font-weight:700;
+}
+.room-picker-choice img{
+  display:block;width:100%;height:58px;object-fit:cover;border-radius:8px;margin-bottom:5px;
+}

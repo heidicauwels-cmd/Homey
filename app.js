@@ -1,4 +1,4 @@
-const H=document.getElementById('houseScreen'),O=document.getElementById('overviewScreen'),T=document.getElementById('taskScreen'),L=document.getElementById('levelScreen'),S=document.getElementById('shopScreen'),I=document.getElementById('inventoryScreen');
+const H=document.getElementById('houseScreen'),O=document.getElementById('overviewScreen'),T=document.getElementById('taskScreen'),L=document.getElementById('levelScreen'),S=document.getElementById('shopScreen'),I=document.getElementById('inventoryScreen'),P=document.getElementById('placementScreen');
 
 const roomData=[
  ['Woonkamer','room-living.jpg','6 taken',0],
@@ -106,7 +106,13 @@ if(!Array.isArray(state.unlockedItemTypes)) state.unlockedItemTypes=[];
 
 if(!Array.isArray(state.inventoryItems)) state.inventoryItems=[];
 
+
 if(!Array.isArray(state.placedItems)) state.placedItems=[];
+state.placedItems=state.placedItems.map(x=>{
+  if(typeof x==='string') return {id:x,room:'Woonkamer',x:50,y:63};
+  return x;
+});
+
 
 
 
@@ -251,7 +257,7 @@ function renderShop(){
   renderCounters();
 }
 function showShop(){
-  H.hidden=true;O.hidden=true;T.hidden=true;L.hidden=true;I.hidden=true;S.hidden=false;
+  H.hidden=true;O.hidden=true;T.hidden=true;L.hidden=true;I.hidden=true;P.hidden=true;S.hidden=false;
   renderShop();
 }
 function shopToast(text){
@@ -331,7 +337,7 @@ function renderInventory(){
   }).join('');
 }
 function showInventory(){
-  H.hidden=true;O.hidden=true;T.hidden=true;L.hidden=true;S.hidden=true;I.hidden=false;
+  H.hidden=true;O.hidden=true;T.hidden=true;L.hidden=true;S.hidden=true;P.hidden=true;I.hidden=false;
   renderInventory();
 }
 function sellInventoryItem(index){
@@ -345,16 +351,103 @@ function sellInventoryItem(index){
   renderInventory();
   inventoryToast(`${item.name} verkocht voor ${value} munten`);
 }
+
+let pendingPlacement=null;
+
+const roomImages={
+  Woonkamer:'room-living.jpg',
+  Keuken:'room-kitchen.jpg',
+  Badkamer:'room-bathroom.jpg',
+  Slaapkamer:'room-bedroom.jpg',
+  Wasruimte:'room-laundry.jpg',
+  Caravan:'room-caravan.jpg'
+};
+
+function availablePlacementRooms(){
+  return ['Woonkamer','Keuken','Badkamer',...state.unlockedRooms]
+    .filter((r,i,a)=>a.indexOf(r)===i && roomImages[r]);
+}
+
 function placeInventoryItem(index){
   const id=state.inventoryItems[index];
   const item=inventoryItemData(id);
   if(!item) return;
-  state.inventoryItems.splice(index,1);
-  state.placedItems.push(id);
-  save();
-  renderInventory();
-  inventoryToast(`${item.name} is geplaatst ♡`);
+  pendingPlacement={index,id,room:null,x:50,y:63};
+  openRoomPicker(item);
 }
+
+function openRoomPicker(item){
+  const modal=document.getElementById('roomPickerModal');
+  const choices=document.getElementById('roomPickerChoices');
+  document.getElementById('roomPickerItem').textContent=`${item.name}: kies een kamer.`;
+  choices.innerHTML=availablePlacementRooms().map(room=>`
+    <button class="room-picker-choice" data-place-room="${room}">
+      <img src="${roomImages[room]}" alt="">
+      ${room}
+    </button>`).join('');
+  modal.hidden=false;
+}
+
+function closeRoomPicker(){
+  document.getElementById('roomPickerModal').hidden=true;
+}
+
+function startPlacement(room){
+  if(!pendingPlacement) return;
+  pendingPlacement.room=room;
+  closeRoomPicker();
+  H.hidden=true;O.hidden=true;T.hidden=true;L.hidden=true;S.hidden=true;I.hidden=true;P.hidden=false;
+  renderCounters();
+
+  const item=inventoryItemData(pendingPlacement.id);
+  document.getElementById('placementTitle').textContent=`${item.name} plaatsen`;
+  document.getElementById('placementRoomImage').src=roomImages[room];
+  const pending=document.getElementById('pendingFurniture');
+  pending.src=item.img;
+  pending.style.left=pendingPlacement.x+'%';
+  pending.style.top=pendingPlacement.y+'%';
+
+  renderPlacedRoom(room);
+}
+
+function renderPlacedRoom(room){
+  const layer=document.getElementById('placedLayer');
+  layer.innerHTML=state.placedItems.filter(x=>x && x.room===room).map(x=>{
+    const item=inventoryItemData(x.id);
+    if(!item) return '';
+    return `<img class="placed-furniture" src="${item.img}" style="left:${x.x}%;top:${x.y}%">`;
+  }).join('');
+}
+
+function cancelPlacement(){
+  pendingPlacement=null;
+  P.hidden=true;
+  showInventory();
+}
+
+function savePlacement(){
+  if(!pendingPlacement) return;
+  const currentId=state.inventoryItems[pendingPlacement.index];
+  if(currentId!==pendingPlacement.id){
+    const idx=state.inventoryItems.indexOf(pendingPlacement.id);
+    if(idx<0) return cancelPlacement();
+    pendingPlacement.index=idx;
+  }
+  state.inventoryItems.splice(pendingPlacement.index,1);
+  state.placedItems.push({
+    id:pendingPlacement.id,
+    room:pendingPlacement.room,
+    x:Math.round(pendingPlacement.x*10)/10,
+    y:Math.round(pendingPlacement.y*10)/10
+  });
+  const item=inventoryItemData(pendingPlacement.id);
+  save();
+  pendingPlacement=null;
+  P.hidden=true;
+  showInventory();
+  inventoryToast(`${item.name} staat nu in ${state.placedItems[state.placedItems.length-1].room} ♡`);
+}
+
 
 const rewardRooms=['Slaapkamer','Wasruimte','Caravan','Hobbykamer'];
 const rewardItemTypes=['Planten','Tapijten','Verlichting','Decoratie','Vloeren','Behang & verf','Zetels','Bedden','Nachtkastjes','Badkamer','Keuken'];
@@ -423,7 +516,7 @@ function renderLevels(){
 }
 
 function showLevels(){
-  H.hidden=true;O.hidden=true;T.hidden=true;S.hidden=true;I.hidden=true;L.hidden=false;
+  H.hidden=true;O.hidden=true;T.hidden=true;S.hidden=true;I.hidden=true;P.hidden=true;L.hidden=false;
   renderLevels();renderCounters();
 }
 
@@ -565,7 +658,7 @@ document.getElementById('tasks').onclick=e=>{
  save();renderTasks();
 };
 
-function goHome(){T.hidden=true;O.hidden=true;L.hidden=true;S.hidden=true;I.hidden=true;H.hidden=false;renderCounters()}
+function goHome(){T.hidden=true;O.hidden=true;L.hidden=true;S.hidden=true;I.hidden=true;P.hidden=true;H.hidden=false;renderCounters()}
 const overviewHomeNav=document.getElementById('overviewHomeNav');
 const taskHomeNav=document.getElementById('taskHomeNav');
 if(overviewHomeNav)overviewHomeNav.addEventListener('click',goHome);
@@ -636,6 +729,63 @@ document.querySelectorAll('[data-visual-buy]').forEach(btn=>{
     shopToast(`${item.name} gekocht ♡`);
   });
 });
+
+
+const roomPickerChoices=document.getElementById('roomPickerChoices');
+if(roomPickerChoices) roomPickerChoices.addEventListener('click',e=>{
+  const b=e.target.closest('[data-place-room]');
+  if(b) startPlacement(b.dataset.placeRoom);
+});
+const closeRoomPickerBtn=document.getElementById('closeRoomPicker');
+if(closeRoomPickerBtn) closeRoomPickerBtn.addEventListener('click',()=>{closeRoomPicker();pendingPlacement=null;});
+const roomPickerModal=document.getElementById('roomPickerModal');
+if(roomPickerModal) roomPickerModal.addEventListener('click',e=>{
+  if(e.target===roomPickerModal){closeRoomPicker();pendingPlacement=null;}
+});
+['placementCancel','placementCancelTop'].forEach(id=>{
+  const b=document.getElementById(id);
+  if(b) b.addEventListener('click',cancelPlacement);
+});
+const placementSave=document.getElementById('placementSave');
+if(placementSave) placementSave.addEventListener('click',savePlacement);
+
+const pendingFurniture=document.getElementById('pendingFurniture');
+const placementCanvas=document.getElementById('placementCanvas');
+if(pendingFurniture && placementCanvas){
+  let dragging=false;
+  const moveTo=e=>{
+    if(!dragging || !pendingPlacement) return;
+    const rect=placementCanvas.getBoundingClientRect();
+    const point=e.touches?e.touches[0]:e;
+    let x=(point.clientX-rect.left)/rect.width*100;
+    let y=(point.clientY-rect.top)/rect.height*100;
+    x=Math.max(12,Math.min(88,x));
+    y=Math.max(15,Math.min(88,y));
+    pendingPlacement.x=x;pendingPlacement.y=y;
+    pendingFurniture.style.left=x+'%';
+    pendingFurniture.style.top=y+'%';
+  };
+  const start=e=>{
+    dragging=true;
+    pendingFurniture.classList.add('dragging');
+    if(pendingFurniture.setPointerCapture && e.pointerId!==undefined){
+      try{pendingFurniture.setPointerCapture(e.pointerId)}catch(_){}
+    }
+    moveTo(e);
+    e.preventDefault();
+  };
+  const end=()=>{
+    dragging=false;
+    pendingFurniture.classList.remove('dragging');
+  };
+  pendingFurniture.addEventListener('pointerdown',start);
+  window.addEventListener('pointermove',moveTo);
+  window.addEventListener('pointerup',end);
+  pendingFurniture.addEventListener('touchstart',start,{passive:false});
+  window.addEventListener('touchmove',moveTo,{passive:false});
+  window.addEventListener('touchend',end);
+}
+
 
 document.querySelectorAll('[data-go-inventory]').forEach(b=>b.addEventListener('click',showInventory));
 const inventoryHomeNav=document.getElementById('inventoryHomeNav');

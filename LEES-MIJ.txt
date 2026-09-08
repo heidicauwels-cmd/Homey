@@ -1,11 +1,14 @@
-HOMEY — INVENTARIS CORRECTIE
+HOMEY — PLAATSMODUS
 
-Opgelost:
-- geen volledige Inventaris-afbeelding meer in een tweede Homey-scherm;
-- dus geen dubbele header of dubbele onderste navigatie;
-- de normale interactieve Inventaris blijft behouden;
-- Lichte salontafel en Rotan bijzettafel gebruiken nu losse getekende illustraties;
-- Plaatsen en Verkopen blijven werken;
-- meubels worden volledig getoond en niet meer vreemd afgesneden.
+Nieuw:
+- Tik in Inventaris op Plaatsen.
+- Kies eerst een vrijgespeelde kamer.
+- De kamer opent in plaatsmodus.
+- Sleep het meubel vrij met je vinger naar de gewenste plek.
+- Tik op Bewaren om de positie vast te leggen.
+- Pas na Bewaren verdwijnt het meubel uit Inventaris.
+- Annuleren laat het meubel gewoon in Inventaris staan.
+- Eerder geplaatste meubels in dezelfde kamer worden in de plaatsmodus opnieuw getoond.
+- Positie en kamer worden bewaard in Homey.
 
-Deze versie bouwt op de werkende Winkeltje-kopen-versie.
+De bestaande Winkeltje-, Inventaris-, taken-, level- en tellerlogica is behouden.

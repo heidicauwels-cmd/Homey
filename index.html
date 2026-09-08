@@ -174,6 +174,45 @@
   <button class="levels-nav-hotspot levels-inventory" data-go-levels aria-label="Levels"></button>
 </section>
 
+
+<section id="placementScreen" class="screen" hidden>
+  <img src="homey-frame.png" class="base" alt="">
+  <div class="home-value frame-coins"><span class="coins">14</span></div>
+  <div class="home-value frame-points"><span class="points">65</span></div>
+
+  <div class="placement-middle">
+    <div class="placement-head">
+      <button id="placementCancelTop" class="placement-back" aria-label="Annuleren">‹</button>
+      <div>
+        <h1 id="placementTitle">Meubel plaatsen ♡</h1>
+        <small>Sleep het meubel naar de gewenste plek</small>
+      </div>
+    </div>
+
+    <div id="placementCanvas" class="placement-canvas">
+      <img id="placementRoomImage" class="placement-room-image" alt="">
+      <div id="placedLayer" class="placed-layer"></div>
+      <img id="pendingFurniture" class="pending-furniture" alt="">
+    </div>
+
+    <div class="placement-help">Sleep het meubel met je vinger. Tik daarna op <b>Bewaren</b>.</div>
+    <div class="placement-actions">
+      <button id="placementCancel" class="placement-cancel">Annuleren</button>
+      <button id="placementSave" class="placement-save">✓ Bewaren</button>
+    </div>
+  </div>
+</section>
+
+<div id="roomPickerModal" class="room-picker-modal" hidden>
+  <div class="room-picker-sheet">
+    <button id="closeRoomPicker" class="room-picker-close" aria-label="Sluiten">×</button>
+    <div class="room-picker-icon">🏡</div>
+    <h2>Waar wil je dit zetten?</h2>
+    <p id="roomPickerItem">Kies een vrijgespeelde kamer.</p>
+    <div id="roomPickerChoices" class="room-picker-choices"></div>
+  </div>
+</div>
+
 <div id="rewardModal" class="reward-modal" hidden>
   <div class="reward-sheet">
     <button id="closeReward" class="reward-close" aria-label="Sluiten">×</button>
