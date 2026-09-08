@@ -161,6 +161,41 @@ function totalDone(){
   return Object.keys(tasksByRoom).reduce((n,room)=>n+roomDone(room),0);
 }
 
+function roomStarScore(room){
+  const data=tasksByRoom[room];
+  if(!Array.isArray(data) || !data.length) return null;
+  const done=roomDone(room);
+  // 0/3 when nothing is current, 3/3 only when every task is current.
+  return Math.max(0,Math.min(3,Math.round((done/data.length)*3)));
+}
+
+function renderHomeRoomRatings(){
+  document.querySelectorAll('[data-home-rating]').forEach(el=>{
+    const room=el.dataset.homeRating;
+    el.classList.remove('locked','inactive');
+
+    if(room==='Hal' || room==='Terras'){
+      el.classList.add('inactive');
+      el.innerHTML=`—/3 <span class="rating-star">☆</span>`;
+      return;
+    }
+
+    if(!roomIsUnlocked(room)){
+      el.classList.add('locked');
+      el.textContent='🔒';
+      return;
+    }
+
+    const score=roomStarScore(room);
+    if(score===null){
+      el.classList.add('inactive');
+      el.innerHTML=`—/3 <span class="rating-star">☆</span>`;
+      return;
+    }
+    el.innerHTML=`${score}/3 <span class="rating-star">☆</span>`;
+  });
+}
+
 function renderBalls(){
  document.querySelectorAll('.ballrow').forEach(r=>{
    r.innerHTML=Array.from({length:15},(_,i)=>`<span class="${i<state.today?'on':''}"></span>`).join('')
@@ -178,6 +213,7 @@ function renderCounters(){
  document.getElementById('homeLivingDone').textContent=roomDone('Woonkamer');
  document.getElementById('homeBonusCheck').classList.toggle('done',state.today>=15);
  renderBalls();
+ renderHomeRoomRatings();
 }
 
 

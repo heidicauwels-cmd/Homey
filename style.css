@@ -987,3 +987,51 @@
 .pending-furniture,
 .placed-furniture{object-fit:contain !important;}
 .inventory-card img{background:#fff8ec !important;}
+
+
+/* Dynamische kamer-sterren op de huispagina.
+   Deze lagen dekken de vaste 3/3-labels in homey-house.png af. */
+.home-room-rating{
+  position:absolute;
+  z-index:7;
+  width:10.9%;
+  height:3.15%;
+  transform:translate(-50%,-50%);
+  border:1px solid #d8b97e;
+  border-radius:12px;
+  background:#fff7df;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+  font-size:17px;
+  font-weight:700;
+  color:#3c291b;
+  box-shadow:0 1px 2px rgba(95,62,30,.08);
+  pointer-events:none;
+}
+.home-room-rating .rating-star{color:#f4b72d;font-size:18px;line-height:1}
+.home-room-rating.locked{
+  font-size:15px;
+  color:#80694f;
+  background:#f7edd7;
+}
+.home-room-rating.inactive{
+  color:#927b62;
+  font-size:14px;
+}
+.rating-bedroom{left:41.9%;top:39.9%}
+.rating-bathroom{left:79.0%;top:39.9%}
+.rating-living{left:41.9%;top:56.7%}
+.rating-kitchen{left:79.2%;top:56.7%}
+.rating-hall{left:40.3%;top:70.75%}
+.rating-laundry{left:79.3%;top:70.75%}
+.rating-terrace{left:36.2%;top:83.75%}
+
+@media(max-width:520px){
+  .home-room-rating{font-size:15px;border-radius:10px}
+  .home-room-rating .rating-star{font-size:16px}
+  .home-room-rating.locked,.home-room-rating.inactive{font-size:13px}
+}

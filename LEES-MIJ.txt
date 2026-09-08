@@ -1,14 +1,9 @@
-HOMEY — PLAATSMODUS
+HOMEY — DYNAMISCHE KAMERSTERREN
 
-Nieuw:
-- Tik in Inventaris op Plaatsen.
-- Kies eerst een vrijgespeelde kamer.
-- De kamer opent in plaatsmodus.
-- Sleep het meubel vrij met je vinger naar de gewenste plek.
-- Tik op Bewaren om de positie vast te leggen.
-- Pas na Bewaren verdwijnt het meubel uit Inventaris.
-- Annuleren laat het meubel gewoon in Inventaris staan.
-- Eerder geplaatste meubels in dezelfde kamer worden in de plaatsmodus opnieuw getoond.
-- Positie en kamer worden bewaard in Homey.
-
-De bestaande Winkeltje-, Inventaris-, taken-, level- en tellerlogica is behouden.
+Correctie:
+- De vaste 3/3-labels op de huispagina worden nu afgedekt door dynamische waarden.
+- Woonkamer, keuken en badkamer volgen de actuele takenstatus.
+- 3/3 verschijnt alleen wanneer alle taken in die kamer nog groen/geldig zijn.
+- Slaapkamer en wasruimte tonen een slot zolang ze niet vrijgespeeld zijn.
+- Hal en terras hebben nog geen taken in Homey en tonen daarom —/3.
+- De rest van de app is behouden.
