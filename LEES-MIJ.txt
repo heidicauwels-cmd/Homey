@@ -1,9 +1,5 @@
-HOMEY — DYNAMISCHE KAMERSTERREN
-
-Correctie:
-- De vaste 3/3-labels op de huispagina worden nu afgedekt door dynamische waarden.
-- Woonkamer, keuken en badkamer volgen de actuele takenstatus.
-- 3/3 verschijnt alleen wanneer alle taken in die kamer nog groen/geldig zijn.
-- Slaapkamer en wasruimte tonen een slot zolang ze niet vrijgespeeld zijn.
-- Hal en terras hebben nog geen taken in Homey en tonen daarom —/3.
-- De rest van de app is behouden.
+HOMEY — HUISSTERREN CORRECTIE
+Vertrekt van de laatste goede versie.
+Alleen Woonkamer, Keuken en Badkamer krijgen dynamische 0/3–3/3 cijfers.
+De bestaande huisillustratie, badges en sterren blijven behouden.
+Slaapkamer, Wasruimte, Hal en Terras zijn niet gewijzigd.
