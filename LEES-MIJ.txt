@@ -1,13 +1,9 @@
-HOMEY — KAMERTELLERS OP BASIS VAN TAKEN
+HOMEY — HUIS MET WERKENDE KAMERTELLERS
 
-Deze versie vertrekt van Homey-meubelillustraties-correct.
-
-Huispagina:
-- Woonkamer toont x/6
-- Keuken toont x/5
-- Badkamer toont x/4
-- x is het aantal taken dat op dit moment groen/geldig is.
-- Bij voltooien van een taak stijgt de teller automatisch.
-- Wanneer een taak volgens zijn frequentie opnieuw vervalt, telt hij niet meer mee.
-- De bestaande huisillustratie en sterretjes blijven behouden.
-- Andere kamers en de rest van Homey zijn niet aangepast.
+- Goedgekeurde nieuwe huisillustratie gebruikt.
+- Badkamer: actuele taken / 4
+- Woonkamer: actuele taken / 6
+- Keuken: actuele taken / 5
+- De volledige tellerbadge is dynamisch, zodat geen oude cijfers eronder zichtbaar blijven.
+- De teller gebruikt dezelfde groen/geldig-logica als de takenlijst.
+- Winkeltje, inventaris, plaatsen, levels en overige logica komen uit de laatste goede basis.

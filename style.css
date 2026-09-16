@@ -988,31 +988,24 @@
 .placed-furniture{object-fit:contain !important;}
 .inventory-card img{background:#fff8ec !important;}
 
-
-/* Huispagina: echte taakvoortgang per actieve kamer.
-   Alleen de oude vaste cijfers worden afgedekt; de bestaande ster/badge blijft zichtbaar. */
-.home-task-count{
-  position:absolute;
-  z-index:8;
-  width:6.6%;
-  height:2.45%;
-  transform:translate(-50%,-50%);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#fff5dc;
-  color:#3d291a;
-  font-family:Arial,sans-serif;
-  font-size:15px;
-  font-weight:700;
-  line-height:1;
-  pointer-events:none;
-  border-radius:5px;
+/* Definitieve dynamische kamertellers: volledige badge vervangt de vaste badge in de illustratie. */
+.house-task-badge{
+  position:absolute;z-index:9;transform:translate(-50%,-50%);
+  width:11.7%;height:4.1%;box-sizing:border-box;
+  display:flex;align-items:center;justify-content:center;
+  border:1.5px solid #dfbd82;border-radius:15px;
+  background:#fff8e8;color:#2f2118;
+  font-family:Arial,sans-serif;font-size:16px;font-weight:700;
+  box-shadow:0 1px 2px rgba(70,45,20,.12);pointer-events:none;
 }
-.home-task-living{left:44.7%;top:56.72%}
-.home-task-kitchen{left:81.9%;top:56.72%}
-.home-task-bathroom{left:81.7%;top:39.92%}
-
+.house-task-badge::after{
+  content:"★";color:#ffb52d;font-size:19px;margin-left:6px;
+  -webkit-text-stroke:.5px #e78c16;
+}
+.badge-bathroom{left:74.3%;top:28.2%}
+.badge-living{left:43.2%;top:49.2%}
+.badge-kitchen{left:74.3%;top:49.2%}
 @media(max-width:520px){
-  .home-task-count{font-size:13px}
+  .house-task-badge{font-size:14px;border-radius:12px}
+  .house-task-badge::after{font-size:16px;margin-left:4px}
 }
