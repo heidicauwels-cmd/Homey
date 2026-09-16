@@ -1,5 +1,13 @@
-HOMEY — HUISSTERREN CORRECTIE
-Vertrekt van de laatste goede versie.
-Alleen Woonkamer, Keuken en Badkamer krijgen dynamische 0/3–3/3 cijfers.
-De bestaande huisillustratie, badges en sterren blijven behouden.
-Slaapkamer, Wasruimte, Hal en Terras zijn niet gewijzigd.
+HOMEY — KAMERTELLERS OP BASIS VAN TAKEN
+
+Deze versie vertrekt van Homey-meubelillustraties-correct.
+
+Huispagina:
+- Woonkamer toont x/6
+- Keuken toont x/5
+- Badkamer toont x/4
+- x is het aantal taken dat op dit moment groen/geldig is.
+- Bij voltooien van een taak stijgt de teller automatisch.
+- Wanneer een taak volgens zijn frequentie opnieuw vervalt, telt hij niet meer mee.
+- De bestaande huisillustratie en sterretjes blijven behouden.
+- Andere kamers en de rest van Homey zijn niet aangepast.

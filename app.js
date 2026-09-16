@@ -158,14 +158,11 @@ function roomDone(room){
   return (tasksByRoom[room]||[]).reduce((n,_,i)=>n+(taskIsDone(room,i)?1:0),0);
 }
 
-function homeRoomStars(room){
-  const total=(tasksByRoom[room]||[]).length;
-  if(!total) return 0;
-  return Math.max(0,Math.min(3,Math.round((roomDone(room)/total)*3)));
-}
-function renderHomeStars(){
-  document.querySelectorAll('[data-home-star]').forEach(el=>{
-    el.textContent=`${homeRoomStars(el.dataset.homeStar)}/3`;
+function renderHomeTaskCounts(){
+  document.querySelectorAll('[data-home-task-count]').forEach(el=>{
+    const room=el.dataset.homeTaskCount;
+    const total=(tasksByRoom[room]||[]).length;
+    el.textContent=`${roomDone(room)}/${total}`;
   });
 }
 function totalDone(){
@@ -189,7 +186,7 @@ function renderCounters(){
  document.getElementById('homeLivingDone').textContent=roomDone('Woonkamer');
  document.getElementById('homeBonusCheck').classList.toggle('done',state.today>=15);
  renderBalls();
- renderHomeStars();
+ renderHomeTaskCounts();
 }
 
 

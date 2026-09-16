@@ -988,9 +988,31 @@
 .placed-furniture{object-fit:contain !important;}
 .inventory-card img{background:#fff8ec !important;}
 
-/* Alleen de cijfers van de bestaande 3/3-badges vervangen. */
-.home-star-number{position:absolute;z-index:8;width:6.2%;height:2.35%;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;background:#fff5dc;color:#3d291a;font-family:Arial,sans-serif;font-size:15px;font-weight:700;line-height:1;pointer-events:none;border-radius:5px}
-.home-star-living{left:44.7%;top:56.72%}
-.home-star-kitchen{left:81.9%;top:56.72%}
-.home-star-bathroom{left:81.7%;top:39.92%}
-@media(max-width:520px){.home-star-number{font-size:13px}}
+
+/* Huispagina: echte taakvoortgang per actieve kamer.
+   Alleen de oude vaste cijfers worden afgedekt; de bestaande ster/badge blijft zichtbaar. */
+.home-task-count{
+  position:absolute;
+  z-index:8;
+  width:6.6%;
+  height:2.45%;
+  transform:translate(-50%,-50%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#fff5dc;
+  color:#3d291a;
+  font-family:Arial,sans-serif;
+  font-size:15px;
+  font-weight:700;
+  line-height:1;
+  pointer-events:none;
+  border-radius:5px;
+}
+.home-task-living{left:44.7%;top:56.72%}
+.home-task-kitchen{left:81.9%;top:56.72%}
+.home-task-bathroom{left:81.7%;top:39.92%}
+
+@media(max-width:520px){
+  .home-task-count{font-size:13px}
+}
