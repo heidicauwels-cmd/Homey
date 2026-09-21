@@ -158,9 +158,9 @@ function roomDone(room){
   return (tasksByRoom[room]||[]).reduce((n,_,i)=>n+(taskIsDone(room,i)?1:0),0);
 }
 
-function renderHouseRoomCounters(){
-  document.querySelectorAll('[data-house-counter]').forEach(el=>{
-    const room=el.dataset.houseCounter;
+function renderHomeRoomTaskNumbers(){
+  document.querySelectorAll('[data-room-tasknum]').forEach(el=>{
+    const room=el.dataset.roomTasknum;
     const total=(tasksByRoom[room]||[]).length;
     el.textContent=`${roomDone(room)}/${total}`;
   });
@@ -186,7 +186,7 @@ function renderCounters(){
  document.getElementById('homeLivingDone').textContent=roomDone('Woonkamer');
  document.getElementById('homeBonusCheck').classList.toggle('done',state.today>=15);
  renderBalls();
- renderHouseRoomCounters();
+ renderHomeRoomTaskNumbers();
 }
 
 

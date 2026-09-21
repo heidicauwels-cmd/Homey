@@ -1,1 +1,15 @@
-HOMEY commitversie: dynamische kamertellers Badkamer x/4, Woonkamer x/6 en Keuken x/5. Winkeltje, Inventaris, Plaatsen, levels en bestaande logica behouden.
+HOMEY — ORIGINEEL HUIS + WERKENDE KAMERTELLERS
+
+Deze versie vertrekt van Homey-meubelillustraties-correct.
+Geen nieuw of uitgerekt huisbeeld.
+
+Alleen aangepast:
+- ingebakken 3/3-cijfers bij Badkamer, Woonkamer en Keuken zijn uit het originele huisbeeld weggewerkt
+- dynamische teller op exact die plek:
+  Badkamer x/4
+  Woonkamer x/6
+  Keuken x/5
+- bestaande badge en ster blijven onderdeel van het originele ontwerp
+- teller gebruikt dezelfde taak/frequentielogica als de takenlijst
+
+Alle andere Homey-functionaliteit en vormgeving zijn behouden.
