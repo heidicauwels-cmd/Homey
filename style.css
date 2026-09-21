@@ -988,24 +988,7 @@
 .placed-furniture{object-fit:contain !important;}
 .inventory-card img{background:#fff8ec !important;}
 
-/* Definitieve dynamische kamertellers: volledige badge vervangt de vaste badge in de illustratie. */
-.house-task-badge{
-  position:absolute;z-index:9;transform:translate(-50%,-50%);
-  width:11.7%;height:4.1%;box-sizing:border-box;
-  display:flex;align-items:center;justify-content:center;
-  border:1.5px solid #dfbd82;border-radius:15px;
-  background:#fff8e8;color:#2f2118;
-  font-family:Arial,sans-serif;font-size:16px;font-weight:700;
-  box-shadow:0 1px 2px rgba(70,45,20,.12);pointer-events:none;
-}
-.house-task-badge::after{
-  content:"★";color:#ffb52d;font-size:19px;margin-left:6px;
-  -webkit-text-stroke:.5px #e78c16;
-}
-.badge-bathroom{left:74.3%;top:28.2%}
-.badge-living{left:43.2%;top:49.2%}
-.badge-kitchen{left:74.3%;top:49.2%}
-@media(max-width:520px){
-  .house-task-badge{font-size:14px;border-radius:12px}
-  .house-task-badge::after{font-size:16px;margin-left:4px}
-}
+.house-room-counter{position:absolute;z-index:10;transform:translate(-50%,-50%);width:12.2%;height:4.25%;box-sizing:border-box;display:flex;align-items:center;justify-content:center;border:1.4px solid #dfbd82;border-radius:15px;background:#fff8e8;color:#2f2118;font-family:Arial,sans-serif;font-size:16px;font-weight:700;line-height:1;box-shadow:0 1px 2px rgba(70,45,20,.12);pointer-events:none}
+.house-room-counter::after{content:"★";margin-left:6px;color:#ffb52d;font-size:19px;-webkit-text-stroke:.45px #e78c16}
+.counter-bathroom{left:76.9%;top:29.55%}.counter-living{left:45.7%;top:51.45%}.counter-kitchen{left:77.1%;top:51.45%}
+@media(max-width:520px){.house-room-counter{font-size:14px;border-radius:12px}.house-room-counter::after{font-size:16px;margin-left:4px}}

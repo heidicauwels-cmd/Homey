@@ -1,9 +1,1 @@
-HOMEY — HUIS MET WERKENDE KAMERTELLERS
-
-- Goedgekeurde nieuwe huisillustratie gebruikt.
-- Badkamer: actuele taken / 4
-- Woonkamer: actuele taken / 6
-- Keuken: actuele taken / 5
-- De volledige tellerbadge is dynamisch, zodat geen oude cijfers eronder zichtbaar blijven.
-- De teller gebruikt dezelfde groen/geldig-logica als de takenlijst.
-- Winkeltje, inventaris, plaatsen, levels en overige logica komen uit de laatste goede basis.
+HOMEY commitversie: dynamische kamertellers Badkamer x/4, Woonkamer x/6 en Keuken x/5. Winkeltje, Inventaris, Plaatsen, levels en bestaande logica behouden.
