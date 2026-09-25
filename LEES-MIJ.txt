@@ -1,16 +1,27 @@
-HOMEY — GROTE WERKENDE KAMERTELLERS
+HOMEY — HOEKIGE TELLERS + SLOTEN
 
-Terug naar de goede basis met de originele, onbeschadigde huisafbeelding.
+Basis:
+- originele, onbeschadigde Homey-huisafbeelding
+- bestaande werkende kamertellerlogica
 
-Alleen de drie werkende tellers zijn aangepast:
-- Badkamer x/4 ★
-- Woonkamer x/6 ★
-- Keuken x/5 ★
+Aangepast:
+- Badkamer x/4, Woonkamer x/6 en Keuken x/5:
+  meer hoekige badge zoals de vaste tellers
+  breder zodat de volledige oude 3/3-badge én oude ster bedekt zijn
+  één nieuwe gele ster binnen de badge
+- Slaapkamer en Wasruimte:
+  volledige oude teller bedekt
+  badge met duidelijk slotje
+- Hal en Terras:
+  oude vaste teller volledig neutraal afgedekt
 
-De nieuwe badge:
-- heeft dezelfde afgeronde crème/gouden stijl als de vaste badge
-- is bewust iets groter dan de volledige vaste badge
-- bedekt dus zowel de oude vaste cijfers als het oude sterretje volledig
-
-Geen retouches aan homey-house.png.
-Geen wijzigingen aan tellerlogica, taken, Winkeltje, Inventaris, Plaatsen, Levels of navigatie.
+Niet gewijzigd:
+- homey-house.png
+- tellerlogica
+- taken
+- punten/munten
+- Winkeltje
+- Inventaris
+- Plaatsen
+- Levels
+- navigatie
