@@ -1003,11 +1003,45 @@
 .tasknum-kitchen{left:76.4%;top:56.7%}
 @media(max-width:520px){.home-room-tasknum{font-size:13px}}
 
-.old-badge-cover{position:absolute;z-index:8;transform:translate(-50%,-50%);width:11.5%;height:3.55%;box-sizing:border-box;display:flex;align-items:center;justify-content:center;background:#fff6df;border:1.3px solid #dfbd82;border-radius:13px;color:#806b55;font-family:Arial,sans-serif;font-size:16px;line-height:1;pointer-events:none;box-shadow:0 1px 2px rgba(70,45,20,.10)}
-.cover-bedroom{left:43.0%;top:39.9%}.cover-hall{left:43.0%;top:70.7%}.cover-laundry{left:79.0%;top:70.7%}.cover-terrace{left:39.0%;top:83.7%}
-@media(max-width:520px){.old-badge-cover{font-size:14px;border-radius:11px}}
 
-/* Laatste correctie: Keuken-teller bedekt de oude vaste cijfers volledig. */
-.tasknum-kitchen{
-  width:7.3% !important;
+/* DEFINITIEVE KAMERTELLERS
+   Volledige badge in dezelfde vorm als de vaste badge, maar iets groter,
+   zodat de oude vaste teller + ster volledig eronder verdwijnen. */
+.home-room-tasknum{
+  z-index:20 !important;
+  width:12.8% !important;
+  height:4.15% !important;
+  box-sizing:border-box !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  transform:translate(-50%,-50%) !important;
+  background:#fff7df !important;
+  border:1.5px solid #dfbd82 !important;
+  border-radius:16px !important;
+  color:#38261a !important;
+  font-family:Arial,sans-serif !important;
+  font-size:15px !important;
+  font-weight:700 !important;
+  line-height:1 !important;
+  box-shadow:0 1px 2px rgba(70,45,20,.10) !important;
+  pointer-events:none !important;
+}
+.home-room-tasknum::after{
+  content:"★";
+  color:#ffb52d;
+  font-size:18px;
+  margin-left:6px;
+  line-height:1;
+  -webkit-text-stroke:.4px #e78c16;
+}
+
+/* Zelfde centra als de bestaande vaste badges. */
+.tasknum-bathroom{left:76.1% !important;top:39.9% !important}
+.tasknum-living{left:39.2% !important;top:56.7% !important}
+.tasknum-kitchen{left:76.4% !important;top:56.7% !important}
+
+@media(max-width:520px){
+  .home-room-tasknum{font-size:13px !important;border-radius:14px !important}
+  .home-room-tasknum::after{font-size:16px;margin-left:5px}
 }

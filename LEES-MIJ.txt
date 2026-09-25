@@ -1,15 +1,16 @@
-HOMEY — KEUKENTELLER LAATSTE AFDEKKING
+HOMEY — GROTE WERKENDE KAMERTELLERS
 
-Basis: Homey-propere-afdekking.
+Terug naar de goede basis met de originele, onbeschadigde huisafbeelding.
 
-Enige wijziging:
-- de bestaande werkende Keuken-teller is iets breder gemaakt zodat het laatste stukje
-  van de oude vaste teller rechts niet meer zichtbaar is.
+Alleen de drie werkende tellers zijn aangepast:
+- Badkamer x/4 ★
+- Woonkamer x/6 ★
+- Keuken x/5 ★
 
-Niet gewijzigd:
-- tellerlogica
-- Badkamer
-- Woonkamer
-- Slaapkamer / Hal / Wasruimte / Terras
-- huisillustratie
-- Winkeltje, Inventaris, Plaatsen, Levels, navigatie, punten en munten
+De nieuwe badge:
+- heeft dezelfde afgeronde crème/gouden stijl als de vaste badge
+- is bewust iets groter dan de volledige vaste badge
+- bedekt dus zowel de oude vaste cijfers als het oude sterretje volledig
+
+Geen retouches aan homey-house.png.
+Geen wijzigingen aan tellerlogica, taken, Winkeltje, Inventaris, Plaatsen, Levels of navigatie.
