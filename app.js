@@ -174,6 +174,7 @@ function renderBalls(){
    r.innerHTML=Array.from({length:15},(_,i)=>`<span class="${i<state.today?'on':''}"></span>`).join('')
  });
  const hr=document.getElementById('homeBallRow');
+ if(!hr) return;
  hr.innerHTML=Array.from({length:15},(_,i)=>`<span class="${i<state.today?'on':''}"></span>`).join('');
 }
 
@@ -184,7 +185,8 @@ function renderCounters(){
  const left=Math.max(0,15-state.today);
  document.querySelectorAll('.bonusText').forEach(x=>x.textContent=left===0?'Dagbonus behaald!':`${left} bollen tot bonus!`);
  document.getElementById('homeLivingDone').textContent=roomDone('Woonkamer');
- document.getElementById('homeBonusCheck').classList.toggle('done',state.today>=15);
+ const homeBonusCheck=document.getElementById('homeBonusCheck');
+ if(homeBonusCheck) homeBonusCheck.classList.toggle('done',state.today>=15);
  renderBalls();
  renderHomeRoomTaskNumbers();
 }

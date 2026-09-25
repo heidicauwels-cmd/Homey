@@ -1005,3 +1005,15 @@
 
 /* Nieuwe goedgekeurde schone basis: kamertellers worden later opnieuw opgebouwd. */
 .home-room-tasknum{display:none !important;}
+
+/* Schone huisbasis: alle oude huisscherm-overlays definitief uitgeschakeld. */
+#houseScreen .home-coins,
+#houseScreen .home-points,
+#houseScreen .home-today,
+#houseScreen .home-ballrow,
+#houseScreen .home-bonus,
+#houseScreen .home-bonus-check,
+#houseScreen .home-living-count,
+#houseScreen .home-room-tasknum{
+  display:none !important;
+}

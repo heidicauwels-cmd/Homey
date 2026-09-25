@@ -1,15 +1,13 @@
-HOMEY — NIEUWE SCHONE BASIS
+HOMEY — SCHONE BASIS ZONDER OUDE OVERLAYS
 
-Goedgekeurde nieuwe huisafbeelding:
-- bovenaan alleen het vlak met de 15 bolletjes
-- geen Dagelijkse taken
-- geen Bonus
-- geen Munten verdienen
-- geen VANDAAG / 10/15 tekst in dat vlak
-- geen Taken-knop naast het terras
-- geen Foto's-knop naast het terras
-- geen vaste 3/3-kamertellers
-- originele onderste Homey-navigatie in de nieuwe illustratie
+Opgelost op het huisscherm:
+- oude munten-overlay verwijderd
+- oude punten-overlay verwijderd
+- oude 10/15-overlays verwijderd
+- dubbele dynamische bolletjesrij verwijderd
+- oude bonus-overlay verwijderd
+- oude kamerteller-overlay verwijderd
 
-De bestaande appfunctionaliteit en app.js zijn behouden.
-De kamertellers worden vanaf deze schone basis opnieuw opgebouwd.
+De goedgekeurde nieuwe basisafbeelding zelf is behouden.
+Andere schermen en functies zijn niet hertekend.
+De kamertellers/slotjes worden pas in een volgende stap op deze schone basis toegevoegd.
