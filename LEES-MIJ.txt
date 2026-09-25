@@ -1,17 +1,1 @@
-HOMEY — OPSCHONING V2
-
-Basis: Homey-origineel-kamertellers (de versie waarvan de dynamische tellers werken).
-
-Behouden:
-- Badkamer x/4
-- Woonkamer x/6
-- Keuken x/5
-- alle app-logica, navigatie, Winkeltje, Inventaris en Plaatsen
-
-Alleen visueel opgeschoond:
-- oude vaste 3/3 bij Slaapkamer
-- oude vaste 3/3 bij Hal
-- oude vaste 3/3 bij Wasruimte
-- oude vaste 3/3 bij Terras
-
-Deze keer zijn geen rechthoekige stukken uit andere delen van de kamer gekopieerd.
+Homey: onbeschadigde originele huisafbeelding. Werkende tellers Badkamer x/4, Woonkamer x/6, Keuken x/5 behouden. Oude 3/3-badges veilig afgedekt: slot bij Slaapkamer en Wasruimte; neutraal vlak bij Hal en Terras.
