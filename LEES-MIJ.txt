@@ -1,13 +1,15 @@
-HOMEY — SCHONE BASIS ZONDER OUDE OVERLAYS
+HOMEY — SCHONE BASIS MET ORIGINELE BOVENBAND
 
-Opgelost op het huisscherm:
-- oude munten-overlay verwijderd
-- oude punten-overlay verwijderd
-- oude 10/15-overlays verwijderd
-- dubbele dynamische bolletjesrij verwijderd
-- oude bonus-overlay verwijderd
-- oude kamerteller-overlay verwijderd
+Hersteld:
+- originele vaste Homey-bovenband met logo en avatar
+- munten en punten opnieuw als werkende dynamische waarden
 
-De goedgekeurde nieuwe basisafbeelding zelf is behouden.
-Andere schermen en functies zijn niet hertekend.
-De kamertellers/slotjes worden pas in een volgende stap op deze schone basis toegevoegd.
+Behouden:
+- daaronder alleen het vlak met de bolletjes
+- nieuwe schone huisillustratie
+- geen oude 3/3-kamertellers
+- geen Taken/Foto's-zijknoppen
+- onderste navigatie
+- overige appfunctionaliteit
+
+Kamertellers en slotjes worden pas na goedkeuring van deze basis opnieuw toegevoegd.

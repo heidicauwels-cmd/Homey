@@ -1017,3 +1017,21 @@
 #houseScreen .home-room-tasknum{
   display:none !important;
 }
+
+/* Header teruggezet: alleen munten en punten zijn opnieuw dynamisch zichtbaar. */
+#houseScreen .home-coins{
+  display:flex !important;
+  left:51.2% !important;
+  top:3.72% !important;
+  width:7.3% !important;
+  height:2.45% !important;
+  font-size:15px !important;
+}
+#houseScreen .home-points{
+  display:flex !important;
+  left:69.2% !important;
+  top:3.72% !important;
+  width:9.2% !important;
+  height:2.45% !important;
+  font-size:15px !important;
+}
