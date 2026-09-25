@@ -1,12 +1,15 @@
-HOMEY — TELLERS MET ORIGINELE VASTE TELLER ALS SJABLOON
+HOMEY — NIEUWE SCHONE BASIS
 
-Deze versie vertrekt opnieuw van de goede basis met de originele huisafbeelding.
+Goedgekeurde nieuwe huisafbeelding:
+- bovenaan alleen het vlak met de 15 bolletjes
+- geen Dagelijkse taken
+- geen Bonus
+- geen Munten verdienen
+- geen VANDAAG / 10/15 tekst in dat vlak
+- geen Taken-knop naast het terras
+- geen Foto's-knop naast het terras
+- geen vaste 3/3-kamertellers
+- originele onderste Homey-navigatie in de nieuwe illustratie
 
-Nieuw:
-- een echte vaste teller uit homey-house.png is als grafisch sjabloon gebruikt;
-- Badkamer, Woonkamer en Keuken gebruiken daardoor de originele Homey-vorm/rand/ster;
-- alleen de cijfers erboven zijn dynamisch;
-- Slaapkamer en Wasruimte krijgen dezelfde originele badge met een slot;
-- Hal en Terras worden met dezelfde originele badge afgedekt.
-
-De tellerlogica en homey-house.png zijn niet aangepast.
+De bestaande appfunctionaliteit en app.js zijn behouden.
+De kamertellers worden vanaf deze schone basis opnieuw opgebouwd.
