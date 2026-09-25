@@ -1,15 +1,4 @@
-HOMEY — ORIGINEEL HUIS + WERKENDE KAMERTELLERS
-
-Deze versie vertrekt van Homey-meubelillustraties-correct.
-Geen nieuw of uitgerekt huisbeeld.
-
-Alleen aangepast:
-- ingebakken 3/3-cijfers bij Badkamer, Woonkamer en Keuken zijn uit het originele huisbeeld weggewerkt
-- dynamische teller op exact die plek:
-  Badkamer x/4
-  Woonkamer x/6
-  Keuken x/5
-- bestaande badge en ster blijven onderdeel van het originele ontwerp
-- teller gebruikt dezelfde taak/frequentielogica als de takenlijst
-
-Alle andere Homey-functionaliteit en vormgeving zijn behouden.
+HOMEY — oude vaste 3/3-tellers verwijderd.
+De bevestigde werkende tellers blijven ongewijzigd:
+Woonkamer x/6, Keuken x/5, Badkamer x/4.
+Alleen de vaste 3/3-badges van Slaapkamer, Hal, Wasruimte en Terras zijn uit de huisafbeelding verwijderd.
