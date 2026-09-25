@@ -1,27 +1,12 @@
-HOMEY — HOEKIGE TELLERS + SLOTEN
+HOMEY — TELLERS MET ORIGINELE VASTE TELLER ALS SJABLOON
 
-Basis:
-- originele, onbeschadigde Homey-huisafbeelding
-- bestaande werkende kamertellerlogica
+Deze versie vertrekt opnieuw van de goede basis met de originele huisafbeelding.
 
-Aangepast:
-- Badkamer x/4, Woonkamer x/6 en Keuken x/5:
-  meer hoekige badge zoals de vaste tellers
-  breder zodat de volledige oude 3/3-badge én oude ster bedekt zijn
-  één nieuwe gele ster binnen de badge
-- Slaapkamer en Wasruimte:
-  volledige oude teller bedekt
-  badge met duidelijk slotje
-- Hal en Terras:
-  oude vaste teller volledig neutraal afgedekt
+Nieuw:
+- een echte vaste teller uit homey-house.png is als grafisch sjabloon gebruikt;
+- Badkamer, Woonkamer en Keuken gebruiken daardoor de originele Homey-vorm/rand/ster;
+- alleen de cijfers erboven zijn dynamisch;
+- Slaapkamer en Wasruimte krijgen dezelfde originele badge met een slot;
+- Hal en Terras worden met dezelfde originele badge afgedekt.
 
-Niet gewijzigd:
-- homey-house.png
-- tellerlogica
-- taken
-- punten/munten
-- Winkeltje
-- Inventaris
-- Plaatsen
-- Levels
-- navigatie
+De tellerlogica en homey-house.png zijn niet aangepast.

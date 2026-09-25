@@ -1004,63 +1004,79 @@
 @media(max-width:520px){.home-room-tasknum{font-size:13px}}
 
 
-/* Hoekige Homey-kamertellers — volledige oude badge wordt bedekt */
+/* Originele Homey-teller als grafisch sjabloon */
 .home-room-tasknum,
-.fixed-counter-cover{
+.original-counter-badge{
   position:absolute;
-  z-index:20 !important;
+  z-index:25 !important;
   transform:translate(-50%,-50%) !important;
+  width:14.2% !important;
+  height:4.45% !important;
   box-sizing:border-box !important;
-  width:14.7% !important;
-  height:4.05% !important;
-  display:flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-  background:#fff7df !important;
-  border:1.4px solid #dfbd82 !important;
-  border-radius:8px !important;
-  color:#38261a !important;
-  font-family:Arial,sans-serif !important;
-  line-height:1 !important;
-  box-shadow:0 1px 2px rgba(70,45,20,.08) !important;
+  background-image:url("counter-original.png") !important;
+  background-size:100% 100% !important;
+  background-repeat:no-repeat !important;
+  background-position:center !important;
+  border:0 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
   pointer-events:none !important;
 }
 
+/* De live cijfers bedekken uitsluitend de cijfers in het grafische sjabloon.
+   De originele rand/vorm/ster blijven zichtbaar. */
 .home-room-tasknum{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:flex-start !important;
+  padding-left:4.1% !important;
+  color:#38261a !important;
+  font-family:Arial,sans-serif !important;
   font-size:15px !important;
   font-weight:700 !important;
+  line-height:1 !important;
 }
-
-/* Eén nieuwe ster, binnen de nieuwe badge. */
-.home-room-tasknum::after{
-  content:"★";
-  color:#ffb52d;
-  font-size:18px;
-  margin-left:6px;
-  line-height:1;
-  -webkit-text-stroke:.4px #e78c16;
+.home-room-tasknum::before{
+  content:"";
+  position:absolute;
+  left:23%;
+  top:24%;
+  width:45%;
+  height:52%;
+  background:#fff4dc;
+  border-radius:3px;
+  z-index:-1;
 }
+.home-room-tasknum::after{content:none !important;}
 
-/* Werkende tellers: dezelfde bestaande, bevestigde posities. */
 .tasknum-bathroom{left:76.1% !important;top:39.9% !important}
 .tasknum-living{left:39.2% !important;top:56.7% !important}
 .tasknum-kitchen{left:76.4% !important;top:56.7% !important}
 
-/* Gesloten kamers: oude 3/3 volledig bedekt door een hoekige badge met slot. */
-.lock-bedroom{left:43.0%;top:39.9%}
-.lock-laundry{left:79.0%;top:70.7%}
-.lock-symbol{
-  font-size:18px;
-  line-height:1;
+/* Gesloten kamers: dezelfde originele badgevorm, met slot bovenop de oude cijfers. */
+.original-counter-badge{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
 }
-
-/* Hal en Terras zijn geen gesloten vrijspeelkamers:
-   hun oude vaste 3/3 wordt wel volledig en rustig afgedekt. */
-.neutral-hall{left:43.0%;top:70.7%}
-.neutral-terrace{left:39.0%;top:83.7%}
+.original-counter-badge::before{
+  content:"";
+  position:absolute;
+  left:20%;
+  top:20%;
+  width:60%;
+  height:60%;
+  background:#fff4dc;
+  border-radius:3px;
+  z-index:0;
+}
+.badge-lock{position:relative;z-index:1;font-size:18px;line-height:1}
+.badge-bedroom{left:43.0%;top:39.9%}
+.badge-laundry{left:79.0%;top:70.7%}
+.badge-hall{left:43.0%;top:70.7%}
+.badge-terrace{left:39.0%;top:83.7%}
 
 @media(max-width:520px){
   .home-room-tasknum{font-size:13px !important}
-  .home-room-tasknum::after{font-size:16px;margin-left:5px}
-  .lock-symbol{font-size:16px}
+  .badge-lock{font-size:16px}
 }
