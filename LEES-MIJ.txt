@@ -1,1 +1,15 @@
-Homey: onbeschadigde originele huisafbeelding. Werkende tellers Badkamer x/4, Woonkamer x/6, Keuken x/5 behouden. Oude 3/3-badges veilig afgedekt: slot bij Slaapkamer en Wasruimte; neutraal vlak bij Hal en Terras.
+HOMEY — KEUKENTELLER LAATSTE AFDEKKING
+
+Basis: Homey-propere-afdekking.
+
+Enige wijziging:
+- de bestaande werkende Keuken-teller is iets breder gemaakt zodat het laatste stukje
+  van de oude vaste teller rechts niet meer zichtbaar is.
+
+Niet gewijzigd:
+- tellerlogica
+- Badkamer
+- Woonkamer
+- Slaapkamer / Hal / Wasruimte / Terras
+- huisillustratie
+- Winkeltje, Inventaris, Plaatsen, Levels, navigatie, punten en munten
