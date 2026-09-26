@@ -1,15 +1,15 @@
-HOMEY — SCHONE BASIS MET ORIGINELE BOVENBAND
+HOMEY — HEADER + BOLLETJES + HUIS ZONDER UITREKKEN
 
-Hersteld:
-- originele vaste Homey-bovenband met logo en avatar
-- munten en punten opnieuw als werkende dynamische waarden
+Huisscherm is nu opgebouwd uit drie losse afbeeldingen:
+1. originele Homey-header
+2. goedgekeurd bolletjesvlak
+3. goedgekeurd huis + onderste navigatie
 
-Behouden:
-- daaronder alleen het vlak met de bolletjes
-- nieuwe schone huisillustratie
-- geen oude 3/3-kamertellers
-- geen Taken/Foto's-zijknoppen
-- onderste navigatie
-- overige appfunctionaliteit
+Elk onderdeel schaalt met width:100% en height:auto.
+Daardoor wordt het huis niet meer uitgerekt of samengedrukt.
 
-Kamertellers en slotjes worden pas na goedkeuring van deze basis opnieuw toegevoegd.
+Nog niet toegevoegd:
+- dynamische kamertellers
+- slotjes
+
+Die komen pas nadat deze basis visueel goed staat.

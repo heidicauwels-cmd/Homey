@@ -1018,20 +1018,52 @@
   display:none !important;
 }
 
-/* Header teruggezet: alleen munten en punten zijn opnieuw dynamisch zichtbaar. */
-#houseScreen .home-coins{
-  display:flex !important;
-  left:51.2% !important;
-  top:3.72% !important;
-  width:7.3% !important;
-  height:2.45% !important;
-  font-size:15px !important;
+/* Huisscherm opgebouwd uit losse delen; afbeeldingen behouden altijd hun verhouding. */
+#houseScreen{
+  overflow:auto !important;
+  background:#f4efe5 !important;
 }
-#houseScreen .home-points{
-  display:flex !important;
-  left:69.2% !important;
-  top:3.72% !important;
-  width:9.2% !important;
-  height:2.45% !important;
-  font-size:15px !important;
+.home-composed{
+  position:relative;
+  width:min(100%, 512px);
+  margin:0 auto;
+  background:#f4efe5;
 }
+.home-part{
+  display:block;
+  width:100%;
+  height:auto !important;
+  object-fit:contain !important;
+}
+.home-header-wrap{position:relative;width:100%}
+.home-header-img{width:100%;height:auto}
+.home-progress-img{width:100%;height:auto}
+.home-main-img{width:100%;height:auto}
+
+.home-header-value{
+  position:absolute;
+  z-index:5;
+  transform:translate(-50%,-50%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:Arial,sans-serif;
+  font-weight:700;
+  color:#38261a;
+  background:#fff7df;
+  line-height:1;
+  pointer-events:none;
+}
+.header-coins{left:51.2%;top:44%;width:7.3%;height:29%;font-size:15px}
+.header-points{left:69.2%;top:44%;width:9.2%;height:29%;font-size:15px}
+
+/* Oude huisscherm-afbeelding/overlays blijven uit. */
+#houseScreen > img.house-bg,
+#houseScreen .home-coins:not(.header-coins),
+#houseScreen .home-points:not(.header-points),
+#houseScreen .home-today,
+#houseScreen .home-ballrow,
+#houseScreen .home-bonus,
+#houseScreen .home-bonus-check,
+#houseScreen .home-living-count,
+#houseScreen .home-room-tasknum{display:none !important;}
