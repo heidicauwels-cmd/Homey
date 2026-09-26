@@ -1,12 +1,7 @@
-HOMEY — SCHERMVULLEND ZONDER UITREKKEN
+HOMEY — VASTE SCHONE BASIS
 
-Deze versie vertrekt van de laatste nette basis.
+Alleen deze twee visuele correcties:
+- groene streep onder de onderste navigatie verwijderd
+- achtergrond links en rechts van het bolletjesvlak crème doorgetrokken
 
-Oplossing:
-- het huis wordt NIET uitgerekt;
-- alleen de lege zijmarges van de huisafbeelding zijn weggecropt;
-- daardoor wordt het huis bij dezelfde schermbreedte groter/hoger;
-- header, bolletjes en huis sluiten strak op elkaar aan;
-- geen flex-opvulbalken of losse bolletjes onderaan.
-
-De goedgekeurde illustratie zelf is niet vervormd.
+Verder niets gewijzigd. Deze versie is bedoeld als vaste basis vóór de kamertellers en slotjes.
