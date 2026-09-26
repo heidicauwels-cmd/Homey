@@ -1,15 +1,3 @@
-HOMEY — HEADER + BOLLETJES + HUIS ZONDER UITREKKEN
+HOMEY — opgeschoonde basis
 
-Huisscherm is nu opgebouwd uit drie losse afbeeldingen:
-1. originele Homey-header
-2. goedgekeurd bolletjesvlak
-3. goedgekeurd huis + onderste navigatie
-
-Elk onderdeel schaalt met width:100% en height:auto.
-Daardoor wordt het huis niet meer uitgerekt of samengedrukt.
-
-Nog niet toegevoegd:
-- dynamische kamertellers
-- slotjes
-
-Die komen pas nadat deze basis visueel goed staat.
+Dubbele headerwaarden verwijderd, oude losse bolletjes verborgen en de juiste huisverhouding behouden.
