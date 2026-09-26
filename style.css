@@ -1161,3 +1161,24 @@
   outline:0 !important;
   box-shadow:none !important;
 }
+
+
+/* FIX: de vier klik-hotspots onderaan mogen nooit zichtbaar getekend worden. */
+#houseScreen button.hotspot{
+  -webkit-appearance:none !important;
+  appearance:none !important;
+  position:absolute !important;
+  display:block !important;
+  margin:0 !important;
+  padding:0 !important;
+  border:0 !important;
+  outline:0 !important;
+  box-shadow:none !important;
+  background:transparent !important;
+  color:transparent !important;
+  font-size:0 !important;
+  line-height:0 !important;
+  min-width:0 !important;
+  min-height:0 !important;
+  border-radius:0 !important;
+}

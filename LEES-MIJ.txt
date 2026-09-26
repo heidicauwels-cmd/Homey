@@ -1,11 +1,12 @@
-HOMEY — VASTE BASIS, NAVIGATIE INTACT
+HOMEY — LIJNTJES DEFINITIEF WEG
 
-Teruggegaan naar de versie waarin alle navigatieteksten volledig zichtbaar waren.
+De vier horizontale lijntjes bleken geen afbeeldingsranden te zijn.
+Het waren de vier transparante navigatie-hotspots (<button>) die de browser
+als smalle standaardknoppen tekende.
 
-Aangepast:
-- uitsluitend de alleronderste achtergrondstrook onder de navigatie opgeschoond;
-- niets afgeknipt;
-- Winkeltje, Inventaris en alle andere navigatieteksten blijven volledig intact;
-- geen wijzigingen aan header, bolletjes, huis of verhouding.
-
-Deze versie is bedoeld als vaste basis vóór de kamertellers.
+Opgelost:
+- hotspot-knoppen blijven klikbaar;
+- ze zijn nu volledig transparant en randloos;
+- de afbeelding is NIET aangepast of afgeknipt;
+- navigatieteksten blijven volledig intact;
+- header, bolletjes, huis en verhoudingen zijn ongewijzigd.
