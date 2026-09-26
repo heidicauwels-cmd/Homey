@@ -1,16 +1,12 @@
-HOMEY — BASIS ZONDER CSS-ONDERRANDEN
+HOMEY — ONDERKANT DEFINITIEF OPGESCHOOND
 
-Terug naar de vaste basis vóór het afknippen van pixels.
+Controle van homey-main-fill.png wees uit dat de zichtbare lijnen in de onderste pixels
+van de afbeelding zelf zaten.
 
 Aangepast:
-- geen enkele afbeelding is geknipt of gewijzigd
-- borders/outlines/shadows onder het huisscherm zijn uitgeschakeld
-- niets kan onder de onderste navigatie uit de Homey-compositie lekken
+- alleen die lijnpixels zijn vervangen door de bestaande crème achtergrond;
+- niets is afgeknipt;
+- afmetingen en verhouding zijn identiek gebleven;
+- header, bolletjes, huis en navigatie zijn verder niet gewijzigd.
 
-Niet gewijzigd:
-- header
-- bolletjes
-- huis
-- onderste navigatie
-- verhoudingen
-- appfunctionaliteit
+Dit is de basis om verder te gaan met de kamertellers.
