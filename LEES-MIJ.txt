@@ -1,3 +1,17 @@
-HOMEY — opgeschoonde basis
+HOMEY — SCHERMVULLENDE BASIS
 
-Dubbele headerwaarden verwijderd, oude losse bolletjes verborgen en de juiste huisverhouding behouden.
+Deze versie bouwt verder op de goedgekeurde header + bolletjes + huisbasis.
+
+Aangepast:
+- huisscherm vult nu de volledige beschikbare hoogte;
+- header blijft bovenaan;
+- onderste navigatie eindigt onderaan;
+- de vrije verticale ruimte wordt tussen de onderdelen verdeeld in plaats van als één groot leeg vlak onderaan;
+- header, bolletjesvlak en huis behouden elk hun eigen beeldverhouding;
+- geen uitrekken van het huis;
+- oude losse bolletjes/overlays onder het huis blijven verborgen.
+
+Niet toegevoegd:
+- kamertellers;
+- slotjes.
+Die komen pas nadat deze basis visueel is goedgekeurd.

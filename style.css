@@ -1073,3 +1073,56 @@
 .home-composed{width:min(100%,512px)!important;margin:0 auto!important;padding:0!important;overflow:hidden!important;background:#fffaf0!important;border-radius:28px!important;}
 .home-header-wrap,.home-header-img,.home-progress-img,.home-main-img{display:block!important;width:100%!important;height:auto!important;margin:0!important;padding:0!important;object-fit:contain!important;}
 .home-header-value,#houseScreen .home-ballrow,#houseScreen .home-bonus,#houseScreen .home-bonus-check,#houseScreen .home-today,#houseScreen .home-living-count,#houseScreen .home-room-tasknum,#houseScreen .ball,#houseScreen .mini-ball{display:none!important;}
+
+/* Schermvullende huislayout — beelden blijven in hun eigen verhouding. */
+#houseScreen{
+  width:100% !important;
+  height:100% !important;
+  background:#fffaf0 !important;
+  overflow:hidden !important;
+}
+#houseScreen .home-composed{
+  position:relative !important;
+  width:100% !important;
+  height:100% !important;
+  min-height:100% !important;
+  margin:0 !important;
+  padding:0 !important;
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:space-between !important;
+  align-items:stretch !important;
+  overflow:hidden !important;
+  background:#fffaf0 !important;
+  border-radius:0 !important;
+}
+#houseScreen .home-header-wrap{
+  flex:0 0 auto !important;
+  width:100% !important;
+}
+#houseScreen .home-header-img,
+#houseScreen .home-progress-img,
+#houseScreen .home-main-img{
+  display:block !important;
+  flex:0 0 auto !important;
+  width:100% !important;
+  max-width:100% !important;
+  height:auto !important;
+  object-fit:contain !important;
+  margin:0 !important;
+}
+/* Alle oude losse bolletjes/overlays op de huispagina definitief weg. */
+#houseScreen .ballrow,
+#houseScreen .ballrow *,
+#houseScreen .home-ballrow,
+#houseScreen .home-ballrow *,
+#houseScreen .ball,
+#houseScreen .mini-ball,
+#houseScreen .home-header-value,
+#houseScreen .home-today,
+#houseScreen .home-bonus,
+#houseScreen .home-bonus-check,
+#houseScreen .home-living-count,
+#houseScreen .home-room-tasknum{
+  display:none !important;
+}
