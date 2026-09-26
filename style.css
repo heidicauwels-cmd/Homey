@@ -1125,11 +1125,31 @@
   display:none !important;
 }
 
-/* Definitieve vaste basis: geen onderrand onder de navigatie. */
+/* Onderste navigatie: geen lijnen/randen/schaduwen vanuit HTML/CSS.
+   Afbeeldingen zelf blijven volledig onaangeroerd. */
 #houseScreen,
-.home-composed,
-.home-main-img{
+#houseScreen .home-composed,
+#houseScreen .home-main-img,
+#houseScreen .home-part,
+#houseScreen img,
+#houseScreen::before,
+#houseScreen::after,
+#houseScreen .home-composed::before,
+#houseScreen .home-composed::after{
+  border:0 !important;
+  border-top:0 !important;
+  border-right:0 !important;
   border-bottom:0 !important;
-  box-shadow:none !important;
+  border-left:0 !important;
   outline:0 !important;
+  box-shadow:none !important;
+  text-decoration:none !important;
+}
+
+/* Niets mag onder de onderste navigatie uit de compositie lekken. */
+#houseScreen{
+  overflow:hidden !important;
+}
+#houseScreen .home-composed{
+  overflow:hidden !important;
 }

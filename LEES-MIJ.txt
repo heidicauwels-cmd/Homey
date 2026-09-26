@@ -1,14 +1,16 @@
-HOMEY — VASTE BASIS ZONDER ONDERRAND
+HOMEY — BASIS ZONDER CSS-ONDERRANDEN
 
-Alleen gecorrigeerd:
-- de twee dunne donkere lijnen onder de onderste navigatie zijn verwijderd.
+Terug naar de vaste basis vóór het afknippen van pixels.
+
+Aangepast:
+- geen enkele afbeelding is geknipt of gewijzigd
+- borders/outlines/shadows onder het huisscherm zijn uitgeschakeld
+- niets kan onder de onderste navigatie uit de Homey-compositie lekken
 
 Niet gewijzigd:
 - header
-- bolletjesvlak
+- bolletjes
 - huis
+- onderste navigatie
 - verhoudingen
-- navigatie
 - appfunctionaliteit
-
-Deze versie is bedoeld als vaste basis voor de volgende stap: dynamische kamertellers en slotjes.
