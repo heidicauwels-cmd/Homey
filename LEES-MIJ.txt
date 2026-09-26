@@ -1,12 +1,11 @@
-HOMEY — ONDERKANT DEFINITIEF OPGESCHOOND
+HOMEY — VASTE BASIS, NAVIGATIE INTACT
 
-Controle van homey-main-fill.png wees uit dat de zichtbare lijnen in de onderste pixels
-van de afbeelding zelf zaten.
+Teruggegaan naar de versie waarin alle navigatieteksten volledig zichtbaar waren.
 
 Aangepast:
-- alleen die lijnpixels zijn vervangen door de bestaande crème achtergrond;
-- niets is afgeknipt;
-- afmetingen en verhouding zijn identiek gebleven;
-- header, bolletjes, huis en navigatie zijn verder niet gewijzigd.
+- uitsluitend de alleronderste achtergrondstrook onder de navigatie opgeschoond;
+- niets afgeknipt;
+- Winkeltje, Inventaris en alle andere navigatieteksten blijven volledig intact;
+- geen wijzigingen aan header, bolletjes, huis of verhouding.
 
-Dit is de basis om verder te gaan met de kamertellers.
+Deze versie is bedoeld als vaste basis vóór de kamertellers.

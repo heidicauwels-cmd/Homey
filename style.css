@@ -1154,8 +1154,9 @@
   overflow:hidden !important;
 }
 
-/* Onderkant definitief schoon: geen extra rand op het afbeeldings-element. */
-#houseScreen .home-main-img{
+/* Vaste basis: navigatie volledig intact, geen CSS-onderrand. */
+#houseScreen .home-main-img,
+#houseScreen .home-composed{
   border:0 !important;
   outline:0 !important;
   box-shadow:none !important;
