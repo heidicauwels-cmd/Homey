@@ -1124,3 +1124,12 @@
 #houseScreen .home-room-tasknum{
   display:none !important;
 }
+
+/* Definitieve vaste basis: geen onderrand onder de navigatie. */
+#houseScreen,
+.home-composed,
+.home-main-img{
+  border-bottom:0 !important;
+  box-shadow:none !important;
+  outline:0 !important;
+}

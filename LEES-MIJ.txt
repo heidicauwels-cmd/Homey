@@ -1,7 +1,14 @@
-HOMEY — VASTE SCHONE BASIS
+HOMEY — VASTE BASIS ZONDER ONDERRAND
 
-Alleen deze twee visuele correcties:
-- groene streep onder de onderste navigatie verwijderd
-- achtergrond links en rechts van het bolletjesvlak crème doorgetrokken
+Alleen gecorrigeerd:
+- de twee dunne donkere lijnen onder de onderste navigatie zijn verwijderd.
 
-Verder niets gewijzigd. Deze versie is bedoeld als vaste basis vóór de kamertellers en slotjes.
+Niet gewijzigd:
+- header
+- bolletjesvlak
+- huis
+- verhoudingen
+- navigatie
+- appfunctionaliteit
+
+Deze versie is bedoeld als vaste basis voor de volgende stap: dynamische kamertellers en slotjes.
