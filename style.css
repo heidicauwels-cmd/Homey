@@ -1219,3 +1219,6 @@
 #houseScreen .home-main-wrap .lock-bedroom{left:38%;top:19%;}
 #houseScreen .home-main-wrap .lock-laundry{left:77%;top:62%;}
 #houseScreen .home-main-wrap .home-room-lock[hidden]{display:none!important;}
+
+#houseScreen .home-main-wrap .lock-hall{left:36%;top:63%;}
+#houseScreen .home-main-wrap .lock-terrace{left:51%;top:79%;}
