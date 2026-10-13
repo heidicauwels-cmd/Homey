@@ -1197,3 +1197,19 @@
 #houseScreen .counter-bath{left:75%;top:19.0%;}
 #houseScreen .counter-living{left:41%;top:39.0%;}
 #houseScreen .counter-kitchen{left:76%;top:39.0%;}
+
+/* Klikzones op de samengestelde huisafbeelding; geen visuele veranderingen. */
+#houseScreen .home-main-wrap button.hotspot{
+ position:absolute!important;display:block!important;z-index:30!important;
+ appearance:none!important;-webkit-appearance:none!important;
+ background:transparent!important;border:0!important;outline:0!important;
+ box-shadow:none!important;padding:0!important;margin:0!important;
+ cursor:pointer!important;touch-action:manipulation!important;
+}
+#houseScreen .home-main-wrap .home-living{left:15%!important;top:29%!important;width:36%!important;height:20%!important;}
+#houseScreen .home-main-wrap .home-kitchen{left:52%!important;top:29%!important;width:40%!important;height:20%!important;}
+#houseScreen .home-main-wrap .home-bathroom{left:52%!important;top:10%!important;width:40%!important;height:19%!important;}
+#houseScreen .home-main-wrap .nav-home{left:0%!important;top:87%!important;width:20%!important;height:13%!important;}
+#houseScreen .home-main-wrap .nav-shop{left:20%!important;top:87%!important;width:20%!important;height:13%!important;}
+#houseScreen .home-main-wrap .nav-inventory{left:40%!important;top:87%!important;width:20%!important;height:13%!important;}
+#houseScreen .home-main-wrap .nav-levels{left:60%!important;top:87%!important;width:20%!important;height:13%!important;}
