@@ -190,6 +190,9 @@ function renderCounters(){
  if(homeBonusCheck) homeBonusCheck.classList.toggle('done',state.today>=15);
  renderBalls();
  renderHomeRoomTaskNumbers();
+ document.querySelectorAll('[data-home-lock]').forEach(el=>{
+   el.hidden=roomIsUnlocked(el.dataset.homeLock);
+ });
 }
 
 
