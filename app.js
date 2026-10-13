@@ -184,7 +184,8 @@ function renderCounters(){
  document.querySelectorAll('.today').forEach(x=>x.textContent=state.today);
  const left=Math.max(0,15-state.today);
  document.querySelectorAll('.bonusText').forEach(x=>x.textContent=left===0?'Dagbonus behaald!':`${left} bollen tot bonus!`);
- document.getElementById('homeLivingDone').textContent=roomDone('Woonkamer');
+ const oldLivingCounter=document.getElementById('homeLivingDone');
+ if(oldLivingCounter) oldLivingCounter.textContent=roomDone('Woonkamer');
  const homeBonusCheck=document.getElementById('homeBonusCheck');
  if(homeBonusCheck) homeBonusCheck.classList.toggle('done',state.today>=15);
  renderBalls();
