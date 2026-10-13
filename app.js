@@ -75,7 +75,7 @@ function frequencyDays(label){
 }
 
 let state=JSON.parse(localStorage.getItem('homey-multiroom')||'null') || {
-  points:65, coins:14, today:10,
+  points:0, coins:0, today:0,
   bonusAwarded:false,
   lastDate:localDateKey(),
   completed:{Woonkamer:[],Keuken:[],Badkamer:[]}
@@ -830,3 +830,17 @@ if(shopBack) shopBack.addEventListener('click',goHome);
 
 
 renderOverview();renderCounters();
+
+// Instellingen: alleen wissen na expliciete bevestiging.
+const moreScreen=document.getElementById('moreScreen');
+const moreNav=document.getElementById('homeMoreNav');
+if(moreNav) moreNav.addEventListener('click',()=>{
+  [H,O,T,L,S,I,P].forEach(el=>{el.hidden=true;});
+  moreScreen.hidden=false;
+});
+document.getElementById('moreBack')?.addEventListener('click',()=>{moreScreen.hidden=true;goHome();});
+document.getElementById('resetHomey')?.addEventListener('click',()=>{
+  if(!window.confirm('Weet je zeker dat je HELE Homey-spel opnieuw wilt beginnen? Alle voortgang, vrijgespeelde kamers en aangekochte spullen worden gewist. Dit kan niet ongedaan worden gemaakt.')) return;
+  localStorage.removeItem('homey-multiroom');
+  window.location.reload();
+});
