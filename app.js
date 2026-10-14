@@ -846,3 +846,17 @@ document.getElementById('resetHomey')?.addEventListener('click',()=>{
   localStorage.removeItem('homey-multiroom');
   window.location.reload();
 });
+
+// Testfunctie: breng de voortgang op level 5 zonder overige spelgegevens te wissen.
+document.getElementById('testLevelFive')?.addEventListener('click',()=>{
+  if(currentLevel()>=5){
+    window.alert('Je bent al op level 5 of hoger. Open Levels om je beloning te testen.');
+    return;
+  }
+  if(!window.confirm('Tijdelijk naar level 5 gaan om het vrijspelen te testen? Je punten worden verhoogd tot 400.')) return;
+  state.points=400;
+  save();
+  renderCounters();
+  moreScreen.hidden=true;
+  showLevels();
+});

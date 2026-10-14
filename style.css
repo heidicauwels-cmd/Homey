@@ -1238,3 +1238,8 @@
 #houseScreen .live-progress-balls{position:absolute;left:25%;top:31%;width:50%;height:43%;display:flex;align-items:center;justify-content:space-between;gap:1.2%;pointer-events:none;z-index:10;background:#fffaf0;}
 #houseScreen .live-progress-balls span{display:block;flex:1;aspect-ratio:1;border:1.5px solid #568ab0;border-radius:50%;background:#fffaf0;max-width:27px;}
 #houseScreen .live-progress-balls span.on{background:#70a9df;}
+
+.level-test-panel{margin:20px 0;padding:14px;border:1px solid #d5c5a4;border-radius:14px;background:#f8f2e5}
+.level-test-panel h3{margin:0 0 6px;color:#755a35}
+.level-test-panel p{margin:6px 0 12px}
+.level-test-panel .level-test-note{font-size:.85rem;color:#73695d;margin:10px 0 0}
