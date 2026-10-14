@@ -578,6 +578,7 @@ function chooseReward(name){
   closeRewardModal();
   renderLevels();
   renderOverview();
+  renderCounters();
 }
 
 
@@ -602,15 +603,15 @@ function applyRoomUnlocks(){
 
 function renderOverview(){
  document.getElementById('roomCards').innerHTML=roomData.map(x=>{
-   const done=roomDone(x[0]);
-   const total=(tasksByRoom[x[0]]||[]).length;
-   return `<button class="room-card ${x[3]?'locked':''}" data-room="${x[0]}" ${x[3]?'disabled':''}>
-   <img src="${x[1]}"><span class="room-text"><b>${x[0]}</b><small>${x[3]?x[2]:`${done}/${total} taken`}</small>
-   ${x[3]?'':`<span class="progress" style="--progress:${total ? Math.round((done/total)*100) : 0}%"><i class="red"></i><i class="red"></i><i class="orange"></i><i class="orange"></i><i class="green"></i><i class="green"></i><em></em></span>`}
-   </span><span class="chev">${x[3]?'🔒':'›'}</span></button>`
+   const room=x[0], unlocked=roomIsUnlocked(room);
+   const done=roomDone(room), total=(tasksByRoom[room]||[]).length;
+   return `<button class="room-card ${unlocked?'':'locked'}" data-room="${room}" ${unlocked?'':'disabled'}>
+   <img src="${x[1]}"><span class="room-text"><b>${room}</b><small>${unlocked?`${done}/${total} taken`:x[2]}</small>
+   ${unlocked?`<span class="progress" style="--progress:${total ? Math.round((done/total)*100) : 0}%"><i class="red"></i><i class="red"></i><i class="orange"></i><i class="orange"></i><i class="green"></i><i class="green"></i><em></em></span>`:''}
+   </span><span class="chev">${unlocked?'›':'🔒'}</span></button>`;
  }).join('');
  renderCounters();
-  applyRoomUnlocks();
+ applyRoomUnlocks();
 }
 
 function renderTasks(){
@@ -675,7 +676,7 @@ document.getElementById('tasks').onclick=e=>{
  save();renderTasks();
 };
 
-function goHome(){T.hidden=true;O.hidden=true;L.hidden=true;S.hidden=true;I.hidden=true;P.hidden=true;H.hidden=false;renderCounters()}
+function goHome(){T.hidden=true;O.hidden=true;L.hidden=true;S.hidden=true;I.hidden=true;P.hidden=true;document.getElementById('moreScreen').hidden=true;H.hidden=false;renderCounters()}
 const overviewHomeNav=document.getElementById('overviewHomeNav');
 const taskHomeNav=document.getElementById('taskHomeNav');
 if(overviewHomeNav)overviewHomeNav.addEventListener('click',goHome);
@@ -691,12 +692,9 @@ function openRoomTasks(room){
 }
 
 
-document.querySelectorAll('.room-card[data-room]').forEach(card=>{
-  card.addEventListener('click',e=>{
-    const room=card.dataset.room;
-    if(!roomIsUnlocked(room)) return;
-    openRoomTasks(room);
-  });
+document.getElementById('roomCards')?.addEventListener('click',e=>{
+ const card=e.target.closest('.room-card[data-room]');
+ if(card && roomIsUnlocked(card.dataset.room)) openRoomTasks(card.dataset.room);
 });
 
 document.querySelectorAll('[data-go-levels]').forEach(b=>b.addEventListener('click',showLevels));
@@ -860,3 +858,9 @@ document.getElementById('testLevelFive')?.addEventListener('click',()=>{
   moreScreen.hidden=true;
   showLevels();
 });
+
+// Meer blijft bereikbaar vanaf alle schermen, zonder het bestaande ontwerp te wijzigen.
+document.querySelectorAll('[data-open-more]').forEach(button=>button.addEventListener('click',()=>{
+ [H,O,T,L,S,I,P].forEach(screen=>screen.hidden=true);
+ moreScreen.hidden=false;
+}));

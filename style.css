@@ -1243,3 +1243,8 @@
 .level-test-panel h3{margin:0 0 6px;color:#755a35}
 .level-test-panel p{margin:6px 0 12px}
 .level-test-panel .level-test-note{font-size:.85rem;color:#73695d;margin:10px 0 0}
+
+/* Onzichtbare Meer-klikzone in de vaste onderste navigatie van nevenschermen. */
+.screen:not(#houseScreen):not(#moreScreen){position:relative;}
+.more-global-hotspot{appearance:none!important;-webkit-appearance:none!important;position:absolute!important;right:0!important;bottom:0!important;width:20%!important;height:12%!important;z-index:999!important;display:block!important;border:0!important;background:transparent!important;box-shadow:none!important;padding:0!important;margin:0!important;cursor:pointer!important;}
+.screen[hidden] .more-global-hotspot{display:none!important;}
