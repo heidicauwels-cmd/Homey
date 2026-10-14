@@ -189,6 +189,8 @@ function renderCounters(){
  const homeBonusCheck=document.getElementById('homeBonusCheck');
  if(homeBonusCheck) homeBonusCheck.classList.toggle('done',state.today>=15);
  renderBalls();
+ const liveBalls=document.getElementById('liveProgressBalls');
+ if(liveBalls){liveBalls.innerHTML=Array.from({length:15},(_,i)=>`<span class="${i<state.today?'on':''}"></span>`).join('');liveBalls.setAttribute('aria-label',`${state.today} van 15 dagelijkse bolletjes`);}
  renderHomeRoomTaskNumbers();
  document.querySelectorAll('[data-home-lock]').forEach(el=>{
    el.hidden=roomIsUnlocked(el.dataset.homeLock);

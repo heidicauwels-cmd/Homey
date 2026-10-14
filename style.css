@@ -1230,3 +1230,11 @@
 .homey-settings button{font:inherit;border:1px solid #b89a72;background:#e7f3e9;border-radius:12px;padding:12px 16px;cursor:pointer;}
 .homey-settings #resetHomey{background:#f8e5dc;border-color:#c7927e;font-weight:700;}
 .homey-settings .reset-explanation{font-size:0.88rem;color:#6e6056;}
+/* Live waarden bovenop de vaste voorbeeldcijfers in de header. */
+#houseScreen .live-header-number{position:absolute!important;z-index:20;display:flex!important;align-items:center;justify-content:center;background:#fff6e8;color:#3d2a1d;font:700 clamp(11px,3.7vw,20px) Arial,sans-serif;line-height:1;pointer-events:none;transform:translateY(-50%);height:33%;}
+#houseScreen .live-header-coins{left:50.7%;top:55%;width:6.5%;}
+#houseScreen .live-header-points{left:69.0%;top:55%;width:8.2%;}
+#houseScreen .home-progress-wrap{position:relative;flex:0 0 auto;width:100%;}
+#houseScreen .live-progress-balls{position:absolute;left:25%;top:31%;width:50%;height:43%;display:flex;align-items:center;justify-content:space-between;gap:1.2%;pointer-events:none;z-index:10;background:#fffaf0;}
+#houseScreen .live-progress-balls span{display:block;flex:1;aspect-ratio:1;border:1.5px solid #568ab0;border-radius:50%;background:#fffaf0;max-width:27px;}
+#houseScreen .live-progress-balls span.on{background:#70a9df;}
