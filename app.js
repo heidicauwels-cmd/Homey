@@ -52,6 +52,10 @@ const tasksByRoom={
   ],
 };
 
+roomData.push(['Hobbykamer','room-living.jpg','🔒 Vrijspelen op level 5',1]);
+tasksByRoom.Hobbykamer=[];
+for(const room of Object.keys(tasksByRoom)) tasksByRoom[room]=tasksByRoom[room].map(t=>Array.isArray(t)?[...t,1]:[t.title,t.freq,t.img,1]);
+
 const badges={Woonkamer:'🛋️',Keuken:'🍳',Badkamer:'🛁'};
 let currentRoom='Woonkamer';
 function localDateKey(){
@@ -82,6 +86,13 @@ let state=JSON.parse(localStorage.getItem('homey-multiroom')||'null') || {
 };
 
 const todayKey=localDateKey();
+if(state.taskLists) for(const room of Object.keys(tasksByRoom)) {
+ if(Array.isArray(state.taskLists[room])) tasksByRoom[room]=state.taskLists[room];
+}
+state.taskLists=tasksByRoom;
+state.taskAwards=state.taskAwards||{};
+state.dailyRaw=Number.isFinite(state.dailyRaw)?state.dailyRaw:state.today;
+
 
 // Migratie van oudere versies met true/false naar voltooiingsdatums.
 if(!state.completed){
@@ -136,7 +147,7 @@ if(!state.lastDate){
 }else if(state.lastDate!==todayKey){
   // Nieuwe kalenderdag: dagteller en dagbonus opnieuw beschikbaar.
   // Taken worden NIET allemaal gereset; dat gebeurt hieronder per frequentie.
-  state.today=0;
+  state.today=0; state.dailyRaw=0; state.taskAwards={};
   state.bonusAwarded=false;
   state.lastDate=todayKey;
 }
@@ -615,21 +626,21 @@ function renderOverview(){
 }
 
 function renderTasks(){
- const data=tasksByRoom[currentRoom];
+ const data=tasksByRoom[currentRoom]||[];
  document.getElementById('roomTitle').textContent=currentRoom;
  document.getElementById('roomBadge').textContent=badges[currentRoom]||'🏡';
  const box=document.getElementById('tasks');
  box.innerHTML=data.map((x,i)=>{
    const done=taskIsDone(currentRoom,i);
-   return `<button class="task-card ${done?'done':''}" data-task="${i}">
-   <img src="${x[2]}"><span class="task-info"><b>${x[0]}</b><small>${x[1]}</small></span>
-   <span class="rewards">🪙 1<br>⭐ 5</span><span class="check">${done?'✓':''}</span>
- </button>`;
- }).join('');
+   return `<div class="task-entry"><button class="task-card ${done?'done':''}" data-task="${i}">
+   <img src="${x[2]}"><span class="task-info"><b>${escapeTask(x[0])}</b><small>${escapeTask(x[1])}</small></span>
+   <span class="rewards">🪙 ${x[3]||1}<br>⭐ ${(x[3]||1)*5}<br>🔵 ${x[3]||1}</span><span class="check">${done?'✓':''}</span>
+ </button><div class="task-actions"><button type="button" data-edit="${i}" aria-label="Taak wijzigen">✎ Wijzigen</button><button type="button" data-delete="${i}" aria-label="Taak verwijderen">🗑 Verwijderen</button></div></div>`;
+ }).join('') || '<p>Voeg je eerste taak toe.</p>';
  const d=roomDone(currentRoom);
  document.getElementById('doneText').textContent=`${d} van ${data.length} taken klaar`;
- document.getElementById('pct').textContent=Math.round(d/data.length*100)+'%';
- document.getElementById('taskFill').style.width=(d/data.length*100)+'%';
+ document.getElementById('pct').textContent=Math.round(data.length?d/data.length*100:0)+'%';
+ document.getElementById('taskFill').style.width=(data.length?d/data.length*100:0)+'%';
  renderCounters();
 }
 
@@ -646,8 +657,13 @@ document.getElementById('roomCards').onclick=e=>{
 document.getElementById('taskBack').onclick=()=>{T.hidden=true;O.hidden=false;renderOverview()};
 
 document.getElementById('tasks').onclick=e=>{
+ const edit=e.target.closest('[data-edit]'), del=e.target.closest('[data-delete]');
+ if(edit){openTaskEditor(+edit.dataset.edit);return;}
+ if(del){deleteTask(+del.dataset.delete);return;}
  const b=e.target.closest('[data-task]');if(!b)return;
  const i=+b.dataset.task;
+ const size=tasksByRoom[currentRoom][i][3]||1;
+ const awards=state.taskAwards[currentRoom]||(state.taskAwards[currentRoom]=[]);
  state.completed[currentRoom]=state.completed[currentRoom]||[];
 
  if(taskIsDone(currentRoom,i)){
@@ -655,17 +671,18 @@ document.getElementById('tasks').onclick=e=>{
    // Zo trekken we geen oude punten/munten af van een taak die gisteren werd voltooid.
    if(taskCompletedToday(currentRoom,i)){
      state.completed[currentRoom][i]=null;
-     state.points=Math.max(0,state.points-5);
-     state.coins=Math.max(0,state.coins-1);
-     state.today=Math.max(0,state.today-1);
+     const earned=awards[i]||1; awards[i]=null;
+     state.points=Math.max(0,state.points-earned*5);
+     state.coins=Math.max(0,state.coins-earned);
+     state.dailyRaw=Math.max(0,state.dailyRaw-earned); state.today=Math.min(15,state.dailyRaw);
    }
  }else{
    // De taak is opnieuw aan de beurt volgens haar frequentie.
    state.completed[currentRoom][i]=todayKey;
-   state.points+=5;
-   state.coins+=1;
+   awards[i]=size; state.points+=size*5;
+   state.coins+=size;
    const wasBelowBonus=state.today<15;
-   state.today=Math.min(15,state.today+1);
+   state.dailyRaw+=size; state.today=Math.min(15,state.dailyRaw);
 
    // Dagbonus: precies één keer +15 punten wanneer 15/15 wordt bereikt.
    if(wasBelowBonus && state.today===15 && !state.bonusAwarded){
@@ -864,3 +881,36 @@ document.querySelectorAll('[data-open-more]').forEach(button=>button.addEventLis
  [H,O,T,L,S,I,P].forEach(screen=>screen.hidden=true);
  moreScreen.hidden=false;
 }));
+
+function escapeTask(value){return String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+const taskEditor=document.getElementById('taskEditor');
+let editingTask=null, editingRoom=null;
+function updateTaskReward(){const n=Number(document.getElementById('taskSize').value);document.getElementById('taskRewardPreview').textContent=`🪙 ${n}   ⭐ ${n*5}   🔵 ${n}`;}
+function openTaskEditor(i=null){
+ if(!roomIsUnlocked(currentRoom))return;
+ editingRoom=currentRoom; editingTask=i;
+ const t=i===null?null:tasksByRoom[currentRoom][i];
+ document.getElementById('taskEditorTitle').textContent=t?'Taak wijzigen':'Nieuwe taak';
+ document.getElementById('taskName').value=t?t[0]:'';
+ document.getElementById('taskDays').value=t?frequencyDays(t[1]):7;
+ document.getElementById('taskSize').value=t?t[3]||1:1;
+ updateTaskReward();taskEditor.showModal();
+}
+document.getElementById('addTask').onclick=()=>openTaskEditor();
+document.getElementById('taskSize').onchange=updateTaskReward;
+document.getElementById('cancelTask').onclick=()=>taskEditor.close();
+document.getElementById('taskForm').onsubmit=e=>{
+ e.preventDefault(); const name=document.getElementById('taskName').value.trim(), days=Number(document.getElementById('taskDays').value), size=Number(document.getElementById('taskSize').value);
+ if(!name||!Number.isInteger(days)||days<1||![1,2,3].includes(size))return;
+ const list=tasksByRoom[editingRoom], i=editingTask;
+ const t=[name,days===1?'Elke dag':`Elke ${days} dagen`,i===null?'task-tidy.jpg':list[i][2],size];
+ if(i===null){list.push(t);}else{list[i]=t;}
+ save();taskEditor.close();renderTasks();
+};
+function deleteTask(i){
+ if(!roomIsUnlocked(currentRoom)||!confirm('Deze taak verwijderen? Eerder verdiende beloningen blijven behouden.'))return;
+ tasksByRoom[currentRoom].splice(i,1);
+ (state.completed[currentRoom]||[]).splice(i,1);
+ (state.taskAwards[currentRoom]||[]).splice(i,1);
+ save();renderTasks();
+}
